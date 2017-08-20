@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-        if(currentSceneIndex < 1)
+        if(currentSceneIndex < 1 && m_loadTime > 0)
         {
             SceneManager.LoadScene(currentSceneIndex + 1);
         }
