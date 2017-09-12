@@ -7,7 +7,7 @@ public class FadeIn : MonoBehaviour
 {
     [SerializeField] float m_fadeInTime;
 
-    Color m_currentColour;
+    Color m_currentColour = Color.black;
     Image m_fadeInImage;
 
 	void Start()
@@ -22,12 +22,13 @@ public class FadeIn : MonoBehaviour
             return;
         }
 
-        if(Time.timeSinceLevelLoad < m_fadeInTime) //Not Working so Debug when you have time
+        if(Time.timeSinceLevelLoad < m_fadeInTime)
         {
             float alphaChange = Time.deltaTime / m_fadeInTime;
             m_currentColour.a -= alphaChange;
             m_fadeInImage.color = m_currentColour;
-        } else
+        } 
+        else
         {
             gameObject.SetActive(false);
         }
