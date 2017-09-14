@@ -37,7 +37,7 @@ public class BhanuPrefs : MonoBehaviour
 
     public static void SetDifficulty(float difficulty)
     {
-        if(difficulty >= 0 && difficulty <= 1)
+        if(difficulty >= 0 && difficulty <= 3)
         {
             PlayerPrefs.SetFloat(DIFFICULTY_KEY , difficulty);
         }
@@ -49,7 +49,7 @@ public class BhanuPrefs : MonoBehaviour
 
     public static void SetMasterVolume(float volume)
     {
-        if(volume > 0f && volume < 1f)
+        if(volume >= 0f && volume <= 1f)
         {
             PlayerPrefs.SetFloat(MASTER_VOLUME_KEY , volume);
         }
