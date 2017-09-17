@@ -9,7 +9,6 @@ public class Lizard : MonoBehaviour
 	void Start()
     {
 	    m_animator = GetComponent<Animator>();
-        
         StartCoroutine("AnimsRoutine");
 	}
 	
