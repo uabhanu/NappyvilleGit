@@ -13,11 +13,11 @@ public class Gravestone : MonoBehaviour
 	
 	void Attacked()
     {
-
+        m_animator.SetBool("Attacked" , true);
     }
 
     void BackToIdle()
     {
-
+        m_animator.SetBool("Attacked" , false);
     }
 }
