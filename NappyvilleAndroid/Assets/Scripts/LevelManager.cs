@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     public void Quit()
     {
         Debug.Log("QuitButton Pressed");
+        Application.Quit();
     }
 
     public void LoadNextLevel()
