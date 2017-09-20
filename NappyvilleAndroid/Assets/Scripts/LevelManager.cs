@@ -24,6 +24,7 @@ public class LevelManager : MonoBehaviour
 
         if(currentSceneIndex < 1 && m_loadTime > 0)
         {
+            Debug.Log(currentSceneIndex + 1);
             SceneManager.LoadScene(currentSceneIndex + 1);
         }
     }
