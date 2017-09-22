@@ -5,15 +5,11 @@ using UnityEngine;
 public class Lizard : MonoBehaviour
 {
     Animator m_animator;
-    bool m_isWalking;
-
-    [Range(0.0f , 1.5f)] [SerializeField] float m_walkSpeed;
-
+    float m_walkSpeed;
 
 	void Start()
     {
 	    m_animator = GetComponent<Animator>();
-        StartCoroutine("AnimsRoutine");
 	}
 
     void Update()
@@ -23,25 +19,23 @@ public class Lizard : MonoBehaviour
             return;
         }
 
-        if(m_isWalking)
-        {
-            transform.Translate(Vector2.left * m_walkSpeed * Time.deltaTime);
-        }
+        transform.Translate(Vector2.left * m_walkSpeed * Time.deltaTime);
 	}
-	
-	IEnumerator AnimsRoutine()
+
+    public void SetSpeed(float speed)
     {
-        yield return new WaitForSeconds(3f);
-        m_isWalking = true;
-        m_animator.SetBool("Walk" , true);
+        m_walkSpeed = speed;
+    }
 
-        yield return new WaitForSeconds(6f);
-        m_isWalking = false;
+    void AttackAnimation()
+    {
         m_animator.SetBool("Attack" , true);
+        m_animator.SetBool("Walk" , false);
+    }
 
-        yield return new WaitForSeconds(3f);
+    void WalkAnimation()
+    {
         m_animator.SetBool("Attack" , false);
-
-        StartCoroutine("AnimsRoutine");
+        m_animator.SetBool("Walk" , true);   
     }
 }
