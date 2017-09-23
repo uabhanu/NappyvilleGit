@@ -6,8 +6,7 @@ public class Fox : MonoBehaviour
 {
     Animator m_animator;
     bool m_isWalking;
-
-    [Range(0.0f , 1.5f)] [SerializeField] float m_walkSpeed;
+    float m_walkSpeed;
 
 	void Start()
     {
@@ -21,33 +20,37 @@ public class Fox : MonoBehaviour
             return;
         }
 
-        Walk();
+        WalkAnimation();
 	}
 	
-	void Attack()
+	void AttackAnimation()
     {
-        m_isWalking = false;
+        m_walkSpeed = 0f;
+        //m_isWalking = false;
         m_animator.SetBool("Attack" , true);
         m_animator.SetBool("Jump" , false);
     }
 
-    void Jump()
+    void JumpAnimation()
     {
-        m_isWalking = false;
+        m_walkSpeed = 0f;
+        //m_isWalking = false;
         m_animator.SetBool("Attack" , false);
         m_animator.SetBool("Jump" , true);
     }
 
-    void Walk()
+    //public void SetSpeed(float speed)
+    //{
+    //    m_walkSpeed = speed;
+    //}
+
+    void WalkAnimation()
     {
-        m_isWalking = true;
         m_animator.SetBool("Attack" , false);
         m_animator.SetBool("Jump" , false);
         m_animator.SetBool("Walk" , true);
-
-        if(m_isWalking)
-        {
-            transform.Translate(Vector2.left * m_walkSpeed * Time.deltaTime);
-        }
+        //m_isWalking = true;
+        m_walkSpeed = 0.4f;
+        transform.Translate(Vector2.left * m_walkSpeed * Time.deltaTime);
     }
 }
