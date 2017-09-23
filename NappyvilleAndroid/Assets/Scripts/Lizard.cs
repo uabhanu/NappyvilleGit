@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class Lizard : MonoBehaviour
 {
+    public enum LizardState
+	{
+        APPEAR,
+        ATTACK,
+		WALK,
+	};
+	
+	public LizardState m_currentState;
+	public LizardState m_previousState;
+
     Animator m_animator;
-    bool m_isWalking;
+    Rigidbody2D m_lizardBody2D;
 
     [Range(0.0f , 2.5f)] [SerializeField] float m_walkSpeed;
 
 	void Start()
     {
-	    m_animator = GetComponent<Animator>();	
+	    m_animator = GetComponent<Animator>();
+        m_lizardBody2D = GetComponent<Rigidbody2D>();
 	}
 
     void Update()
@@ -21,26 +32,76 @@ public class Lizard : MonoBehaviour
             return;
         }
 
-        transform.Translate(Vector2.left * m_walkSpeed * Time.deltaTime);        
+        UpdateAnimations();
+        UpdateStateMachine();
 	}
+
+    IEnumerator AppearRoutine()
+    {
+        yield return new WaitForSeconds(1f);
+        SetState(LizardState.WALK);
+    }
 	
-	void AttackAnimation()
+	void Attack()
     {
-        //m_isWalking = false;
-        m_animator.SetBool("Attack" , true);
-        m_animator.SetBool("Jump" , false);
+        m_walkSpeed = 0f;
     }
 
-    public void SetSpeed(float speed)
-    {
-        m_walkSpeed = speed;
-    }
+    LizardState GetState()
+	{
+		return m_currentState;
+	}
 
-    void WalkAnimation()
+    public void SetState(LizardState newState)
+	{
+		if (m_currentState == newState)
+		{
+			return;
+		}
+		
+		m_previousState = m_currentState;
+		m_currentState = newState;
+	}
+
+    void UpdateAnimations()
+	{
+		switch(m_currentState)
+		{
+            case LizardState.APPEAR:
+                m_animator.SetBool("Appear" , true);
+            break;
+
+            case LizardState.ATTACK:
+                m_animator.SetBool("Attack" , true);
+            break;
+
+			case LizardState.WALK:
+                m_animator.SetBool("Walk" , true);
+            break;
+		}
+	}
+
+    void UpdateStateMachine()
+	{
+		switch(m_currentState)
+		{
+            case LizardState.APPEAR:
+				StartCoroutine("AppearRoutine");
+			break;
+
+			case LizardState.ATTACK:
+				Attack();
+			break;
+			
+			case LizardState.WALK: 
+				Walk();
+			break;
+		}
+	}
+
+    void Walk()
     {
-        m_animator.SetBool("Attack" , false);
-        m_animator.SetBool("Jump" , false);
-        m_animator.SetBool("Walk" , true);
-        //m_isWalking = true;
+        m_walkSpeed = 1f;        
+        m_lizardBody2D.velocity = new Vector2(-m_walkSpeed , m_lizardBody2D.velocity.y);
     }
 }
