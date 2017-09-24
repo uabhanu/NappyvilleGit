@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_currentState: 0
   m_previousState: 0
-  m_walkSpeed: 0
+  m_walkSpeed: 1
 --- !u!212 &212529151051076510
 SpriteRenderer:
   m_ObjectHideFlags: 1

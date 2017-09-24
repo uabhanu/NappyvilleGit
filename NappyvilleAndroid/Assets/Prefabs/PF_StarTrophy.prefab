@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114943679505318182}
   m_Layer: 0
   m_Name: PF_StarTrophy
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

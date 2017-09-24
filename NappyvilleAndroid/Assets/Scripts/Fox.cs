@@ -15,6 +15,7 @@ public class Fox : MonoBehaviour
 	public FoxState m_previousState;
 
     Animator m_animator;
+    float m_currentWalkSpeed;
     Rigidbody2D m_foxBody2D;
 
     [Range(0.0f , 2.5f)] [SerializeField] float m_walkSpeed;
@@ -22,6 +23,7 @@ public class Fox : MonoBehaviour
 	void Start()
     {
 	    m_animator = GetComponent<Animator>();	
+        m_currentWalkSpeed = m_walkSpeed;
         m_foxBody2D = GetComponent<Rigidbody2D>();
 	}
 
@@ -39,6 +41,7 @@ public class Fox : MonoBehaviour
 	void Attack()
     {
         m_walkSpeed = 0f;
+        m_foxBody2D.velocity = new Vector2(-m_walkSpeed , m_foxBody2D.velocity.y);
     }
 
     FoxState GetState()
@@ -49,6 +52,19 @@ public class Fox : MonoBehaviour
     void Jump()
     {
         m_walkSpeed = 0f;
+        m_foxBody2D.velocity = new Vector2(-m_walkSpeed , m_foxBody2D.velocity.y);
+    }
+
+    void OnTriggerEnter2D(Collider2D tri2D)
+    {
+        if(tri2D.gameObject.tag.Equals("Player"))
+        {
+            SetState(FoxState.ATTACK);
+        }
+        else
+        {
+            Debug.LogError("Collision with Player Failed");
+        }
     }
 
     public void SetState(FoxState newState)
@@ -68,13 +84,19 @@ public class Fox : MonoBehaviour
 		{
 			case FoxState.ATTACK:
                 m_animator.SetBool("Attack" , true);
+                m_animator.SetBool("Jump" , false);
+                m_animator.SetBool("Walk" , false);
             break;
 
             case FoxState.JUMP:
+                m_animator.SetBool("Attack" , false);
                 m_animator.SetBool("Jump" , true);
+                m_animator.SetBool("Walk" , false);
             break;
 
 			case FoxState.WALK:
+                m_animator.SetBool("Attack" , false);
+                m_animator.SetBool("Jump" , false);
                 m_animator.SetBool("Walk" , true);
             break;
 		}
@@ -100,7 +122,7 @@ public class Fox : MonoBehaviour
 
     void Walk()
     {
-        m_walkSpeed = 0.4f;
+        m_walkSpeed = m_currentWalkSpeed;
         m_foxBody2D.velocity = new Vector2(-m_walkSpeed , m_foxBody2D.velocity.y);
     }
 }

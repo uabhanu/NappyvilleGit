@@ -15,6 +15,7 @@ public class Lizard : MonoBehaviour
 	public LizardState m_previousState;
 
     Animator m_animator;
+    float m_currentWalkSpeed;
     Rigidbody2D m_lizardBody2D;
 
     [Range(0.0f , 2.5f)] [SerializeField] float m_walkSpeed;
@@ -22,6 +23,7 @@ public class Lizard : MonoBehaviour
 	void Start()
     {
 	    m_animator = GetComponent<Animator>();
+        m_currentWalkSpeed = m_walkSpeed;
         m_lizardBody2D = GetComponent<Rigidbody2D>();
 	}
 
@@ -45,12 +47,25 @@ public class Lizard : MonoBehaviour
 	void Attack()
     {
         m_walkSpeed = 0f;
+        m_lizardBody2D.velocity = new Vector2(-m_walkSpeed , m_lizardBody2D.velocity.y);
     }
 
     LizardState GetState()
 	{
 		return m_currentState;
 	}
+
+    void OnTriggerEnter2D(Collider2D tri2D)
+    {
+        if(tri2D.gameObject.tag.Equals("Player"))
+        {
+            SetState(LizardState.ATTACK);
+        }
+        else
+        {
+            Debug.LogError("Collision with Player Failed");
+        }
+    }
 
     public void SetState(LizardState newState)
 	{
@@ -73,9 +88,11 @@ public class Lizard : MonoBehaviour
 
             case LizardState.ATTACK:
                 m_animator.SetBool("Attack" , true);
+                m_animator.SetBool("Walk" , false);
             break;
 
 			case LizardState.WALK:
+                m_animator.SetBool("Attack" , false);
                 m_animator.SetBool("Walk" , true);
             break;
 		}
@@ -101,7 +118,7 @@ public class Lizard : MonoBehaviour
 
     void Walk()
     {
-        m_walkSpeed = 1f;        
+        m_walkSpeed = m_currentWalkSpeed;        
         m_lizardBody2D.velocity = new Vector2(-m_walkSpeed , m_lizardBody2D.velocity.y);
     }
 }

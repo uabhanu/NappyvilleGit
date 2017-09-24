@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_currentState: 2
   m_previousState: 2
-  m_walkSpeed: 0
+  m_walkSpeed: 0.4
 --- !u!212 &212130728391135170
 SpriteRenderer:
   m_ObjectHideFlags: 1
