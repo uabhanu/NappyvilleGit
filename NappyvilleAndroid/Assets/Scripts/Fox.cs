@@ -37,6 +37,12 @@ public class Fox : MonoBehaviour
         UpdateAnimations();
         UpdateStateMachine();
 	}
+
+    IEnumerator JumpRoutine()
+    {
+        yield return new WaitForSeconds(0.9f);
+        SetState(FoxState.WALK);
+    }
 	
 	void Attack()
     {
@@ -53,6 +59,7 @@ public class Fox : MonoBehaviour
     {
         m_walkSpeed = 0f;
         m_foxBody2D.velocity = new Vector2(-m_walkSpeed , m_foxBody2D.velocity.y);
+        StartCoroutine("JumpRoutine");
     }
 
     void OnTriggerEnter2D(Collider2D tri2D)
@@ -61,6 +68,12 @@ public class Fox : MonoBehaviour
         {
             SetState(FoxState.ATTACK);
         }
+
+        if(tri2D.gameObject.tag.Equals("Gstone"))
+        {
+            SetState(FoxState.JUMP);
+        }
+
         else
         {
             Debug.LogError("Collision with Player Failed");

@@ -57,7 +57,7 @@ public class Lizard : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D tri2D)
     {
-        if(tri2D.gameObject.tag.Equals("Player"))
+        if(tri2D.gameObject.tag.Equals("Player") || tri2D.gameObject.tag.Equals("Gstone"))
         {
             SetState(LizardState.ATTACK);
         }
