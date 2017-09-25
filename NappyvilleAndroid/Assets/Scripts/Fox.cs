@@ -38,16 +38,15 @@ public class Fox : MonoBehaviour
         UpdateStateMachine();
 	}
 
-    IEnumerator JumpRoutine()
-    {
-        yield return new WaitForSeconds(0.9f);
-        SetState(FoxState.WALK);
-    }
-	
 	void Attack()
     {
         m_walkSpeed = 0f;
         m_foxBody2D.velocity = new Vector2(-m_walkSpeed , m_foxBody2D.velocity.y);
+    }
+
+    void BackToWalk()
+    {
+        SetState(FoxState.WALK);
     }
 
     FoxState GetState()
@@ -57,26 +56,22 @@ public class Fox : MonoBehaviour
 
     void Jump()
     {
-        m_walkSpeed = 0f;
-        m_foxBody2D.velocity = new Vector2(-m_walkSpeed , m_foxBody2D.velocity.y);
-        StartCoroutine("JumpRoutine");
+        m_walkSpeed = 3f;
+        m_foxBody2D.velocity = new Vector2(-m_walkSpeed , m_foxBody2D.velocity.y);   
     }
 
     void OnTriggerEnter2D(Collider2D tri2D)
     {
         if(tri2D.gameObject.tag.Equals("Player"))
         {
+            //Debug.Log("Fox Collision with Player Successful"); //Working Fine
             SetState(FoxState.ATTACK);
         }
-
+        
         if(tri2D.gameObject.tag.Equals("Gstone"))
         {
+            //Debug.Log("Fox Collision with Gravestone Successful"); //Working Fine
             SetState(FoxState.JUMP);
-        }
-
-        else
-        {
-            Debug.LogError("Collision with Player Failed");
         }
     }
 

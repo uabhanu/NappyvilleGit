@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4457837133038694}
   - component: {fileID: 95993675585061386}
   - component: {fileID: 61964100468292738}
+  - component: {fileID: 114925763197919556}
   - component: {fileID: 114238354325649710}
   m_Layer: 0
   m_Name: PF_Gravestone
@@ -127,6 +128,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_currentState: 1
   m_previousState: 1
+--- !u!114 &114925763197919556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1830943648423976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d559219fd1516fe4487bdfb245d97224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_attack: 10
+  m_hitpoints: 100
 --- !u!212 &212166731457644178
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4073144267485726}
   - component: {fileID: 95229002233355132}
   - component: {fileID: 61797050877244198}
+  - component: {fileID: 114962452615614962}
   - component: {fileID: 114625001778260084}
   m_Layer: 0
   m_Name: PF_Gnome
@@ -127,6 +128,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_currentState: 1
   m_previousState: 1
+--- !u!114 &114962452615614962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1332003066029480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d559219fd1516fe4487bdfb245d97224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_attack: 10
+  m_hitpoints: 100
 --- !u!212 &212822394358778684
 SpriteRenderer:
   m_ObjectHideFlags: 1

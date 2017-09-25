@@ -20,6 +20,10 @@ public class Lizard : MonoBehaviour
 
     [Range(0.0f , 2.5f)] [SerializeField] float m_walkSpeed;
 
+    [SerializeField] GameObject m_currentTarget;
+
+    [Range(20 , 100)] [SerializeField] int m_attack;
+
 	void Start()
     {
 	    m_animator = GetComponent<Animator>();
@@ -50,6 +54,11 @@ public class Lizard : MonoBehaviour
         m_lizardBody2D.velocity = new Vector2(-m_walkSpeed , m_lizardBody2D.velocity.y);
     }
 
+    void CauseDamage()
+    {
+        m_currentTarget.gameObject.GetComponent<DefendersStats>().m_hitpoints -= m_attack;
+    }
+
     LizardState GetState()
 	{
 		return m_currentState;
@@ -59,11 +68,8 @@ public class Lizard : MonoBehaviour
     {
         if(tri2D.gameObject.tag.Equals("Player") || tri2D.gameObject.tag.Equals("Gstone"))
         {
+            m_currentTarget = tri2D.gameObject;
             SetState(LizardState.ATTACK);
-        }
-        else
-        {
-            Debug.LogError("Collision with Player Failed");
         }
     }
 
