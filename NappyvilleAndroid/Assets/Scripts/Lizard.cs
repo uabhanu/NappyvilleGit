@@ -56,7 +56,7 @@ public class Lizard : MonoBehaviour
 
     void CauseDamage()
     {
-        m_currentTarget.gameObject.GetComponent<DefendersStats>().m_hitpoints -= m_attack;
+        m_currentTarget.gameObject.GetComponent<DefendersHitpoints>().m_hitpoints -= m_attack;
     }
 
     LizardState GetState()

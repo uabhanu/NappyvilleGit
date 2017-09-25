@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefendersStats : MonoBehaviour
+public class AttackersHitpoints : MonoBehaviour
 {
     [Range(100 , 400)] public int m_hitpoints;
 

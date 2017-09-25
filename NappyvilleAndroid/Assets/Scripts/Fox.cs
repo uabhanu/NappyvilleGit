@@ -20,6 +20,10 @@ public class Fox : MonoBehaviour
 
     [Range(0.0f , 2.5f)] [SerializeField] float m_walkSpeed;
 
+    [SerializeField] GameObject m_currentTarget;
+
+    [Range(20 , 100)] [SerializeField] int m_attack;
+
 	void Start()
     {
 	    m_animator = GetComponent<Animator>();	
@@ -49,6 +53,11 @@ public class Fox : MonoBehaviour
         SetState(FoxState.WALK);
     }
 
+    void CauseDamage()
+    {
+        m_currentTarget.gameObject.GetComponent<DefendersHitpoints>().m_hitpoints -= m_attack;
+    }
+
     FoxState GetState()
 	{
 		return m_currentState;
@@ -65,6 +74,7 @@ public class Fox : MonoBehaviour
         if(tri2D.gameObject.tag.Equals("Player"))
         {
             //Debug.Log("Fox Collision with Player Successful"); //Working Fine
+            m_currentTarget = tri2D.gameObject;
             SetState(FoxState.ATTACK);
         }
         
