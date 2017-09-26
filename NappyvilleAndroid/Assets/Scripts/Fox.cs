@@ -55,7 +55,15 @@ public class Fox : MonoBehaviour
 
     void CauseDamage()
     {
-        m_currentTarget.gameObject.GetComponent<DefendersHitpoints>().m_hitpoints -= m_attack;
+        if(m_currentTarget != null)
+        {
+            m_currentTarget.gameObject.GetComponent<DefendersHitpoints>().m_hitpoints -= m_attack;
+        }
+        else
+        {
+            Debug.LogError("Sir Bhanu, there is no Defender target anymore to cause damage to");
+        }
+        
     }
 
     FoxState GetState()

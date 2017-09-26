@@ -8,6 +8,18 @@ public class AttackersHitpoints : MonoBehaviour
 
 	void Start()
     {
-		
+		StartCoroutine("DieRoutine");
 	}
+
+    IEnumerator DieRoutine()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if(m_hitpoints == 0)
+        {
+            Destroy(gameObject); //This is ok for now but create a method to destroy and call that in animation event after calling SetState(Fox or Lizard Walk) somehow
+        }
+
+        StartCoroutine("DieRoutine");
+    }
 }
