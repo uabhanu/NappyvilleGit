@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DefendersHitpoints : MonoBehaviour
 {
+    [SerializeField] GameObject m_enemyAttacking;
+
     [Range(100 , 400)] public int m_hitpoints;
 
 	void Start()
@@ -15,9 +17,9 @@ public class DefendersHitpoints : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        if(m_hitpoints == 0)
+        if(m_hitpoints <= 0)
         {
-            Destroy(gameObject); //This is ok for now but create a method to destroy and call that in animation event after calling SetState(Fox or Lizard Walk) somehow
+            Destroy(gameObject);
         }
 
         StartCoroutine("DieRoutine");

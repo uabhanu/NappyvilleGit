@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 50314877498595518}
   m_Layer: 0
   m_Name: PF_Lizard
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_previousState: 0
   m_walkSpeed: 1
   m_currentTarget: {fileID: 0}
-  m_attack: 20
+  m_attack: 40
 --- !u!212 &212529151051076510
 SpriteRenderer:
   m_ObjectHideFlags: 1

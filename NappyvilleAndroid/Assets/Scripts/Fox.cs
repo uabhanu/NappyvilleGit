@@ -46,6 +46,11 @@ public class Fox : MonoBehaviour
     {
         m_walkSpeed = 0f;
         m_foxBody2D.velocity = new Vector2(-m_walkSpeed , m_foxBody2D.velocity.y);
+
+        if(m_currentTarget == null)
+        {
+            SetState(FoxState.WALK);
+        }
     }
 
     void BackToWalk()
@@ -82,14 +87,19 @@ public class Fox : MonoBehaviour
         if(tri2D.gameObject.tag.Equals("Player"))
         {
             //Debug.Log("Fox Collision with Player Successful"); //Working Fine
-            m_currentTarget = tri2D.gameObject;
-            SetState(FoxState.ATTACK);
-        }
-        
-        if(tri2D.gameObject.tag.Equals("Gstone"))
-        {
-            //Debug.Log("Fox Collision with Gravestone Successful"); //Working Fine
-            SetState(FoxState.JUMP);
+            if(tri2D.gameObject.name.Equals("PF_Gravestone"))
+            {
+                SetState(FoxState.JUMP);
+            }
+            else
+            {
+                m_currentTarget = tri2D.gameObject;
+
+                if(m_currentTarget != null)
+                {
+                    SetState(FoxState.ATTACK);
+                }
+            }
         }
     }
 

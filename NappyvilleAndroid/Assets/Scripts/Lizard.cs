@@ -52,6 +52,11 @@ public class Lizard : MonoBehaviour
     {
         m_walkSpeed = 0f;
         m_lizardBody2D.velocity = new Vector2(-m_walkSpeed , m_lizardBody2D.velocity.y);
+
+        if(m_currentTarget == null)
+        {
+            SetState(LizardState.WALK);
+        }
     }
 
     void CauseDamage()
@@ -73,7 +78,7 @@ public class Lizard : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D tri2D)
     {
-        if(tri2D.gameObject.tag.Equals("Player") || tri2D.gameObject.tag.Equals("Gstone"))
+        if(tri2D.gameObject.tag.Equals("Player"))
         {
             m_currentTarget = tri2D.gameObject;
             SetState(LizardState.ATTACK);
