@@ -76,9 +76,9 @@ public class Fox : MonoBehaviour
 		return m_currentState;
 	}
 
-    void Jump()
+    void Jump(float jumpSpeed)
     {
-        m_walkSpeed = 3f;
+        m_walkSpeed = jumpSpeed;
         m_foxBody2D.velocity = new Vector2(-m_walkSpeed , m_foxBody2D.velocity.y);   
     }
 
@@ -147,7 +147,7 @@ public class Fox : MonoBehaviour
 			break;
 
 			case FoxState.JUMP:
-				Jump();
+				
 			break;
 			
 			case FoxState.WALK: 
