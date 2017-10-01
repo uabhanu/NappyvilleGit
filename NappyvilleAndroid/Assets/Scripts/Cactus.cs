@@ -15,6 +15,10 @@ public class Cactus : MonoBehaviour
 
 	Animator m_animator;
 
+    [SerializeField] GameObject m_corgettePrefab;
+
+    [SerializeField] Transform m_spawnPosition;
+
 	void Start()
     {
 	    m_animator = GetComponent<Animator>();	
@@ -33,9 +37,10 @@ public class Cactus : MonoBehaviour
 
     void Attack()
     {
-
+        GameObject corgette = Instantiate(m_corgettePrefab , m_spawnPosition) as GameObject;
+        corgette.transform.parent = GameObject.Find("Projectiles").transform;
     }
-	
+
     CactusState GetState()
 	{
 		return m_currentState;
@@ -71,7 +76,7 @@ public class Cactus : MonoBehaviour
 		switch(m_currentState)
 		{
 			case CactusState.ATTACK:
-				Attack();
+				
 			break;
 			
 			case CactusState.IDLE: 

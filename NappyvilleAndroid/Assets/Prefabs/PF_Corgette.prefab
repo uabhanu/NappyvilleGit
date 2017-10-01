@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4448856902828708}
-  - component: {fileID: 61111800398436374}
   - component: {fileID: 212877109415568166}
   m_Layer: 0
   m_Name: Body
@@ -37,7 +36,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4630529050609292}
   - component: {fileID: 95297049783851836}
-  - component: {fileID: 114642287885590052}
+  - component: {fileID: 61382723385718624}
+  - component: {fileID: 114376548962802434}
   m_Layer: 0
   m_Name: PF_Corgette
   m_TagString: Untagged
@@ -72,12 +72,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61111800398436374
+--- !u!61 &61382723385718624
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1428014395116484}
+  m_GameObject: {fileID: 1753328174351104}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -114,7 +114,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114642287885590052
+--- !u!114 &114376548962802434
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -125,6 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670072572546aee459a69f5bf7633526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_mainCamera: {fileID: 0}
+  m_flySpeed: 1.5
+  m_currentTarget: {fileID: 0}
+  m_attack: 20
 --- !u!212 &212877109415568166
 SpriteRenderer:
   m_ObjectHideFlags: 1

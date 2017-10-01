@@ -68,7 +68,6 @@ public class Fox : MonoBehaviour
         {
             Debug.LogError("Sir Bhanu, there is no Defender target anymore to cause damage to");
         }
-        
     }
 
     FoxState GetState()

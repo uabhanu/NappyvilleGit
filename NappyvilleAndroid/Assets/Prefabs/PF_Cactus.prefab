@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1513785832289156}
   m_IsPrefabParent: 1
+--- !u!1 &1048278241850568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4845755817019118}
+  m_Layer: 0
+  m_Name: CorgetteSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1513785832289156
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,8 +85,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4136120418307622}
+  - {fileID: 4845755817019118}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4845755817019118
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1048278241850568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.35, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4311415419007072}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &61541753227787988
 BoxCollider2D:
@@ -126,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d559219fd1516fe4487bdfb245d97224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_attack: 10
+  m_enemyAttacking: {fileID: 0}
   m_hitpoints: 100
 --- !u!114 &114278809785092746
 MonoBehaviour:
@@ -141,7 +170,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_currentState: 1
   m_previousState: 1
-  m_hitpoints: 0
+  m_corgettePrefab: {fileID: 1753328174351104, guid: 44c988a1348752047bafc54c31a8a3de,
+    type: 2}
+  m_spawnPosition: {fileID: 4845755817019118}
 --- !u!212 &212590906619937718
 SpriteRenderer:
   m_ObjectHideFlags: 1
