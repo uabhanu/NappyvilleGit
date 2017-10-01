@@ -6,7 +6,7 @@ public class Gnome : MonoBehaviour
 {
     public enum GnomeState
 	{
-        HOP,
+        ATTACK,
 		IDLE,
 	};
 	
@@ -14,6 +14,10 @@ public class Gnome : MonoBehaviour
 	public GnomeState m_previousState;
 
 	Animator m_animator;
+
+    [SerializeField] GameObject m_axePrefab;
+
+    [SerializeField] Transform m_spawnPosition;
 
 	void Start()
     {
@@ -31,15 +35,16 @@ public class Gnome : MonoBehaviour
         UpdateStateMachine();
 	}
 
+    void Attack()
+    {
+        GameObject axe = Instantiate(m_axePrefab , m_spawnPosition) as GameObject;
+        axe.transform.parent = GameObject.Find("Projectiles").transform;
+    }
+
     GnomeState GetState()
 	{
 		return m_currentState;
 	}
-
-    void Hop()
-    {
-
-    }
 
     public void SetState(GnomeState newState)
 	{
@@ -56,7 +61,7 @@ public class Gnome : MonoBehaviour
 	{
 		switch(m_currentState)
 		{
-            case GnomeState.HOP:
+            case GnomeState.ATTACK:
                 m_animator.SetBool("Hop" , true);
             break;
 
@@ -70,8 +75,8 @@ public class Gnome : MonoBehaviour
 	{
 		switch(m_currentState)
 		{
-			case GnomeState.HOP:
-				Hop();
+			case GnomeState.ATTACK:
+				
 			break;
 			
 			case GnomeState.IDLE: 

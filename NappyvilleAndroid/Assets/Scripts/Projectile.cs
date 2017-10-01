@@ -39,7 +39,7 @@ public class Projectile : MonoBehaviour
     {
         if(m_currentTarget != null)
         {
-            m_currentTarget.gameObject.GetComponent<AttackersHitpoints>().m_hitpoints -= m_attack;
+            m_currentTarget.gameObject.GetComponent<EnemyStats>().m_hitpoints -= m_attack;
             Destroy(gameObject);
         }
         else

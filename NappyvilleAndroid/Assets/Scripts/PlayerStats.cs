@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackersHitpoints : MonoBehaviour
+public class PlayerStats : MonoBehaviour
 {
-    [Range(100 , 400)] public int m_hitpoints;
+    [SerializeField] GameObject m_enemyAttacking;
+
+    [Range(20 , 400)] public int m_hitpoints;
 
 	void Start()
     {
