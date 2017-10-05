@@ -14,6 +14,7 @@ public class Gnome : MonoBehaviour
 	public GnomeState m_previousState;
 
 	Animator m_animator;
+    GameObject m_projectilesParent;
 
     [SerializeField] GameObject m_axePrefab;
 
@@ -21,7 +22,14 @@ public class Gnome : MonoBehaviour
 
 	void Start()
     {
-	    m_animator = GetComponent<Animator>();	
+	    m_animator = GetComponent<Animator>();
+
+        m_projectilesParent = GameObject.Find("Projectiles");
+
+        if(m_projectilesParent == null)
+        {
+            m_projectilesParent = new GameObject("Projectiles");
+        }
 	}
 
     void Update()
@@ -38,7 +46,11 @@ public class Gnome : MonoBehaviour
     void Attack()
     {
         GameObject axe = Instantiate(m_axePrefab , m_spawnPosition) as GameObject;
-        axe.transform.parent = GameObject.Find("Projectiles").transform;
+
+        if(m_projectilesParent != null)
+        {
+            axe.transform.parent = m_projectilesParent.transform;
+        }
     }
 
     GnomeState GetState()

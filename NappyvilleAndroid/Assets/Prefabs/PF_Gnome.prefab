@@ -36,8 +36,8 @@ GameObject:
   - component: {fileID: 4073144267485726}
   - component: {fileID: 95229002233355132}
   - component: {fileID: 61797050877244198}
-  - component: {fileID: 114962452615614962}
   - component: {fileID: 114625001778260084}
+  - component: {fileID: 114962452615614962}
   m_Layer: 0
   m_Name: PF_Gnome
   m_TagString: Player

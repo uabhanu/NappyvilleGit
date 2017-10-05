@@ -14,6 +14,7 @@ public class Cactus : MonoBehaviour
 	public CactusState m_previousState;
 
 	Animator m_animator;
+    GameObject m_projectilesParent;
 
     [SerializeField] GameObject m_corgettePrefab;
 
@@ -21,7 +22,14 @@ public class Cactus : MonoBehaviour
 
 	void Start()
     {
-	    m_animator = GetComponent<Animator>();	
+	    m_animator = GetComponent<Animator>();
+
+        m_projectilesParent = GameObject.Find("Projectiles");
+
+        if(m_projectilesParent == null)
+        {
+            m_projectilesParent = new GameObject("Projectiles");
+        }
 	}
 
     void Update()
@@ -38,7 +46,11 @@ public class Cactus : MonoBehaviour
     void Attack()
     {
         GameObject corgette = Instantiate(m_corgettePrefab , m_spawnPosition) as GameObject;
-        corgette.transform.parent = GameObject.Find("Projectiles").transform;
+
+        if(m_projectilesParent != null)
+        {
+            corgette.transform.parent = m_projectilesParent.transform;
+        }
     }
 
     CactusState GetState()

@@ -5,11 +5,20 @@ using UnityEngine.UI;
 
 public class PlayerButton : MonoBehaviour
 {
+    GameObject m_players;
+
     [SerializeField] PlayerButton[] m_playerButtons;
 
 	void Start()
     {
-	    m_playerButtons = FindObjectsOfType<PlayerButton>();   
+        m_players = GameObject.Find("Players");
+
+        if(m_players == null)
+        {
+            m_players = new GameObject("Players");
+        }
+
+        m_playerButtons = FindObjectsOfType<PlayerButton>();   
 	}
 	
 	public void SpriteColourToggle()

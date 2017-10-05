@@ -37,8 +37,8 @@ GameObject:
   - component: {fileID: 4457837133038694}
   - component: {fileID: 95993675585061386}
   - component: {fileID: 61964100468292738}
-  - component: {fileID: 114925763197919556}
   - component: {fileID: 114238354325649710}
+  - component: {fileID: 114925763197919556}
   m_Layer: 0
   m_Name: PF_Gravestone
   m_TagString: Player
@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d559219fd1516fe4487bdfb245d97224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_enemyAttacking: {fileID: 0}
   m_hitpoints: 100
 --- !u!212 &212166731457644178
 SpriteRenderer:
