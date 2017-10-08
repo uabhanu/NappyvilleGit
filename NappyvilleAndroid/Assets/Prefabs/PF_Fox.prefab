@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4136805703390596}
   - component: {fileID: 95064376630772466}
-  - component: {fileID: 114184335092375398}
   - component: {fileID: 61015565902284574}
+  - component: {fileID: 114184335092375398}
   - component: {fileID: 114821492265074400}
   - component: {fileID: 50277413798378258}
   - component: {fileID: 212130728391135170}
@@ -104,7 +104,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

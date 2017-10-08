@@ -5,24 +5,21 @@ using UnityEngine.UI;
 
 public class PlayerButton : MonoBehaviour
 {
-    GameObject m_players;
+    [SerializeField] GameObject m_playerPrefab;
 
     [SerializeField] PlayerButton[] m_playerButtons;
 
+    public static GameObject m_playerToSpawn;
+
 	void Start()
     {
-        m_players = GameObject.Find("Players");
-
-        if(m_players == null)
-        {
-            m_players = new GameObject("Players");
-        }
-
         m_playerButtons = FindObjectsOfType<PlayerButton>();   
 	}
-	
-	public void SpriteColourToggle()
+
+    public void SpriteColourToggle()
     {
+        m_playerToSpawn = m_playerPrefab;
+
         foreach(PlayerButton playerButton in m_playerButtons)
         {
             playerButton.GetComponent<Image>().color = Color.black;
