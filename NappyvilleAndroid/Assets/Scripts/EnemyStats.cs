@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
+    public float m_seenEverySecs;
     [Range(20 , 400)] public int m_hitpoints;
 
 	void Start()
