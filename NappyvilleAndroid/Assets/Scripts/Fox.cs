@@ -86,7 +86,7 @@ public class Fox : MonoBehaviour
         if(tri2D.gameObject.tag.Equals("Player"))
         {
             //Debug.Log("Fox Collision with Player Successful"); //Working Fine
-            if(tri2D.gameObject.name.Equals("PF_Gravestone"))
+            if(tri2D.gameObject.name.Equals("PF_Gravestone(Clone)"))
             {
                 SetState(FoxState.JUMP);
             }
