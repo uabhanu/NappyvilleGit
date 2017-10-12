@@ -29,8 +29,8 @@ public class EnemySpawner : MonoBehaviour
 
     bool isTimeToSpawn(GameObject enemyObj)
     {
-        EnemyStats enemyStats = enemyObj.GetComponent<EnemyStats>();
-        float meanSpawnDelay = enemyStats.m_seenEverySecs;
+        BhanuEnemy bhanuEnemy = enemyObj.GetComponent<BhanuEnemy>();
+        float meanSpawnDelay = bhanuEnemy.m_seenEverySecs;
         float spawnsPerSec = 1 / meanSpawnDelay;
 
         if(Time.deltaTime > meanSpawnDelay)

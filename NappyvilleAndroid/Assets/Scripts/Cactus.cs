@@ -18,7 +18,7 @@ public class Cactus : MonoBehaviour
 
     [SerializeField] GameObject m_corgettePrefab;
 
-    [SerializeField] Transform m_spawnPosition;
+    [SerializeField] Transform m_corgetteSpawnPosition;
 
 	void Start()
     {
@@ -45,7 +45,7 @@ public class Cactus : MonoBehaviour
 
     void Attack()
     {
-        GameObject corgette = Instantiate(m_corgettePrefab , m_spawnPosition) as GameObject;
+        GameObject corgette = Instantiate(m_corgettePrefab , m_corgetteSpawnPosition) as GameObject;
 
         if(m_projectilesParent != null)
         {

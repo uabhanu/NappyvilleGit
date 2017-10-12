@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class BhanuEnemy : MonoBehaviour
 {
-    [SerializeField] GameObject m_enemyAttacking;
-
+    public float m_seenEverySecs;
     [Range(20 , 400)] public int m_hitpoints;
 
 	void Start()

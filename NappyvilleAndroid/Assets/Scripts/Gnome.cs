@@ -18,7 +18,7 @@ public class Gnome : MonoBehaviour
 
     [SerializeField] GameObject m_axePrefab;
 
-    [SerializeField] Transform m_spawnPosition;
+    [SerializeField] Transform m_axeSpawnPosition;
 
 	void Start()
     {
@@ -45,7 +45,7 @@ public class Gnome : MonoBehaviour
 
     void Attack()
     {
-        GameObject axe = Instantiate(m_axePrefab , m_spawnPosition) as GameObject;
+        GameObject axe = Instantiate(m_axePrefab , m_axeSpawnPosition) as GameObject;
 
         if(m_projectilesParent != null)
         {

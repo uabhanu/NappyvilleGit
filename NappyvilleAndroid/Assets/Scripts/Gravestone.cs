@@ -9,8 +9,10 @@ public class Gravestone : MonoBehaviour
         ATTACKED,
 		IDLE,
 	};
-	
-	public GravestoneState m_currentState;
+
+    [HideInInspector] [Range(0.0f , 10.0f)] [SerializeField] float m_lineDistance , m_lineStartingPoint;
+
+    public GravestoneState m_currentState;
 	public GravestoneState m_previousState;
 
     Animator m_animator;

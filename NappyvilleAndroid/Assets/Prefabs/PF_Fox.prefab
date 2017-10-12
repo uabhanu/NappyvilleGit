@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4136805703390596}
   - component: {fileID: 95064376630772466}
-  - component: {fileID: 61015565902284574}
   - component: {fileID: 114184335092375398}
+  - component: {fileID: 61015565902284574}
   - component: {fileID: 114821492265074400}
   - component: {fileID: 50277413798378258}
   - component: {fileID: 212130728391135170}
@@ -161,6 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0c62d97cc07a144c85994ea240b550d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_seenEverySecs: 0
+  m_hitpoints: 0
   m_currentState: 2
   m_previousState: 2
   m_walkSpeed: 0.4

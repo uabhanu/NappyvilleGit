@@ -6,6 +6,8 @@ public class StarTrophy : MonoBehaviour
 {
     Animator m_animator;
 
+    [HideInInspector] [Range(0.0f , 10.0f)] [SerializeField] float m_lineDistance , m_lineStartingPoint;
+
 	void Start()
     {
 	    m_animator = GetComponent<Animator>();	

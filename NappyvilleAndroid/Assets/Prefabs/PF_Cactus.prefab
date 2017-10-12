@@ -35,9 +35,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4311415419007072}
   - component: {fileID: 95185965009778774}
+  - component: {fileID: 114204899675214642}
   - component: {fileID: 61541753227787988}
   - component: {fileID: 114278809785092746}
-  - component: {fileID: 114204899675214642}
   m_Layer: 0
   m_Name: PF_Cactus
   m_TagString: Player
@@ -155,8 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d559219fd1516fe4487bdfb245d97224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyAttacking: {fileID: 0}
   m_hitpoints: 100
+  m_lineDistance: 8.5
+  m_lineStartingPoint: 0.47
 --- !u!114 &114278809785092746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,7 +173,7 @@ MonoBehaviour:
   m_previousState: 1
   m_corgettePrefab: {fileID: 1753328174351104, guid: 44c988a1348752047bafc54c31a8a3de,
     type: 2}
-  m_spawnPosition: {fileID: 4845755817019118}
+  m_corgetteSpawnPosition: {fileID: 4845755817019118}
 --- !u!212 &212590906619937718
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -36,8 +36,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4884501317656404}
   - component: {fileID: 95771483871335816}
-  - component: {fileID: 61852324100970686}
   - component: {fileID: 114264608191809440}
+  - component: {fileID: 61852324100970686}
   - component: {fileID: 114943679505318182}
   m_Layer: 0
   m_Name: PF_StarTrophy
@@ -213,8 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d559219fd1516fe4487bdfb245d97224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemyAttacking: {fileID: 0}
   m_hitpoints: 100
+  m_lineStartingPoint: 0
 --- !u!114 &114519622622997004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,6 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f552ccc0a608643a7de200df6efafa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_hitpoints: 0
+  m_lineStartingPoint: 0
 --- !u!212 &212399014153255578
 SpriteRenderer:
   m_ObjectHideFlags: 1

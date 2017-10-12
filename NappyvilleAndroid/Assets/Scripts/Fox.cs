@@ -62,7 +62,7 @@ public class Fox : MonoBehaviour
     {
         if(m_currentTarget != null)
         {
-            m_currentTarget.gameObject.GetComponent<PlayerStats>().m_hitpoints -= m_attack;
+            m_currentTarget.gameObject.GetComponent<BhanuPlayer>().m_hitpoints -= m_attack;
         }
         else
         {

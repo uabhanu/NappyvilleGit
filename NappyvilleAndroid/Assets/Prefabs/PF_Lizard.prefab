@@ -36,8 +36,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4666167823277984}
   - component: {fileID: 95404030793758024}
-  - component: {fileID: 61307049985500288}
   - component: {fileID: 114564008139531846}
+  - component: {fileID: 61307049985500288}
   - component: {fileID: 114878648940022274}
   - component: {fileID: 50314877498595518}
   m_Layer: 0
@@ -160,6 +160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44e135f9266be24abb7ccde98fdb533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_seenEverySecs: 0
+  m_hitpoints: 0
   m_currentState: 0
   m_previousState: 0
   m_walkSpeed: 1
