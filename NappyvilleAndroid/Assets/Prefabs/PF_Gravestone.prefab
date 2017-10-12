@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7667cf6529485429b6cd7a11a3a7e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hitpoints: 0
+  m_lineDistance: 0
   m_lineStartingPoint: 0
   m_currentState: 1
   m_previousState: 1
@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hitpoints: 100
+  m_lineDistance: 0
   m_lineStartingPoint: 0
 --- !u!212 &212166731457644178
 SpriteRenderer:

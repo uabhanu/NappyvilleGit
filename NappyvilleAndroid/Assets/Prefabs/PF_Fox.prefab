@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c064837191775b045a035a28ba39e2e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_seenEverySecs: 10
+  m_seenEverySecs: 5
   m_hitpoints: 200
 --- !u!114 &114821492265074400
 MonoBehaviour:
@@ -161,8 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0c62d97cc07a144c85994ea240b550d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_seenEverySecs: 0
-  m_hitpoints: 0
   m_currentState: 2
   m_previousState: 2
   m_walkSpeed: 0.4

@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hitpoints: 100
+  m_lineDistance: 0
   m_lineStartingPoint: 0
 --- !u!114 &114519622622997004
 MonoBehaviour:
@@ -237,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f552ccc0a608643a7de200df6efafa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hitpoints: 0
+  m_lineDistance: 0
   m_lineStartingPoint: 0
 --- !u!212 &212399014153255578
 SpriteRenderer:
