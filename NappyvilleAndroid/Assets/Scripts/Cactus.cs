@@ -14,6 +14,7 @@ public class Cactus : MonoBehaviour
 	public CactusState m_previousState;
 
 	Animator m_animator;
+    BhanuPlayer m_bhanuPlayer;
     GameObject m_projectilesParent;
 
     [SerializeField] GameObject m_corgettePrefab;
@@ -23,7 +24,7 @@ public class Cactus : MonoBehaviour
 	void Start()
     {
 	    m_animator = GetComponent<Animator>();
-
+        m_bhanuPlayer = GetComponent<BhanuPlayer>();
         m_projectilesParent = GameObject.Find("Projectiles");
 
         if(m_projectilesParent == null)
@@ -37,6 +38,15 @@ public class Cactus : MonoBehaviour
 		if(Time.timeScale == 0)
         {
             return;
+        }
+
+        if(m_bhanuPlayer.m_enemyDetected)
+        {
+            SetState(CactusState.ATTACK);
+        }
+        else
+        {
+            SetState(CactusState.IDLE);
         }
 
         UpdateAnimations();
