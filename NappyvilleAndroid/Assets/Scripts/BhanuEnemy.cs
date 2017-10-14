@@ -9,7 +9,7 @@ public class BhanuEnemy : MonoBehaviour
 
 	void Start()
     {
-		StartCoroutine("DieRoutine");
+        StartCoroutine("DieRoutine");
 	}
 
     IEnumerator DieRoutine()

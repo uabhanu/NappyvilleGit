@@ -8,7 +8,7 @@ public class BhanuPlayer : MonoBehaviour
 
     EnemySpawner m_myLaneSpawner;
 
-    public bool m_enemyDetected;
+    public bool m_enemyInSight;
 
     [Range(20 , 400)] public int m_hitpoints;
 
@@ -28,13 +28,13 @@ public class BhanuPlayer : MonoBehaviour
             return;
         }
 
-        if(EnemyDetected())
+        if(EnemyInSight())
         {
-            m_enemyDetected = true;
+            m_enemyInSight = true;
         }
         else
         {
-            m_enemyDetected = false;
+            m_enemyInSight = false;
         }
     }
 
@@ -50,25 +50,25 @@ public class BhanuPlayer : MonoBehaviour
         StartCoroutine("DieRoutine");
     }
 
-    bool EnemyDetected()
+    bool EnemyInSight()
     {
         if(m_myLaneSpawner.transform.childCount <= 0)
         {
-            m_enemyDetected = false;
-            return m_enemyDetected;
+            m_enemyInSight = false;
+            return m_enemyInSight;
         }
 
         foreach(Transform bhanuEnemy in m_myLaneSpawner.transform) // Unity Docs indicates that Transforms also support enumeratiors so we can actually loop through children
         {
-            if(bhanuEnemy.transform.position.x > transform.position.x) //Also check if bhanuEnemy is visible using && later
+            if(bhanuEnemy.transform.position.x > transform.position.x && bhanuEnemy.transform.position.x < 11.05f) //Also check if bhanuEnemy is visible using && later
             {
-                m_enemyDetected = true;
-                return m_enemyDetected;
+                m_enemyInSight = true;
+                return m_enemyInSight;
             }
         }
 
-        m_enemyDetected = false;
-        return m_enemyDetected;
+        m_enemyInSight = false;
+        return m_enemyInSight;
     }
 
     void LaneSpawInfo()

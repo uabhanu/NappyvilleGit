@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] Camera m_mainCamera;
-
     [Range(0.0f , 2.5f)] [SerializeField] float m_flySpeed;
 
     [SerializeField] GameObject m_currentTarget;
@@ -14,11 +12,6 @@ public class Projectile : MonoBehaviour
 
     Vector2 m_positionOnScreen;
 
-	void Start()
-    {
-		m_mainCamera = FindObjectOfType<Camera>();
-	}
-	
 	void Update()
     {
 		if(Time.timeScale == 0)
@@ -26,10 +19,9 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        m_positionOnScreen = m_mainCamera.WorldToScreenPoint(transform.position);
         transform.Translate(Vector2.right * m_flySpeed * Time.deltaTime);
 
-        if(m_positionOnScreen.x > 758.2f)
+        if(transform.position.x > 11.05f)
         {
             Destroy(gameObject);
         }

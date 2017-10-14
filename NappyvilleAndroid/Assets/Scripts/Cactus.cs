@@ -40,7 +40,7 @@ public class Cactus : MonoBehaviour
             return;
         }
 
-        if(m_bhanuPlayer.m_enemyDetected)
+        if(m_bhanuPlayer.m_enemyInSight)
         {
             SetState(CactusState.ATTACK);
         }
