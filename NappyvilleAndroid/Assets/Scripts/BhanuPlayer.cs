@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BhanuPlayer : MonoBehaviour
 {
-    Animator m_animator;
-
     EnemySpawner m_myLaneSpawner;
 
     public bool m_enemyInSight;
@@ -14,7 +12,6 @@ public class BhanuPlayer : MonoBehaviour
 
 	void Start()
     {
-		m_animator = GetComponent<Animator>();
         StartCoroutine("DieRoutine");
 
         LaneSpawInfo();
@@ -84,7 +81,7 @@ public class BhanuPlayer : MonoBehaviour
             }
             else
             {
-                Debug.LogError(name + ": Dear Sir, can't find the spawner in lane");
+                Debug.LogError(name + ": Sir Bhanu, can't find the spawner in lane");
             }
         }
     }
