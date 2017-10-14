@@ -24,8 +24,16 @@ public class PlayerSpawner : MonoBehaviour
         Quaternion defaultRot = Quaternion.identity;
         Vector2 rawWorldPos = WorldPointOfMouseClick();
         Vector2 roundedPos = SnapToGrid(rawWorldPos);
-        GameObject newPlayer = Instantiate(playerToSpawn , roundedPos , defaultRot) as GameObject;
-        newPlayer.transform.parent = m_playerParent.transform;
+
+        if(playerToSpawn != null)
+        {
+            GameObject newPlayer = Instantiate(playerToSpawn , roundedPos , defaultRot) as GameObject;
+            newPlayer.transform.parent = m_playerParent.transform;
+        }
+        else
+        {
+            Debug.LogError("Sir Bhanu, no player has been selected yet. Please select the Player you want to Spawn");
+        }
 	}
 
     Vector2 SnapToGrid(Vector2 rawWorldPos)
