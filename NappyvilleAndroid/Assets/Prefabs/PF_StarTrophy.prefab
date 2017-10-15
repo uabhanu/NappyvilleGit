@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d559219fd1516fe4487bdfb245d97224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerCost: 10
   m_enemyInSight: 0
   m_hitpoints: 100
 --- !u!114 &114943679505318182
@@ -173,7 +174,6 @@ MonoBehaviour:
   m_lineStartingPoint: 0
   m_starPrefab: {fileID: 1837807521461048, guid: 965858c459846e245a9bdc340ee362b4,
     type: 2}
-  m_starTop: {fileID: 1096486241482440}
 --- !u!212 &212399014153255578
 SpriteRenderer:
   m_ObjectHideFlags: 1

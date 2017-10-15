@@ -6,6 +6,8 @@ public class BhanuPlayer : MonoBehaviour
 {
     EnemySpawner m_myLaneSpawner;
 
+    [SerializeField] [Range(10 , 100)] int m_playerCost;
+
     public bool m_enemyInSight;
 
     [Range(20 , 400)] public int m_hitpoints;

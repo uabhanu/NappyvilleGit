@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Star : MonoBehaviour
 {
-    float m_fallSpeed = 0.5f;
+    float m_fallSpeed = 1.5f;
+
+    [SerializeField] StarsCurrency m_starsCurrency;
 
     void Start()
     {
+        m_starsCurrency = FindObjectOfType<StarsCurrency>();
         StartCoroutine("SelfDestructRoutine");    
     }
 
@@ -43,6 +46,7 @@ public class Star : MonoBehaviour
 
     void OnMouseDown()
     {
+        m_starsCurrency.m_starsCount += 10;
         Destroy(gameObject);
     }
 }

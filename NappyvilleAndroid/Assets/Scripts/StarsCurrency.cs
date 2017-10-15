@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StarsScore : MonoBehaviour
+public class StarsCurrency : MonoBehaviour
 {
-    //Star m_star;
-
-    [SerializeField] int m_starsCount;
-
     [SerializeField] Text m_starScoreLabel;
+
+    public int m_starsCount;
 
     void Start()
     {
@@ -23,9 +21,7 @@ public class StarsScore : MonoBehaviour
             return;
         }
 
-        //m_star = FindObjectOfType<Star>();
-
-        //m_starScore = m_star.m_starScore;     
+        m_starScoreLabel.text = m_starsCount.ToString();
     }
 
     void DecrementStars(int amount)
