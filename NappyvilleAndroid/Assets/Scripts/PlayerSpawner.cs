@@ -1,16 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerSpawner : MonoBehaviour
 {
     GameObject m_playerParent;
+    StarsCurrency m_starsCurrency;
 
     [SerializeField] Camera m_myCamera;
 
+    [SerializeField] PlayerButton m_playerButton;
+
+    [SerializeField] Text m_cantAffordMessage;
+
 	void Start()
     {
+        m_cantAffordMessage = GameObject.Find("CantAffordMessage").GetComponent<Text>();
+        m_playerButton = FindObjectOfType<PlayerButton>();
 		m_playerParent = GameObject.Find("PlayerParent");
+        m_starsCurrency = FindObjectOfType<StarsCurrency>();
 
         if(m_playerParent == null)
         {
@@ -21,18 +30,18 @@ public class PlayerSpawner : MonoBehaviour
 	void OnMouseDown()
     {
         GameObject playerToSpawn = PlayerButton.m_playerToSpawn;
-        Quaternion defaultRot = Quaternion.identity;
+        int playerCost = playerToSpawn.GetComponent<BhanuPlayer>().m_playerCost;
         Vector2 rawWorldPos = WorldPointOfMouseClick();
         Vector2 roundedPos = SnapToGrid(rawWorldPos);
 
-        if(playerToSpawn != null)
+        if(m_starsCurrency.UseStars(playerCost) == StarsCurrency.Status.SUCCESS)
         {
-            GameObject newPlayer = Instantiate(playerToSpawn , roundedPos , defaultRot) as GameObject;
-            newPlayer.transform.parent = m_playerParent.transform;
+            SpawnPlayer(roundedPos , playerToSpawn);
         }
         else
         {
-            Debug.LogError("Sir Bhanu, no player has been selected yet. Please select the Player you want to Spawn");
+            Debug.LogError("Sir Bhanu, You can't afford this player");
+            m_cantAffordMessage.enabled = true;
         }
 	}
 
@@ -41,6 +50,22 @@ public class PlayerSpawner : MonoBehaviour
         float newX = Mathf.RoundToInt(WorldPointOfMouseClick().x);
         float newY = Mathf.RoundToInt(WorldPointOfMouseClick().y);
         return new Vector2(newX , newY);
+    }
+
+    void SpawnPlayer(Vector2 roundedPos , GameObject playerToSpawn)
+    {
+        m_playerButton.ResetSelection();
+
+        if(playerToSpawn != null)
+        {
+            Quaternion defaultRot = Quaternion.identity;
+            GameObject newPlayer = Instantiate(playerToSpawn , roundedPos , defaultRot) as GameObject;
+            newPlayer.transform.parent = m_playerParent.transform;
+        }
+        else
+        {
+            Debug.LogError("Sir Bhanu, no player has been selected yet. Please select the Player you want to Spawn");
+        }
     }
 
     Vector2 WorldPointOfMouseClick()

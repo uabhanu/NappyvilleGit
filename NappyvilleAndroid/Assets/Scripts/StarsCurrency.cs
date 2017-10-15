@@ -7,6 +7,8 @@ public class StarsCurrency : MonoBehaviour
 {
     [SerializeField] Text m_starScoreLabel;
 
+    public enum Status {SUCCESS , FAILURE};
+
     public int m_starsCount;
 
     void Start()
@@ -27,12 +29,21 @@ public class StarsCurrency : MonoBehaviour
     void DecrementStars(int amount)
     {
         m_starsCount -= amount;
-        m_starScoreLabel.text = m_starsCount.ToString();
     }
 
     void IncrementStars(int amount)
     {
         m_starsCount += amount;
-        m_starScoreLabel.text = m_starsCount.ToString();
+    }
+
+    public Status UseStars(int amount)
+    {
+        if(m_starsCount >= amount)
+        {
+            m_starsCount -= amount;
+            return Status.SUCCESS;
+        }
+        
+        return Status.FAILURE;
     }
 }

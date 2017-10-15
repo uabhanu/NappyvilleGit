@@ -9,10 +9,13 @@ public class PlayerButton : MonoBehaviour
 
     [SerializeField] PlayerButton[] m_playerButtons;
 
+    [SerializeField] Text m_cantAffordMessage;
+
     public static GameObject m_playerToSpawn;
 
 	void Start()
     {
+        m_cantAffordMessage = GameObject.Find("CantAffordMessage").GetComponent<Text>();
         m_playerToSpawn = null;
         m_playerButtons = FindObjectsOfType<PlayerButton>();   
 	}
@@ -28,6 +31,7 @@ public class PlayerButton : MonoBehaviour
 
     public void SpriteColourToggle()
     {
+        m_cantAffordMessage.enabled = false;
         m_playerToSpawn = m_playerPrefab;
 
         foreach(PlayerButton playerButton in m_playerButtons)
