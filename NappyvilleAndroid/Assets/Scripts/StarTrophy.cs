@@ -8,6 +8,8 @@ public class StarTrophy : MonoBehaviour
 
     [HideInInspector] [Range(0.0f , 10.0f)] [SerializeField] float m_lineDistance , m_lineStartingPoint;
 
+    [SerializeField] GameObject m_starPrefab;
+
 	void Start()
     {
 	    m_animator = GetComponent<Animator>();	
@@ -23,5 +25,11 @@ public class StarTrophy : MonoBehaviour
         m_animator.SetBool("Star" , false);
 
         StartCoroutine("AnimsRoutine");
+    }
+
+    void StarSpawn()
+    {
+        GameObject newStar = Instantiate(m_starPrefab , transform.position , transform.rotation) as GameObject;
+        newStar.transform.position = new Vector2(transform.position.x , transform.position.y + 0.23f);
     }
 }
