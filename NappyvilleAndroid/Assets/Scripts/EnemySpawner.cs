@@ -20,14 +20,14 @@ public class EnemySpawner : MonoBehaviour
 
         foreach(GameObject thisEnemy in m_enemyPrefabs)
         {
-            if(isTimeToSpawn(thisEnemy))
+            if(TimeToSpawn(thisEnemy))
             {
                 Spawn(thisEnemy);
             }
         }
 	}
 
-    bool isTimeToSpawn(GameObject enemyObj)
+    bool TimeToSpawn(GameObject enemyObj)
     {
         BhanuEnemy bhanuEnemy = enemyObj.GetComponent<BhanuEnemy>();
         float meanSpawnDelay = bhanuEnemy.m_seenEverySecs;
@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
             Debug.LogError("Sir Bhanu, Spawn rate capped by frame rate");
         }
         
-        float threshold = spawnsPerSec * Time.deltaTime / 5;
+        float threshold = spawnsPerSec * Time.deltaTime / 10;
 
         if(Random.value < threshold)
         {

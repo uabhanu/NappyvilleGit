@@ -156,9 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d559219fd1516fe4487bdfb245d97224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_playerCost: 10
   m_enemyInSight: 0
   m_hitpoints: 100
+  m_playerCost: 10
 --- !u!114 &114943679505318182
 MonoBehaviour:
   m_ObjectHideFlags: 1

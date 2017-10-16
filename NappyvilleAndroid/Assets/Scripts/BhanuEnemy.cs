@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class BhanuEnemy : MonoBehaviour
 {
+    [SerializeField] LevelManager m_levelManager;
+
     public float m_seenEverySecs;
     [Range(20 , 400)] public int m_hitpoints;
 
 	void Start()
     {
+        m_levelManager = FindObjectOfType<LevelManager>();
         StartCoroutine("DieRoutine");
 	}
 
@@ -19,6 +22,11 @@ public class BhanuEnemy : MonoBehaviour
         if(m_hitpoints <= 0)
         {
             Destroy(gameObject);
+        }
+
+        if(transform.position.x < 0.4f)
+        {
+            m_levelManager.LoadScene("Lose");
         }
 
         StartCoroutine("DieRoutine");

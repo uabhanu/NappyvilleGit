@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class StarsCurrency : MonoBehaviour
 {
-    [SerializeField] Text m_starScoreLabel;
+    //[SerializeField] float m_gameTime;
+    [SerializeField] Text m_gameTimeLabel , m_starScoreLabel;
 
     public enum Status {SUCCESS , FAILURE};
 
@@ -13,6 +14,7 @@ public class StarsCurrency : MonoBehaviour
 
     void Start()
     {
+        //m_gameTimeLabel = GameObject.Find("GameTime").GetComponent<Text>(); // Only for testing
         m_starScoreLabel = GetComponent<Text>();
     }
 
@@ -23,6 +25,8 @@ public class StarsCurrency : MonoBehaviour
             return;
         }
 
+        //m_gameTime += Time.deltaTime; // Only for Testing
+        //m_gameTimeLabel.text = Mathf.RoundToInt(m_gameTime).ToString(); // Only for testing
         m_starScoreLabel.text = m_starsCount.ToString();
     }
 

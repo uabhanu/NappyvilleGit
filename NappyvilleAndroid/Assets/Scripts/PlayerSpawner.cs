@@ -30,18 +30,27 @@ public class PlayerSpawner : MonoBehaviour
 	void OnMouseDown()
     {
         GameObject playerToSpawn = PlayerButton.m_playerToSpawn;
-        int playerCost = playerToSpawn.GetComponent<BhanuPlayer>().m_playerCost;
-        Vector2 rawWorldPos = WorldPointOfMouseClick();
-        Vector2 roundedPos = SnapToGrid(rawWorldPos);
 
-        if(m_starsCurrency.UseStars(playerCost) == StarsCurrency.Status.SUCCESS)
+        if(playerToSpawn != null)
         {
-            SpawnPlayer(roundedPos , playerToSpawn);
+            int playerCost = playerToSpawn.GetComponent<BhanuPlayer>().m_playerCost;
+
+            Vector2 rawWorldPos = WorldPointOfMouseClick();
+            Vector2 roundedPos = SnapToGrid(rawWorldPos);
+
+            if(m_starsCurrency.UseStars(playerCost) == StarsCurrency.Status.SUCCESS)
+            {
+                SpawnPlayer(roundedPos , playerToSpawn);
+            }
+            else
+            {
+                Debug.LogError("Sir Bhanu, You can't afford this player");
+                m_cantAffordMessage.enabled = true;
+            }
         }
         else
         {
-            Debug.LogError("Sir Bhanu, You can't afford this player");
-            m_cantAffordMessage.enabled = true;
+            Debug.LogError("Sir Bhanu, You haven't selected any player yet");
         }
 	}
 

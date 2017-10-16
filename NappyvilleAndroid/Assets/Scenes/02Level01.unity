@@ -159,7 +159,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec1c26ba83d34704c8cdef266507613a, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &730193865
+--- !u!1001 &482110544
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -204,7 +204,7 @@ Prefab:
     - target: {fileID: 224646200107660036, guid: 6ef472b6510946f408dd7f9b5fd3d549,
         type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224646200107660036, guid: 6ef472b6510946f408dd7f9b5fd3d549,
         type: 2}
@@ -256,27 +256,22 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224491806735894814, guid: 6ef472b6510946f408dd7f9b5fd3d549,
+    - target: {fileID: 224062030994932238, guid: 6ef472b6510946f408dd7f9b5fd3d549,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -70
+      objectReference: {fileID: 0}
+    - target: {fileID: 224558098142269348, guid: 6ef472b6510946f408dd7f9b5fd3d549,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -399.9592
+      value: 399.9592
       objectReference: {fileID: 0}
-    - target: {fileID: 224433988676727578, guid: 6ef472b6510946f408dd7f9b5fd3d549,
+    - target: {fileID: 224454799800436314, guid: 6ef472b6510946f408dd7f9b5fd3d549,
         type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 394.9592
+      propertyPath: m_LocalPosition.x
+      value: 660
       objectReference: {fileID: 0}
-    - target: {fileID: 114733660602641458, guid: 6ef472b6510946f408dd7f9b5fd3d549,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1678592420}
-    - target: {fileID: 224276553630323614, guid: 6ef472b6510946f408dd7f9b5fd3d549,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 392.9592
-      objectReference: {fileID: 0}
-    - target: {fileID: 224857986422416964, guid: 6ef472b6510946f408dd7f9b5fd3d549,
+    - target: {fileID: 224454799800436314, guid: 6ef472b6510946f408dd7f9b5fd3d549,
         type: 2}
       propertyPath: m_LocalPosition.y
       value: 399.9592
@@ -286,15 +281,30 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 392.9592
       objectReference: {fileID: 0}
-    - target: {fileID: 224558098142269348, guid: 6ef472b6510946f408dd7f9b5fd3d549,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 660
-      objectReference: {fileID: 0}
-    - target: {fileID: 224558098142269348, guid: 6ef472b6510946f408dd7f9b5fd3d549,
+    - target: {fileID: 224857986422416964, guid: 6ef472b6510946f408dd7f9b5fd3d549,
         type: 2}
       propertyPath: m_LocalPosition.y
       value: 399.9592
+      objectReference: {fileID: 0}
+    - target: {fileID: 224276553630323614, guid: 6ef472b6510946f408dd7f9b5fd3d549,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 392.9592
+      objectReference: {fileID: 0}
+    - target: {fileID: 114733660602641458, guid: 6ef472b6510946f408dd7f9b5fd3d549,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1678592420}
+    - target: {fileID: 224433988676727578, guid: 6ef472b6510946f408dd7f9b5fd3d549,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 394.9592
+      objectReference: {fileID: 0}
+    - target: {fileID: 224491806735894814, guid: 6ef472b6510946f408dd7f9b5fd3d549,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -399.9592
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ef472b6510946f408dd7f9b5fd3d549, type: 2}
@@ -344,7 +354,7 @@ Prefab:
     - target: {fileID: 224059247036791562, guid: a963b6077a9c57c42ab2e23cfaff9881,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224059247036791562, guid: a963b6077a9c57c42ab2e23cfaff9881,
         type: 2}
