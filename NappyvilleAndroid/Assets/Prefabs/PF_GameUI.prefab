@@ -788,7 +788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a1597bc14a47b449c7bfd2023a5cff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_levelSeconds: 100
+  m_levelSeconds: 300
   m_slider: {fileID: 0}
 --- !u!114 &114733660602641458
 MonoBehaviour:
