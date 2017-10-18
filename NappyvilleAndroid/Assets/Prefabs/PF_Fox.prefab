@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_levelManager: {fileID: 0}
-  m_seenEverySecs: 45
+  m_seenEverySecs: 22.5
   m_hitpoints: 200
 --- !u!114 &114821492265074400
 MonoBehaviour:
