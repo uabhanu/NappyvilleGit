@@ -12,8 +12,11 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] Text m_gameTimeLabel;
 
+    public static Text m_cantAffordMessage;
+
     void Start()
     {
+        m_cantAffordMessage = GameObject.Find("CantAffordMessage").GetComponent<Text>();
         m_gameTimeLabel = GameObject.Find("GameTime").GetComponent<Text>(); // Only for testing
         Invoke("LoadNextLevel" , m_loadTime);    
     }

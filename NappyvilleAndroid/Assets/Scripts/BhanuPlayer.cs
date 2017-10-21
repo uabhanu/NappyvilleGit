@@ -85,4 +85,9 @@ public class BhanuPlayer : MonoBehaviour
             }
         }
     }
+
+    void OnMouseDown()
+    {
+        LevelManager.m_cantAffordMessage.enabled = false;    
+    }
 }

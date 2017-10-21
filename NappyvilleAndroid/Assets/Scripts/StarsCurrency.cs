@@ -26,16 +26,6 @@ public class StarsCurrency : MonoBehaviour
         m_starScoreLabel.text = m_starsCount.ToString();
     }
 
-    void DecrementStars(int amount)
-    {
-        m_starsCount -= amount;
-    }
-
-    void IncrementStars(int amount)
-    {
-        m_starsCount += amount;
-    }
-
     public Status UseStars(int amount)
     {
         if(m_starsCount >= amount)

@@ -46,6 +46,7 @@ public class Star : MonoBehaviour
 
     void OnMouseDown()
     {
+        LevelManager.m_cantAffordMessage.enabled = false;
         m_starsCurrency.m_starsCount += 10;
         Destroy(gameObject);
     }

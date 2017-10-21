@@ -31,4 +31,9 @@ public class BhanuEnemy : MonoBehaviour
 
         StartCoroutine("DieRoutine");
     }
+
+    void OnMouseDown()
+    {
+        LevelManager.m_cantAffordMessage.enabled = false;    
+    }
 }

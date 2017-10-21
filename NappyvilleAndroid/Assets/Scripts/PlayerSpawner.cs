@@ -12,11 +12,8 @@ public class PlayerSpawner : MonoBehaviour
 
     [SerializeField] PlayerButton m_playerButton;
 
-    [SerializeField] Text m_cantAffordMessage;
-
 	void Start()
     {
-        m_cantAffordMessage = GameObject.Find("CantAffordMessage").GetComponent<Text>();
         m_playerButton = FindObjectOfType<PlayerButton>();
 		m_playerParent = GameObject.Find("PlayerParent");
         m_starsCurrency = FindObjectOfType<StarsCurrency>();
@@ -45,7 +42,8 @@ public class PlayerSpawner : MonoBehaviour
             else
             {
                 Debug.LogError("Sir Bhanu, You can't afford this player");
-                m_cantAffordMessage.enabled = true;
+                LevelManager.m_cantAffordMessage.enabled = true;
+                m_playerButton.ResetSelection();
             }
         }
         else
