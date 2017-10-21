@@ -159,8 +159,8 @@ GameObject:
   m_Component:
   - component: {fileID: 224558098142269348}
   - component: {fileID: 222969621654068772}
+  - component: {fileID: 114856458685597732}
   - component: {fileID: 114868152577569630}
-  - component: {fileID: 114957313681125546}
   - component: {fileID: 114735111871591550}
   m_Layer: 5
   m_Name: GameTime
@@ -927,6 +927,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114856458685597732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542590752287964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fae6805e61f6a4fb11807699caa9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_gameTime: 0
+  m_gameTimeLabel: {fileID: 0}
 --- !u!114 &114868152577569630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1034,19 +1047,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 0
---- !u!114 &114957313681125546
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1542590752287964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed6b421ff91484d49b8ca2ee67cb995a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_starScoreLabel: {fileID: 0}
-  m_starsCount: 10
 --- !u!114 &114959611166315226
 MonoBehaviour:
   m_ObjectHideFlags: 1

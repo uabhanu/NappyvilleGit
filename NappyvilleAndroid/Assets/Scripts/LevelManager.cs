@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] float m_loadTime;
+    float m_loadTime = 2f;
+    int m_currentSceneIndex;
 
     [SerializeField] float m_gameTime;
 
@@ -16,8 +17,14 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        m_cantAffordMessage = GameObject.Find("CantAffordMessage").GetComponent<Text>();
-        m_gameTimeLabel = GameObject.Find("GameTime").GetComponent<Text>(); // Only for testing
+        m_currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        if(m_currentSceneIndex > 1)
+        {
+            m_cantAffordMessage = GameObject.Find("CantAffordMessage").GetComponent<Text>();
+            m_gameTimeLabel = GameObject.Find("GameTime").GetComponent<Text>(); // Only for testing
+        }
+      
         Invoke("LoadNextLevel" , m_loadTime);    
     }
 
@@ -28,8 +35,11 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-        m_gameTime += Time.deltaTime; // Only for Testing
-        m_gameTimeLabel.text = Mathf.RoundToInt(m_gameTime).ToString(); // Only for testing
+        if(m_currentSceneIndex > 1)
+        {
+            m_gameTime += Time.deltaTime; // Only for Testing
+            m_gameTimeLabel.text = Mathf.RoundToInt(m_gameTime).ToString(); // Only for testing
+        }
     }
 
     public void Quit()
@@ -40,12 +50,10 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
-        if(currentSceneIndex < 1 && m_loadTime > 0)
+        if(m_currentSceneIndex < 1 && m_loadTime > 0)
         {
-            Debug.Log(currentSceneIndex + 1);
-            SceneManager.LoadScene(currentSceneIndex + 1);
+            Debug.Log(m_currentSceneIndex + 1);
+            SceneManager.LoadScene(m_currentSceneIndex + 1);
         }
     }
 

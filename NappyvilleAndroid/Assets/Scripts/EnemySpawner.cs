@@ -40,14 +40,7 @@ public class EnemySpawner : MonoBehaviour
         
         float threshold = spawnsPerSec * Time.deltaTime / 10;
 
-        if(Random.value < threshold)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return (Random.value < threshold);
     }
 
     void Spawn(GameObject enemyObjToSpawn)
