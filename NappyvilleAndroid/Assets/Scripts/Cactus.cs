@@ -17,7 +17,7 @@ public class Cactus : MonoBehaviour
     BhanuPlayer m_bhanuPlayer;
     GameObject m_projectilesParent;
 
-    [SerializeField] GameObject m_corgettePrefab;
+    [SerializeField] GameObject m_corgetteObj , m_corgettePrefab;
 
     [SerializeField] Transform m_corgetteSpawnPosition;
 
@@ -55,11 +55,14 @@ public class Cactus : MonoBehaviour
 
     void Attack()
     {
-        GameObject corgette = Instantiate(m_corgettePrefab , m_corgetteSpawnPosition) as GameObject;
+        if(m_corgetteObj == null)
+        {
+            m_corgetteObj = Instantiate(m_corgettePrefab , m_corgetteSpawnPosition) as GameObject;
+        }
 
         if(m_projectilesParent != null)
         {
-            corgette.transform.parent = m_projectilesParent.transform;
+            m_corgetteObj.transform.parent = m_projectilesParent.transform;
         }
     }
 

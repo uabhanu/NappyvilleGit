@@ -154,6 +154,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c5f13a8bb1c2ad4c83f51f49a0f1d17, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &199411307 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114732899297629326, guid: 9c5f13a8bb1c2ad4c83f51f49a0f1d17,
+    type: 2}
+  m_PrefabInternal: {fileID: 199411306}
+  m_Script: {fileID: 11500000, guid: d2fae6805e61f6a4fb11807699caa9c5, type: 3}
 --- !u!1 &213542491
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +400,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 199411307}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
