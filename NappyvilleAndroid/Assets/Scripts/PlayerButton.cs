@@ -7,15 +7,19 @@ public class PlayerButton : MonoBehaviour
 {
     [SerializeField] GameObject m_playerPrefab;
 
+    [SerializeField] int m_playerCostValue;
+
     [SerializeField] PlayerButton[] m_playerButtons;
 
-    [SerializeField] Text m_cantAffordMessage;
+    [SerializeField] Text m_cantAffordMessage , m_playerCostDisplay;
 
     public static GameObject m_playerToSpawn;
 
 	void Start()
     {
         m_cantAffordMessage = GameObject.Find("CantAffordMessage").GetComponent<Text>();
+        m_playerCostDisplay = GetComponentInChildren<Text>();
+        m_playerCostDisplay.text = m_playerCostValue.ToString();
         m_playerToSpawn = null;
         m_playerButtons = FindObjectsOfType<PlayerButton>();   
 	}
@@ -40,7 +44,5 @@ public class PlayerButton : MonoBehaviour
         }
 
         GetComponent<Image>().color = Color.white;
-
-        // If mouse click is outside Core Game Panel, call ResetSelection()
     }
 }

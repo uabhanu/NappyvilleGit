@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour
 {
-    [SerializeField] AudioClip[] m_soundsArray;
-
     AudioSource m_audioSource;
+    int m_level;
+
+    [SerializeField] AudioClip[] m_soundsArray;
 
     void Awake()
     {
@@ -16,14 +17,11 @@ public class MusicManager : MonoBehaviour
 
     void Start()
     {
+        m_level = SceneManager.sceneCount;
+        AudioClip currentLevelMusic = m_soundsArray[m_level];
         m_audioSource = GetComponent<AudioSource>();
-	}
-	
-    void OnLevelWasLoaded(int level)
-    {
-        AudioClip currentLevelMusic = m_soundsArray[level];
         m_audioSource.clip = currentLevelMusic;
         m_audioSource.loop = true;
         m_audioSource.Play();
-    }
+	}
 }
