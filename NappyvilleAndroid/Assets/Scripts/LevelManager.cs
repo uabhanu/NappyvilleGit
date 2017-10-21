@@ -9,10 +9,9 @@ public class LevelManager : MonoBehaviour
     float m_loadTime = 2f;
     int m_currentSceneIndex;
 
-    [SerializeField] float m_gameTime;
-
     [SerializeField] Text m_gameTimeLabel;
 
+    public float m_gameTime;
     public static Text m_cantAffordMessage;
 
     void Start()
@@ -24,8 +23,11 @@ public class LevelManager : MonoBehaviour
             m_cantAffordMessage = GameObject.Find("CantAffordMessage").GetComponent<Text>();
             m_gameTimeLabel = GameObject.Find("GameTime").GetComponent<Text>(); // Only for testing
         }
-      
-        Invoke("LoadNextLevel" , m_loadTime);    
+
+        if(m_currentSceneIndex < 1)
+        {
+            Invoke("LoadNextLevel" , m_loadTime);    
+        }
     }
 
     void Update()
@@ -52,8 +54,17 @@ public class LevelManager : MonoBehaviour
     {
         if(m_currentSceneIndex < 1 && m_loadTime > 0)
         {
-            Debug.Log(m_currentSceneIndex + 1);
             SceneManager.LoadScene(m_currentSceneIndex + 1);
+        }
+
+        if(m_currentSceneIndex > 1)
+        {
+            SceneManager.LoadScene(m_currentSceneIndex + 1);
+
+            if(m_currentSceneIndex == 6)
+            {
+                SceneManager.LoadScene(m_currentSceneIndex + 2);
+            }
         }
     }
 

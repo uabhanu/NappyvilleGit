@@ -5,17 +5,16 @@ using UnityEngine.UI;
 
 public class SurvivalProgress : MonoBehaviour
 {
-    bool m_isEndOfLevel;
     LevelManager m_levelManager;
 
-    [SerializeField] float m_levelSeconds;
+    [SerializeField] int m_timeToSurvive;
 
-    [SerializeField] Slider m_slider;
+    public static Slider m_gameTimeSlider;
 
 	void Start()
     {
         m_levelManager = FindObjectOfType<LevelManager>();
-        m_slider = GetComponent<Slider>();
+        m_gameTimeSlider = GetComponent<Slider>();
 	}
 	
 	void Update()
@@ -25,12 +24,12 @@ public class SurvivalProgress : MonoBehaviour
             return;
         }
 
-        m_slider.value = Time.timeSinceLevelLoad / m_levelSeconds;
+        m_gameTimeSlider.value = m_levelManager.m_gameTime / m_timeToSurvive;
+        Debug.Log(m_gameTimeSlider.value);
 
-        if(Time.timeSinceLevelLoad >= m_levelSeconds && !m_isEndOfLevel)
+        if(m_gameTimeSlider.value == 1)
         {
-            m_levelManager.LoadScene("Win"); // You have Survived. Play relevant audio, etc., here
-            m_isEndOfLevel = true;
+            m_levelManager.LoadNextLevel(); // You have Survived. Play relevant audio, etc., here
         }
-	}
+    }
 }

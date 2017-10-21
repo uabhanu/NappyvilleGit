@@ -6,10 +6,13 @@ public class Star : MonoBehaviour
 {
     float m_fallSpeed = 1.5f;
 
+    [SerializeField] PlayerButton m_playerButton;
+
     [SerializeField] StarsCurrency m_starsCurrency;
 
     void Start()
     {
+        m_playerButton = FindObjectOfType<PlayerButton>();
         m_starsCurrency = FindObjectOfType<StarsCurrency>();
         StartCoroutine("SelfDestructRoutine");    
     }
@@ -47,6 +50,7 @@ public class Star : MonoBehaviour
     void OnMouseDown()
     {
         LevelManager.m_cantAffordMessage.enabled = false;
+        m_playerButton.ResetSelection();
         m_starsCurrency.m_starsCount += 10;
         Destroy(gameObject);
     }
