@@ -5,8 +5,7 @@ using UnityEngine;
 public class BhanuEnemy : MonoBehaviour
 {
     EnemySpawner m_enemySpawner;
-
-    [SerializeField] LevelManager m_levelManager;
+    LevelManager m_levelManager;
 
     public float m_seenEverySecs;
     [Range(20 , 400)] public int m_hitpoints;
@@ -20,11 +19,16 @@ public class BhanuEnemy : MonoBehaviour
 
     IEnumerator DieRoutine()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         if(m_hitpoints <= 0)
         {
-            m_enemySpawner.m_enemyCount--;
+            if(m_enemySpawner.m_enemyCount > 0)
+            {
+                m_enemySpawner.m_enemyCount--;
+            }
+            
+            m_levelManager.m_totalEnemiesKilled++;
             Destroy(gameObject);
         }
 

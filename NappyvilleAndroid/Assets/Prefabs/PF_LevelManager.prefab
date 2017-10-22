@@ -51,4 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2fae6805e61f6a4fb11807699caa9c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_loadTime: 2
+  m_gameTimeLabel: {fileID: 0}
+  m_gameTime: 0
+  m_currentSceneIndex: 0
+  m_enemyKillTarget: 25
+  m_totalEnemiesKilled: 0
