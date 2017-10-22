@@ -22,6 +22,8 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         m_currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        m_enemySpawner = FindObjectOfType<EnemySpawner>();
+        m_enemySpawners = FindObjectsOfType<EnemySpawner>();
 
         if(m_currentSceneIndex > 1)
         {
@@ -33,8 +35,6 @@ public class LevelManager : MonoBehaviour
         {
             Invoke("LoadNextLevel" , m_loadTime);    
         }
-
-        StartCoroutine("EnemySpawnManagementRoutine");
     }
 
     void Update()
@@ -57,31 +57,6 @@ public class LevelManager : MonoBehaviour
                 LoadNextLevel();
             }
         }
-    }
-
-    IEnumerator EnemySpawnManagementRoutine()
-    {
-        yield return new WaitForSeconds(5f);
-
-        m_enemySpawner = FindObjectOfType<EnemySpawner>();
-        m_enemySpawners = FindObjectsOfType<EnemySpawner>();
-
-        m_enemySpawner.m_spawn = true;
-
-        if(m_enemySpawners.Length > 1)
-        {
-            if(!m_enemySpawner.m_spawn)
-            {
-                m_enemySpawners[Random.Range(1 , m_enemySpawners.Length)].m_spawn = true;
-            }
-
-            if(m_enemySpawner.m_spawn)
-            {
-                m_enemySpawners[Random.Range(1 , m_enemySpawners.Length)].m_spawn = false;
-            }
-        }
-        
-        StartCoroutine("EnemySpawnManagementRoutine");
     }
 
     public void Quit()

@@ -13,12 +13,13 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] GameObject[] m_enemyPrefabs;
 
-    public bool m_spawn;
     public int m_enemyCount = 0;
 
 	void Start()
     {
         m_levelManager = FindObjectOfType<LevelManager>();
+
+        //StartCoroutine("RearrangeRoutine");
 
         if(m_levelManager.m_totalEnemiesKilled < m_levelManager.m_enemyKillTarget)
         {
@@ -26,11 +27,31 @@ public class EnemySpawner : MonoBehaviour
         }
 	}
 
+    IEnumerator RearrangeRoutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if(transform.childCount == 0)
+        {
+            if(m_levelManager.m_currentSceneIndex == 3)
+            {
+                transform.position = new Vector2(transform.position.x , Random.Range(1 , 4));
+            }
+
+            if(m_levelManager.m_currentSceneIndex > 3)
+            {
+                transform.position = new Vector2(transform.position.x , Random.Range(0 , 5));
+            }
+        }
+        
+        StartCoroutine("RearrangeRoutine");
+    }
+
     IEnumerator SpawnRoutine()
     {
         yield return new WaitForSeconds(m_timeToSpawn);
 
-        if(m_enemyCount < m_maxEnemies && m_levelManager.m_totalEnemiesKilled < m_levelManager.m_enemyKillTarget && m_spawn)
+        if(m_enemyCount < m_maxEnemies && m_levelManager.m_totalEnemiesKilled < m_levelManager.m_enemyKillTarget)
         {
             m_enemyObj = Instantiate(m_enemyPrefabs[Random.Range(0 , m_enemyPrefabs.Length)]) as GameObject;
             m_enemyObj.transform.parent = transform;
@@ -40,14 +61,22 @@ public class EnemySpawner : MonoBehaviour
 
         if(m_levelManager.m_gameTime >= 15f)
         {
-            m_maxEnemies = 1;
+            if(m_levelManager.m_currentSceneIndex == 2)
+            {
+                m_maxEnemies = 1;
+            }
+
+            if(m_levelManager.m_gameTime >= 45f)
+            {
+                m_maxEnemies = 1;
+            }
 
             if(m_levelManager.m_gameTime >= 60f)
             {
                 m_maxEnemies = 2;
             }
 
-            if(m_levelManager.m_gameTime >= 120f)
+            if(m_levelManager.m_gameTime >= 100f)
             {
                 m_maxEnemies = 3;
             }
