@@ -739,17 +739,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4328a503ac0fd3f4abb55249110aee84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_timeToSpawn: 5
-  m_spawnTimesArray:
-  - 1.5
-  - 3.5
-  - 5
-  - 7.5
-  - 9
+  m_timeToSpawn: 2.5
   m_enemyObj: {fileID: 0}
   m_enemyPrefabs:
   - {fileID: 1833037229582668, guid: 2df68a8c4b1fa274e8ffd0e2c6f95fb1, type: 2}
-  m_enemyCount: 0
 --- !u!4 &714757349
 Transform:
   m_ObjectHideFlags: 0

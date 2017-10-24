@@ -112,52 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &58807871
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 58807873}
-  - component: {fileID: 58807872}
-  m_Layer: 0
-  m_Name: Rearranger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &58807872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 58807871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c232a632bde244d4496904567950d2e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_enemySpawnerObjs: []
-  m_i: 0
-  m_rearrangePositions:
-  - {x: 10, y: 2}
-  - {x: 10, y: 3}
-  - {x: 10, y: 4}
---- !u!4 &58807873
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 58807871}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &156267249 stripped
 Camera:
   m_PrefabParentObject: {fileID: 20268057197514744, guid: 329834e2ae8244e4f9ea602c4a5f241b,
@@ -933,7 +887,7 @@ Prefab:
     - target: {fileID: 114738124165903628, guid: 8e5428af5fd83aa4bac767a88c84a882,
         type: 2}
       propertyPath: m_timeToSpawn
-      value: 3.5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114738124165903628, guid: 8e5428af5fd83aa4bac767a88c84a882,
         type: 2}
