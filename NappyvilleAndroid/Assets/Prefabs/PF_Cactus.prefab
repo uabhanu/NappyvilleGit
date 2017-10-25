@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1534491748976752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 0.17, z: 0}
+  m_LocalPosition: {x: -0.06, y: 0.05, z: 0}
   m_LocalScale: {x: -0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 4311415419007072}
@@ -81,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1513785832289156}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.038, y: 1, z: 0}
+  m_LocalPosition: {x: 1, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4136120418307622}
@@ -155,9 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d559219fd1516fe4487bdfb245d97224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_playerCost: 10
   m_enemyInSight: 0
   m_hitpoints: 100
+  m_playerCost: 10
 --- !u!114 &114278809785092746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_currentState: 1
   m_previousState: 1
+  m_corgetteObj: {fileID: 0}
   m_corgettePrefab: {fileID: 1753328174351104, guid: 44c988a1348752047bafc54c31a8a3de,
     type: 2}
   m_corgetteSpawnPosition: {fileID: 4845755817019118}
@@ -205,8 +206,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1323925881
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: da4fc0c40f2ce20419a2809f0c3cc7b2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

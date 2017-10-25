@@ -55,4 +55,4 @@ MonoBehaviour:
   m_enemyObj: {fileID: 0}
   m_enemyPrefabs:
   - {fileID: 1833037229582668, guid: 2df68a8c4b1fa274e8ffd0e2c6f95fb1, type: 2}
-  m_enemyCount: 0
+  - {fileID: 1324078052873666, guid: 1be3eea0cbb7b754b82f0aecf073873a, type: 2}

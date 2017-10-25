@@ -125,10 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670072572546aee459a69f5bf7633526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_mainCamera: {fileID: 0}
   m_flySpeed: 2.5
   m_currentTarget: {fileID: 0}
-  m_attack: 20
+  m_attack: 40
 --- !u!212 &212759742094972596
 SpriteRenderer:
   m_ObjectHideFlags: 1
