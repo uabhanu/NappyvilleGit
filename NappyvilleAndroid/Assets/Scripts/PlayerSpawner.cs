@@ -42,7 +42,7 @@ public class PlayerSpawner : MonoBehaviour
             else
             {
                 Debug.LogError("Sir Bhanu, You can't afford this player");
-                LevelManager.m_cantAffordMessage.enabled = true;
+                LevelManager.Enable(LevelManager.m_cantAffordMessage);
                 m_playerButton.ResetSelection();
             }
         }

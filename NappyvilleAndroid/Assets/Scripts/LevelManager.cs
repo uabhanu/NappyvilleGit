@@ -65,6 +65,16 @@ public class LevelManager : MonoBehaviour
         Application.Quit();
     }
 
+    public static void Disable(Text text)
+    {
+        text.enabled = false;
+    }
+
+    public static void Enable(Text text)
+    {
+        text.enabled = true;
+    }
+
     public void LoadNextLevel()
     {
         if(m_currentSceneIndex < 1 && m_loadTime > 0)

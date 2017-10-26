@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_seenEverySecs: 30
-  m_hitpoints: 80
+  m_hitpoints: 100
 --- !u!114 &114878648940022274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_currentState: 0
   m_previousState: 0
-  m_walkSpeed: 0.8
+  m_walkSpeed: 0.4
   m_currentTarget: {fileID: 0}
   m_attack: 40
 --- !u!212 &212529151051076510

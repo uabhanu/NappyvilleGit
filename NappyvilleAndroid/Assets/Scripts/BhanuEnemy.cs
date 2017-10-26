@@ -40,6 +40,6 @@ public class BhanuEnemy : MonoBehaviour
 
     void OnMouseDown()
     {
-        LevelManager.m_cantAffordMessage.enabled = false;    
+        LevelManager.Disable(LevelManager.m_cantAffordMessage);
     }
 }
