@@ -8,11 +8,9 @@ public class LevelManager : MonoBehaviour
 {
     float m_loadTime = 2f;
 
-    [SerializeField] EnemySpawner m_enemySpawner;
+    [SerializeField] BhanuEnemy[] m_bhanuEnemiesLeft;
 
-    [SerializeField] EnemySpawner[] m_enemySpawners;
-
-    [SerializeField] Text m_gameTimeLabel;
+    [SerializeField] Text m_gameTimeDisplay;
 
     public float m_gameTime;
     public int m_currentSceneIndex;
@@ -22,13 +20,11 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         m_currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        m_enemySpawner = FindObjectOfType<EnemySpawner>();
-        m_enemySpawners = FindObjectsOfType<EnemySpawner>();
 
         if(m_currentSceneIndex > 1)
         {
             m_cantAffordMessage = GameObject.Find("CantAffordMessage").GetComponent<Text>();
-            m_gameTimeLabel = GameObject.Find("GameTime").GetComponent<Text>(); // Only for testing
+            m_gameTimeDisplay = GameObject.Find("GameTimeDisplay").GetComponent<Text>(); // Only for testing
         }
 
         if(m_currentSceneIndex < 1)
@@ -44,18 +40,17 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
+        m_bhanuEnemiesLeft = FindObjectsOfType<BhanuEnemy>();
+
         if(m_currentSceneIndex > 1)
         {
             m_gameTime += Time.deltaTime; // Only for Testing
-            m_gameTimeLabel.text = Mathf.RoundToInt(m_gameTime).ToString(); // Only for testing
+            m_gameTimeDisplay.text = Mathf.RoundToInt(m_gameTime).ToString(); // Only for testing
         }
 
-        foreach(EnemySpawner enemySpawner in m_enemySpawners)
+        if(m_bhanuEnemiesLeft.Length == 0 && m_totalEnemiesKilled >= m_enemyKillTarget)
         {
-            if(enemySpawner.transform.childCount == 0 && m_totalEnemiesKilled >= m_enemyKillTarget)
-            {
-                LoadNextLevel();
-            }
+            LoadNextLevel();
         }
     }
 

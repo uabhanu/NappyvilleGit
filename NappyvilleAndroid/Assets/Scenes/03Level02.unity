@@ -212,8 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2fae6805e61f6a4fb11807699caa9c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemySpawner: {fileID: 0}
-  m_enemySpawners: []
+  m_bhanuEnemiesLeft: []
   m_gameTimeLabel: {fileID: 0}
   m_gameTime: 0
   m_currentSceneIndex: 0
@@ -730,7 +729,7 @@ GameObject:
   - component: {fileID: 793455979}
   - component: {fileID: 793455978}
   m_Layer: 5
-  m_Name: GameTime
+  m_Name: GameTimeDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

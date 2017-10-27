@@ -17,15 +17,10 @@ public class BhanuEnemy : MonoBehaviour
 
     IEnumerator DieRoutine()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.15f);
 
         if(m_hitpoints <= 0)
         {
-            if(EnemySpawner.m_enemyCount > 0)
-            {
-                EnemySpawner.m_enemyCount--;
-            }
-            
             m_levelManager.m_totalEnemiesKilled++;
             Destroy(gameObject);
         }
