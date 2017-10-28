@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 m_children = 1;
 
-                if(m_levelManager.m_gameTime >= 30f)
+                if(m_levelManager.m_gameTime >= 60f)
                 {
                     m_children = 2;
                 }

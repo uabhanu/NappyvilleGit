@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour
 
         if(m_bhanuEnemiesLeft.Length == 0 && m_totalEnemiesKilled >= m_enemyKillTarget)
         {
-            LoadNextLevel();
+            Invoke("LoadNextLevel" , 1f);
         }
     }
 
