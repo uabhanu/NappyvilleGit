@@ -44,12 +44,15 @@ public class Fox : MonoBehaviour
 
 	void Attack()
     {
-        m_walkSpeed = 0f;
-        m_foxBody2D.velocity = new Vector2(-m_walkSpeed , m_foxBody2D.velocity.y);
-
-        if(m_currentTarget == null)
+        if(transform.position.x > m_currentTarget.transform.position.x)
         {
-            SetState(FoxState.WALK);
+            m_walkSpeed = 0f;
+            m_foxBody2D.velocity = new Vector2(-m_walkSpeed , m_foxBody2D.velocity.y);
+
+            if(m_currentTarget == null)
+            {
+                SetState(FoxState.WALK);
+            }
         }
     }
 

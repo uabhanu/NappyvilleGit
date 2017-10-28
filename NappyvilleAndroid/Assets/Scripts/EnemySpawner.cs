@@ -52,21 +52,6 @@ public class EnemySpawner : MonoBehaviour
                 m_children = 2;
             }
 
-            if(m_levelManager.m_gameTime >= 70f)
-            {
-                m_children = 3;
-            }
-
-            if(m_levelManager.m_gameTime >= 90f)
-            {
-                m_children = 5;
-            }
-
-            if(m_levelManager.m_gameTime >= 110f)
-            {
-                m_children = 10;
-            }
-
             if(m_levelManager.m_gameTime >= 130f)
             {
                 m_children = 3;

@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_flySpeed: 2.5
   m_currentTarget: {fileID: 0}
-  m_attack: 40
+  m_attack: 100
 --- !u!212 &212759742094972596
 SpriteRenderer:
   m_ObjectHideFlags: 1

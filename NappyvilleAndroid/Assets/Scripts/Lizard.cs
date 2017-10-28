@@ -50,12 +50,15 @@ public class Lizard : MonoBehaviour
 	
 	void Attack()
     {
-        m_walkSpeed = 0f;
-        m_lizardBody2D.velocity = new Vector2(-m_walkSpeed , m_lizardBody2D.velocity.y);
-
-        if(m_currentTarget == null)
+        if(transform.position.x > m_currentTarget.transform.position.x)
         {
-            SetState(LizardState.WALK);
+            m_walkSpeed = 0f;
+            m_lizardBody2D.velocity = new Vector2(-m_walkSpeed , m_lizardBody2D.velocity.y);
+
+            if(m_currentTarget == null)
+            {
+                SetState(LizardState.WALK);
+            }
         }
     }
 
