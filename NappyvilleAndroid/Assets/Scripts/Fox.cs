@@ -86,19 +86,19 @@ public class Fox : MonoBehaviour
         if(tri2D.gameObject.tag.Equals("Player"))
         {
             //Debug.Log("Fox Collision with Player Successful"); //Working Fine
-            if(tri2D.gameObject.name.Equals("PF_Gravestone(Clone)"))
-            {
-                SetState(FoxState.JUMP);
-            }
-            else
-            {
+//            if(tri2D.gameObject.name.Equals("PF_Gravestone(Clone)")) //Working great but until you figure out how to make Fox Jump only if there is no one in the lane to land on
+//            {
+//                SetState(FoxState.JUMP);
+//            }
+//            else
+//            {
                 m_currentTarget = tri2D.gameObject;
 
                 if(m_currentTarget != null && transform.position.x > m_currentTarget.transform.position.x)
                 {
                     SetState(FoxState.ATTACK);
                 }
-            }
+//            }
         }
     }
 

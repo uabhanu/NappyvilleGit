@@ -7,8 +7,8 @@ public class BhanuPlayer : MonoBehaviour
     EnemySpawner m_myLaneSpawner;
 
     public bool m_enemyInSight;
-    [Range(20 , 400)] public int m_hitpoints;
-    [Range(10 , 100)] public int m_playerCost;
+    [Range(0 , 1000)] public int m_hitpoints;
+    [Range(0 , 1000)] public int m_playerCost;
 
 	void Start()
     {

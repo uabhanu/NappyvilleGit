@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [Range(0.0f , 2.5f)] [SerializeField] float m_flySpeed;
+    [Range(0.0f , 100f)] [SerializeField] float m_flySpeed;
 
     [SerializeField] GameObject m_currentTarget;
 
-    [Range(20 , 100)] [SerializeField] int m_attack;
+    [Range(0 , 1000)] [SerializeField] int m_attack;
 
     Vector2 m_positionOnScreen;
 

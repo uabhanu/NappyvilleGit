@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_enemyInSight: 0
-  m_hitpoints: 300
+  m_hitpoints: 600
   m_playerCost: 10
 --- !u!212 &212166731457644178
 SpriteRenderer:

@@ -7,7 +7,7 @@ public class BhanuEnemy : MonoBehaviour
     LevelManager m_levelManager;
 
     public float m_seenEverySecs;
-    [Range(20 , 400)] public int m_hitpoints;
+    [Range(0 , 1000)] public int m_hitpoints;
 
 	void Start()
     {
