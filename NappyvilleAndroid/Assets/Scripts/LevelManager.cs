@@ -77,7 +77,7 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadScene(m_currentSceneIndex + 1);
         }
 
-        if(m_currentSceneIndex > 1)
+		if(m_currentSceneIndex > 1 && m_currentSceneIndex < 6)
         {
             SceneManager.LoadScene(m_currentSceneIndex + 1);
         }

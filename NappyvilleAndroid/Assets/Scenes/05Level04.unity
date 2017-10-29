@@ -145,6 +145,7 @@ MonoBehaviour:
   m_enemyObj: {fileID: 0}
   m_enemyPrefabs:
   - {fileID: 1833037229582668, guid: 2df68a8c4b1fa274e8ffd0e2c6f95fb1, type: 2}
+  - {fileID: 1871219283468126, guid: a4a6cad0efaa0c949acff356f5402f0f, type: 2}
 --- !u!1 &53286192
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +369,7 @@ MonoBehaviour:
   m_enemyObj: {fileID: 0}
   m_enemyPrefabs:
   - {fileID: 1833037229582668, guid: 2df68a8c4b1fa274e8ffd0e2c6f95fb1, type: 2}
+  - {fileID: 1871219283468126, guid: a4a6cad0efaa0c949acff356f5402f0f, type: 2}
 --- !u!4 &216374611
 Transform:
   m_ObjectHideFlags: 0
@@ -852,7 +854,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Version 2
+  m_Text: Version 4
 --- !u!114 &577575059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,7 +974,7 @@ GameObject:
   - component: {fileID: 628502683}
   - component: {fileID: 628502682}
   m_Layer: 5
-  m_Name: PF_LevelCanvas
+  m_Name: LevelCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1745,6 +1747,7 @@ MonoBehaviour:
   m_enemyObj: {fileID: 0}
   m_enemyPrefabs:
   - {fileID: 1833037229582668, guid: 2df68a8c4b1fa274e8ffd0e2c6f95fb1, type: 2}
+  - {fileID: 1871219283468126, guid: a4a6cad0efaa0c949acff356f5402f0f, type: 2}
 --- !u!4 &1122007083
 Transform:
   m_ObjectHideFlags: 0
@@ -2093,6 +2096,7 @@ MonoBehaviour:
   m_enemyObj: {fileID: 0}
   m_enemyPrefabs:
   - {fileID: 1833037229582668, guid: 2df68a8c4b1fa274e8ffd0e2c6f95fb1, type: 2}
+  - {fileID: 1871219283468126, guid: a4a6cad0efaa0c949acff356f5402f0f, type: 2}
 --- !u!1 &1690391229
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,7 +2110,7 @@ GameObject:
   - component: {fileID: 1690391231}
   - component: {fileID: 1690391230}
   m_Layer: 5
-  m_Name: PF_GameUI
+  m_Name: GameUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2421,6 +2425,7 @@ MonoBehaviour:
   m_enemyObj: {fileID: 0}
   m_enemyPrefabs:
   - {fileID: 1833037229582668, guid: 2df68a8c4b1fa274e8ffd0e2c6f95fb1, type: 2}
+  - {fileID: 1871219283468126, guid: a4a6cad0efaa0c949acff356f5402f0f, type: 2}
 --- !u!1 &2097183661
 GameObject:
   m_ObjectHideFlags: 0
