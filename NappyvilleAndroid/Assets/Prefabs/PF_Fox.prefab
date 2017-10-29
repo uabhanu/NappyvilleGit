@@ -165,7 +165,7 @@ MonoBehaviour:
   m_previousState: 2
   m_walkSpeed: 0.78
   m_currentTarget: {fileID: 0}
-  m_attack: 40
+  m_attack: 25
 --- !u!212 &212130728391135170
 SpriteRenderer:
   m_ObjectHideFlags: 1
