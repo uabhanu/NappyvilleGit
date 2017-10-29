@@ -54,6 +54,11 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+	public void Pause()
+	{
+		
+	}
+
     public void Quit()
     {
         Debug.Log("QuitButton Pressed");
