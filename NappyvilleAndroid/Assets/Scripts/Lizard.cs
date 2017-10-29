@@ -50,16 +50,13 @@ public class Lizard : MonoBehaviour
 	
 	void Attack()
     {
-        if(transform.position.x > m_currentTarget.transform.position.x)
-        {
-            m_walkSpeed = 0f;
-            m_lizardBody2D.velocity = new Vector2(-m_walkSpeed , m_lizardBody2D.velocity.y);
+        m_walkSpeed = 0f;
+        m_lizardBody2D.velocity = new Vector2(-m_walkSpeed , m_lizardBody2D.velocity.y);
 
-            if(m_currentTarget == null)
-            {
-                SetState(LizardState.WALK);
-            }
-        }
+        if(m_currentTarget == null)
+        {
+            SetState(LizardState.WALK);
+        }   
     }
 
     void CauseDamage()
@@ -84,7 +81,11 @@ public class Lizard : MonoBehaviour
         if(tri2D.gameObject.tag.Equals("Player"))
         {
             m_currentTarget = tri2D.gameObject;
-            SetState(LizardState.ATTACK);
+
+            if(m_currentTarget != null && transform.position.x > m_currentTarget.transform.position.x)
+            {
+                SetState(LizardState.ATTACK);
+            }
         }
     }
 
