@@ -418,9 +418,8 @@ MonoBehaviour:
   m_timeToSpawn: 8
   m_enemyObj: {fileID: 0}
   m_enemyPrefabs:
-  - {fileID: 1833037229582668, guid: 2df68a8c4b1fa274e8ffd0e2c6f95fb1, type: 2}
-  - {fileID: 1324078052873666, guid: 1be3eea0cbb7b754b82f0aecf073873a, type: 2}
   - {fileID: 1871219283468126, guid: a4a6cad0efaa0c949acff356f5402f0f, type: 2}
+  - {fileID: 1324078052873666, guid: 1be3eea0cbb7b754b82f0aecf073873a, type: 2}
 --- !u!1 &408245765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2535,9 +2534,8 @@ MonoBehaviour:
   m_timeToSpawn: 6
   m_enemyObj: {fileID: 0}
   m_enemyPrefabs:
-  - {fileID: 1833037229582668, guid: 2df68a8c4b1fa274e8ffd0e2c6f95fb1, type: 2}
-  - {fileID: 1324078052873666, guid: 1be3eea0cbb7b754b82f0aecf073873a, type: 2}
   - {fileID: 1871219283468126, guid: a4a6cad0efaa0c949acff356f5402f0f, type: 2}
+  - {fileID: 1324078052873666, guid: 1be3eea0cbb7b754b82f0aecf073873a, type: 2}
 --- !u!1 &1828773710
 GameObject:
   m_ObjectHideFlags: 0
@@ -2570,9 +2568,8 @@ MonoBehaviour:
   m_timeToSpawn: 13
   m_enemyObj: {fileID: 0}
   m_enemyPrefabs:
-  - {fileID: 1833037229582668, guid: 2df68a8c4b1fa274e8ffd0e2c6f95fb1, type: 2}
-  - {fileID: 1324078052873666, guid: 1be3eea0cbb7b754b82f0aecf073873a, type: 2}
   - {fileID: 1871219283468126, guid: a4a6cad0efaa0c949acff356f5402f0f, type: 2}
+  - {fileID: 1324078052873666, guid: 1be3eea0cbb7b754b82f0aecf073873a, type: 2}
 --- !u!1 &1944169259
 GameObject:
   m_ObjectHideFlags: 0
@@ -2605,9 +2602,8 @@ MonoBehaviour:
   m_timeToSpawn: 10
   m_enemyObj: {fileID: 0}
   m_enemyPrefabs:
-  - {fileID: 1833037229582668, guid: 2df68a8c4b1fa274e8ffd0e2c6f95fb1, type: 2}
-  - {fileID: 1324078052873666, guid: 1be3eea0cbb7b754b82f0aecf073873a, type: 2}
   - {fileID: 1871219283468126, guid: a4a6cad0efaa0c949acff356f5402f0f, type: 2}
+  - {fileID: 1324078052873666, guid: 1be3eea0cbb7b754b82f0aecf073873a, type: 2}
 --- !u!1 &1950760806
 GameObject:
   m_ObjectHideFlags: 0
@@ -2640,9 +2636,8 @@ MonoBehaviour:
   m_timeToSpawn: 9
   m_enemyObj: {fileID: 0}
   m_enemyPrefabs:
-  - {fileID: 1833037229582668, guid: 2df68a8c4b1fa274e8ffd0e2c6f95fb1, type: 2}
-  - {fileID: 1324078052873666, guid: 1be3eea0cbb7b754b82f0aecf073873a, type: 2}
   - {fileID: 1871219283468126, guid: a4a6cad0efaa0c949acff356f5402f0f, type: 2}
+  - {fileID: 1324078052873666, guid: 1be3eea0cbb7b754b82f0aecf073873a, type: 2}
 --- !u!1 &2021954400
 GameObject:
   m_ObjectHideFlags: 0
