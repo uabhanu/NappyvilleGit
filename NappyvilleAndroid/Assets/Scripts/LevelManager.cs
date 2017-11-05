@@ -6,9 +6,13 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    float m_loadTime = 2f;
+    float m_loadTime = 3f;
 
     [SerializeField] BhanuEnemy[] m_bhanuEnemiesLeft;
+
+	[SerializeField] BoxCollider2D m_gameCollider2D;
+
+	[SerializeField] GameObject m_pauseMenuObj , m_quitMenuObj;
 
     [SerializeField] Text m_gameTimeDisplay;
 
@@ -50,20 +54,47 @@ public class LevelManager : MonoBehaviour
 
         if(m_bhanuEnemiesLeft.Length == 0 && m_totalEnemiesKilled >= m_enemyKillTarget)
         {
-            Invoke("LoadNextLevel" , 1f);
+			Invoke("LoadNextLevel" , m_loadTime - 2);
         }
     }
 
 	public void Pause()
 	{
-		
+		m_gameCollider2D.enabled = false;
+		m_pauseMenuObj.SetActive(true);
+		Time.timeScale = 0;
 	}
 
     public void Quit()
     {
-        Debug.Log("QuitButton Pressed");
-        Application.Quit();
+		m_pauseMenuObj.SetActive(false);
+		m_quitMenuObj.SetActive(true);
     }
+
+	public void QuitNo()
+	{
+		m_pauseMenuObj.SetActive(true);
+		m_quitMenuObj.SetActive(false);
+	}
+
+	public void QuitYes()
+	{
+		Debug.Log("QuitButton Pressed");
+		Application.Quit();
+	}
+
+	public void Restart()
+	{
+		SceneManager.LoadScene(m_currentSceneIndex);
+		Time.timeScale = 1;
+	}
+
+	public void Resume()
+	{
+		m_gameCollider2D.enabled = false;
+		m_pauseMenuObj.SetActive(false);
+		Time.timeScale = 1;
+	}
 
     public static void Disable(Text text)
     {
@@ -95,7 +126,6 @@ public class LevelManager : MonoBehaviour
 
     public void LoadScene(string name)
     {
-        Debug.Log("StartButton Pressed");
         SceneManager.LoadScene(name);
     }
 }

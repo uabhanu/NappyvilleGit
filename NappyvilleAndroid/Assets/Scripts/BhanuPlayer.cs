@@ -54,21 +54,28 @@ public class BhanuPlayer : MonoBehaviour
 
     bool EnemyInSight()
     {
-        if(m_myLaneSpawner.transform.childCount <= 0)
-        {
-            m_enemyInSight = false;
-            return m_enemyInSight;
-        }
+		if(m_myLaneSpawner != null) 
+		{
+			if(m_myLaneSpawner.transform.childCount <= 0)
+			{
+				m_enemyInSight = false;
+				return m_enemyInSight;	
+			}
 
-        foreach(Transform bhanuEnemy in m_myLaneSpawner.transform) // Unity Docs indicates that Transforms also support enumeratiors so we can actually loop through children
-        {
-            if(bhanuEnemy.transform.position.x > transform.position.x && bhanuEnemy.transform.position.x < 11.05f) //Also check if bhanuEnemy is visible using && later
-            {
-                m_enemyInSight = true;
-                return m_enemyInSight;
-            }
-        }
-
+			foreach(Transform bhanuEnemy in m_myLaneSpawner.transform)  // Unity Docs indicates that Transforms also support enumeratiors so we can actually loop through children
+			{
+				if(bhanuEnemy.transform.position.x > transform.position.x && bhanuEnemy.transform.position.x < 11.05f)
+				{ 
+					m_enemyInSight = true;
+					return m_enemyInSight;
+				}
+			}
+		}  
+		else 
+		{
+			Debug.LogError(name + " : Enemy not in sight yet");
+		}
+			
         m_enemyInSight = false;
         return m_enemyInSight;
     }
@@ -86,7 +93,7 @@ public class BhanuPlayer : MonoBehaviour
             }
             else
             {
-                Debug.LogError(name + ": Sir Bhanu, can't find the spawner in lane");
+				Debug.LogError(name + " : Sir Bhanu, Can't See any Enemy Spawner Yet");
             }
         }
     }

@@ -6,9 +6,9 @@ public class StarTrophy : MonoBehaviour
 {
     Animator m_animator;
 
-    [HideInInspector] [Range(0.0f , 10.0f)] [SerializeField] float m_lineDistance , m_lineStartingPoint;
+	[Range(0.0f , 1.5f)] [SerializeField] float m_yOffset;
 
-    [SerializeField] GameObject m_starPrefab;
+	[SerializeField] GameObject m_starPrefab;
 
 	void Start()
     {
@@ -30,6 +30,6 @@ public class StarTrophy : MonoBehaviour
     void StarSpawn()
     {
         GameObject newStar = Instantiate(m_starPrefab , transform.position , transform.rotation) as GameObject;
-        newStar.transform.position = new Vector2(transform.position.x , transform.position.y + 0.23f);
+		newStar.transform.position = new Vector2(transform.position.x , transform.position.y + m_yOffset);
     }
 }
