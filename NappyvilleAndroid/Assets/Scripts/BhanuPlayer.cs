@@ -6,6 +6,8 @@ public class BhanuPlayer : MonoBehaviour
 {
     EnemySpawner m_myLaneSpawner;
 
+	[SerializeField] GameObject m_explosionPSPrefab;
+
     public bool m_enemyInSight;
     [Range(0 , 1000)] public int m_hitpoints;
     [Range(0 , 1000)] public int m_playerCost;
@@ -41,6 +43,9 @@ public class BhanuPlayer : MonoBehaviour
 
         if(m_hitpoints <= 0)
         {
+			GameObject explosion = Instantiate(m_explosionPSPrefab , transform.position , transform.rotation) as GameObject;
+			ParticleSystem blueExplosion = explosion.GetComponent<ParticleSystem>();
+			blueExplosion.Play();
             Destroy(gameObject);
         }
 

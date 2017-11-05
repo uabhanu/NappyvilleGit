@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c064837191775b045a035a28ba39e2e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_explosionPSPrefab: {fileID: 1576567297391074, guid: cae42da0178a22c45b36160c94061dae,
+    type: 2}
   m_seenEverySecs: 22.5
   m_hitpoints: 300
 --- !u!114 &114821492265074400

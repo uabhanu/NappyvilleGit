@@ -156,6 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d559219fd1516fe4487bdfb245d97224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_explosionPSPrefab: {fileID: 1642913295434374, guid: da44a56bd63cc4f4aa51893bedb8fe81,
+    type: 2}
   m_enemyInSight: 0
   m_hitpoints: 100
   m_playerCost: 10
