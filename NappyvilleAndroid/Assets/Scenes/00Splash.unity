@@ -715,6 +715,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bhanuEnemiesLeft: []
+  m_gameCollider2D: {fileID: 0}
+  m_loadTime: 2
+  m_pauseMenuObj: {fileID: 0}
+  m_quitMenuObj: {fileID: 0}
   m_gameTimeDisplay: {fileID: 0}
   m_gameTime: 0
   m_currentSceneIndex: 0

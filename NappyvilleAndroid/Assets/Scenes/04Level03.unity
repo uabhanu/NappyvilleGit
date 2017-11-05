@@ -1465,7 +1465,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Version 5
+  m_Text: Version 6
 --- !u!114 &1206058664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1659,6 +1659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_bhanuEnemiesLeft: []
   m_gameCollider2D: {fileID: 1453316083}
+  m_loadTime: 1
   m_pauseMenuObj: {fileID: 675548340}
   m_quitMenuObj: {fileID: 1909020818}
   m_gameTimeDisplay: {fileID: 0}

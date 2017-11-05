@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    float m_loadTime = 3f;
-
     [SerializeField] BhanuEnemy[] m_bhanuEnemiesLeft;
 
 	[SerializeField] BoxCollider2D m_gameCollider2D;
+
+	[SerializeField] float m_loadTime;
 
 	[SerializeField] GameObject m_pauseMenuObj , m_quitMenuObj;
 
@@ -54,7 +54,7 @@ public class LevelManager : MonoBehaviour
 
         if(m_bhanuEnemiesLeft.Length == 0 && m_totalEnemiesKilled >= m_enemyKillTarget)
         {
-			Invoke("LoadNextLevel" , m_loadTime - 2);
+			Invoke("LoadNextLevel" , m_loadTime);
         }
     }
 
@@ -67,8 +67,15 @@ public class LevelManager : MonoBehaviour
 
     public void Quit()
     {
-		m_pauseMenuObj.SetActive(false);
-		m_quitMenuObj.SetActive(true);
+		if(m_currentSceneIndex > 1) 
+		{
+			m_pauseMenuObj.SetActive(false);
+			m_quitMenuObj.SetActive(true);
+		} 
+		else 
+		{
+			Application.Quit();
+		}
     }
 
 	public void QuitNo()
