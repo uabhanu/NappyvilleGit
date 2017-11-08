@@ -44,18 +44,49 @@ public class EnemySpawner : MonoBehaviour
 
             if(m_levelManager.m_gameTime >= 25f)
             {
-                m_children = 1;
+				if(m_levelManager.m_currentSceneIndex >= 5) 
+				{
+					m_children = 0;
+				}
+				else 
+				{
+					m_children = 1;
+				}
             }
 
             if(m_levelManager.m_gameTime >= 40f)
             {
-                m_children = 2;
+				if(m_levelManager.m_currentSceneIndex >= 5) 
+				{
+					m_children = 0;
+				} 
+				else 
+				{
+					m_children = 2;
+				}
             }
 
             if(m_levelManager.m_gameTime >= 60f)
             {
-                m_children = 3;
+				if(m_levelManager.m_currentSceneIndex >= 5) 
+				{
+					m_children = 1;
+				}
+				else 
+				{
+					m_children = 3;
+				}
             }
+
+			if(m_levelManager.m_gameTime >= 90)
+			{
+				m_children = 4;
+			}
+
+			if(m_levelManager.m_gameTime >= 150)
+			{
+				m_children = 5;
+			}
         }
 
         StartCoroutine("SpawnRoutine");
