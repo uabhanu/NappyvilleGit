@@ -58,11 +58,21 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+	public void Next() //Only for Testing
+	{
+		SceneManager.LoadScene(m_currentSceneIndex + 1);
+	}
+
 	public void Pause()
 	{
 		m_gameCollider2D.enabled = false;
 		m_pauseMenuObj.SetActive(true);
 		Time.timeScale = 0;
+	}
+
+	public void Previous() //Only for Testing
+	{
+		SceneManager.LoadScene(m_currentSceneIndex - 1);
 	}
 
     public void Quit()
@@ -98,7 +108,7 @@ public class LevelManager : MonoBehaviour
 
 	public void Resume()
 	{
-		m_gameCollider2D.enabled = false;
+		m_gameCollider2D.enabled = true;
 		m_pauseMenuObj.SetActive(false);
 		Time.timeScale = 1;
 	}
