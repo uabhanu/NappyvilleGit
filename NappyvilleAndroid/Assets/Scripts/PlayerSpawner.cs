@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerSpawner : MonoBehaviour
 {
     GameObject m_playerParent;
+	LevelManager m_levelManager;
     StarsCurrency m_starsCurrency;
 
     [SerializeField] Camera m_myCamera;
@@ -14,7 +15,8 @@ public class PlayerSpawner : MonoBehaviour
 
 	void Start()
     {
-        m_playerButton = FindObjectOfType<PlayerButton>();
+		m_levelManager = FindObjectOfType<LevelManager>();
+		m_playerButton = FindObjectOfType<PlayerButton>();
 		m_playerParent = GameObject.Find("PlayerParent");
         m_starsCurrency = FindObjectOfType<StarsCurrency>();
 
@@ -42,7 +44,7 @@ public class PlayerSpawner : MonoBehaviour
             else
             {
                 Debug.LogError("Sir Bhanu, You can't afford this player");
-                LevelManager.Enable(LevelManager.m_cantAffordMessage);
+				LevelManager.Enable(LevelManager.m_notEnoughStarsText);
                 m_playerButton.ResetSelection();
             }
         }

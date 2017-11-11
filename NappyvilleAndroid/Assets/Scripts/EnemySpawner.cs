@@ -30,13 +30,13 @@ public class EnemySpawner : MonoBehaviour
             m_enemyObj.transform.position = transform.position;
         }
 
-        if(m_levelManager.m_gameTime >= 12.5f)
+        if(m_levelManager.m_gameTime >= 9.5f)
         {
             if(m_levelManager.m_currentSceneIndex == 2)
             {
                 m_children = 1;
 
-                if(m_levelManager.m_gameTime >= 30f)
+                if(m_levelManager.m_gameTime >= 35f)
                 {
                     m_children = 2;
                 }

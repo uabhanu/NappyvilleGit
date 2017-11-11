@@ -11,13 +11,12 @@ public class PlayerButton : MonoBehaviour
 
     [SerializeField] PlayerButton[] m_playerButtons;
 
-    [SerializeField] Text m_cantAffordMessage , m_playerCostDisplay;
+    [SerializeField] Text m_playerCostDisplay;
 
     public static GameObject m_playerToSpawn;
 
 	void Start()
     {
-        m_cantAffordMessage = GameObject.Find("CantAffordMessage").GetComponent<Text>();
         m_playerCostDisplay = GetComponentInChildren<Text>();
         m_playerCostDisplay.text = m_playerCostValue.ToString();
         m_playerToSpawn = null;
@@ -35,7 +34,7 @@ public class PlayerButton : MonoBehaviour
 
     public void SpriteColourToggle()
     {
-        m_cantAffordMessage.enabled = false;
+		LevelManager.m_notEnoughStarsText.enabled = false;
         m_playerToSpawn = m_playerPrefab;
 
         foreach(PlayerButton playerButton in m_playerButtons)

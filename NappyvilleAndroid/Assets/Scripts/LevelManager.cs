@@ -19,7 +19,8 @@ public class LevelManager : MonoBehaviour
     public float m_gameTime;
     public int m_currentSceneIndex;
     public int m_enemyKillTarget , m_totalEnemiesKilled = 0;
-    public static Text m_cantAffordMessage;
+	public LevelManager m_levelManager;
+    public static Text m_notEnoughStarsText;
 
     void Start()
     {
@@ -27,7 +28,7 @@ public class LevelManager : MonoBehaviour
 
         if(m_currentSceneIndex > 1 && m_currentSceneIndex < 7)
         {
-            m_cantAffordMessage = GameObject.Find("CantAffordMessage").GetComponent<Text>();
+			m_notEnoughStarsText = GameObject.Find("NotEnoughStars").GetComponent<Text>();
             
 			if(m_gameTimeDisplay != null) 
 			{
@@ -70,59 +71,10 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-	public void Next() //Only for Testing
+	IEnumerator DisableRoutine()
 	{
-		SceneManager.LoadScene(m_currentSceneIndex + 1);
-	}
-
-	public void Pause()
-	{
-		m_gameCollider2D.enabled = false;
-		m_pauseMenuObj.SetActive(true);
-		Time.timeScale = 0;
-	}
-
-	public void Previous() //Only for Testing
-	{
-		SceneManager.LoadScene(m_currentSceneIndex - 1);
-	}
-
-    public void Quit()
-    {
-		if(m_currentSceneIndex > 1) 
-		{
-			m_pauseMenuObj.SetActive(false);
-			m_quitMenuObj.SetActive(true);
-		} 
-		else 
-		{
-			Application.Quit();
-		}
-    }
-
-	public void QuitNo()
-	{
-		m_pauseMenuObj.SetActive(true);
-		m_quitMenuObj.SetActive(false);
-	}
-
-	public void QuitYes()
-	{
-		Debug.Log("QuitButton Pressed");
-		Application.Quit();
-	}
-
-	public void Restart()
-	{
-		SceneManager.LoadScene(m_currentSceneIndex);
-		Time.timeScale = 1;
-	}
-
-	public void Resume()
-	{
-		m_gameCollider2D.enabled = true;
-		m_pauseMenuObj.SetActive(false);
-		Time.timeScale = 1;
+		yield return new WaitForSeconds(0.5f);
+		Disable(m_notEnoughStarsText);
 	}
 
     public static void Disable(Text text)
@@ -157,4 +109,59 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(name);
     }
+
+	public void Next() //Only for Testing
+	{
+		SceneManager.LoadScene(m_currentSceneIndex + 1);
+	}
+
+	public void Pause()
+	{
+		m_gameCollider2D.enabled = false;
+		m_pauseMenuObj.SetActive(true);
+		Time.timeScale = 0;
+	}
+
+	public void Previous() //Only for Testing
+	{
+		SceneManager.LoadScene(m_currentSceneIndex - 1);
+	}
+
+	public void Quit()
+	{
+		if(m_currentSceneIndex > 1) 
+		{
+			m_pauseMenuObj.SetActive(false);
+			m_quitMenuObj.SetActive(true);
+		} 
+		else 
+		{
+			Application.Quit();
+		}
+	}
+
+	public void QuitNo()
+	{
+		m_pauseMenuObj.SetActive(true);
+		m_quitMenuObj.SetActive(false);
+	}
+
+	public void QuitYes()
+	{
+		Debug.Log("QuitButton Pressed");
+		Application.Quit();
+	}
+
+	public void Restart()
+	{
+		SceneManager.LoadScene(m_currentSceneIndex);
+		Time.timeScale = 1;
+	}
+
+	public void Resume()
+	{
+		m_gameCollider2D.enabled = true;
+		m_pauseMenuObj.SetActive(false);
+		Time.timeScale = 1;
+	}
 }
