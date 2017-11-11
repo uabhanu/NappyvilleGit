@@ -150,7 +150,7 @@ MonoBehaviour:
   m_explosionPSPrefab: {fileID: 1576567297391074, guid: cae42da0178a22c45b36160c94061dae,
     type: 2}
   m_seenEverySecs: 30
-  m_hitpoints: 160
+  m_hitpoints: 300
 --- !u!114 &114609737733402172
 MonoBehaviour:
   m_ObjectHideFlags: 1

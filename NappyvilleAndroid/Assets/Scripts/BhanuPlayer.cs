@@ -6,6 +6,8 @@ public class BhanuPlayer : MonoBehaviour
 {
     EnemySpawner m_myLaneSpawner;
 
+	[SerializeField] float m_volume;
+
 	[SerializeField] GameObject m_explosionPSPrefab;
 
     public bool m_enemyInSight;

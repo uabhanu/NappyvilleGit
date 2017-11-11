@@ -125,7 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670072572546aee459a69f5bf7633526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_projectileSound: {fileID: 8300000, guid: 0c3a1b4f82343f24488a7a5356e9007e, type: 3}
   m_flySpeed: 2
+  m_volume: 1
   m_currentTarget: {fileID: 0}
   m_attack: 20
 --- !u!212 &212877109415568166

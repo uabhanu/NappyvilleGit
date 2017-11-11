@@ -17,7 +17,7 @@ public class Gnome : MonoBehaviour
     BhanuPlayer m_bhanuPlayer;
     GameObject m_projectilesParent;
 
-    [SerializeField] GameObject m_axePrefab;
+	[SerializeField] GameObject m_axeObj , m_axePrefab;
 
     [SerializeField] Transform m_axeSpawnPosition;
 
@@ -55,12 +55,15 @@ public class Gnome : MonoBehaviour
 
     void Attack()
     {
-        GameObject axe = Instantiate(m_axePrefab , m_axeSpawnPosition) as GameObject;
+		if(m_axeObj == null)
+		{
+			m_axeObj = Instantiate(m_axePrefab , m_axeSpawnPosition) as GameObject;	
 
-        if(m_projectilesParent != null)
-        {
-            axe.transform.parent = m_projectilesParent.transform;
-        }
+			if(m_projectilesParent != null)
+			{
+				m_axeObj.transform.parent = m_projectilesParent.transform;
+			}
+		}
     }
 
     GnomeState GetState()

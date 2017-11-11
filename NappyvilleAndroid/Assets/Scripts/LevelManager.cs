@@ -28,7 +28,15 @@ public class LevelManager : MonoBehaviour
         if(m_currentSceneIndex > 1 && m_currentSceneIndex < 7)
         {
             m_cantAffordMessage = GameObject.Find("CantAffordMessage").GetComponent<Text>();
-            m_gameTimeDisplay = GameObject.Find("GameTimeDisplay").GetComponent<Text>(); // Only for testing
+            
+			if(m_gameTimeDisplay != null) 
+			{
+				m_gameTimeDisplay = GameObject.Find ("GameTimeDisplay").GetComponent<Text> ();
+			} 
+			else 
+			{
+				Debug.LogError("Sir Bhanu, there is no Game Time to Display as you use that only for testing");	
+			}
         }
 
         if(m_currentSceneIndex < 1)
@@ -48,8 +56,12 @@ public class LevelManager : MonoBehaviour
 
         if(m_currentSceneIndex > 1 && m_currentSceneIndex < 7)
         {
-            m_gameTime += Time.deltaTime; // Only for Testing
-            m_gameTimeDisplay.text = Mathf.RoundToInt(m_gameTime).ToString(); // Only for testing
+			m_gameTime += Time.deltaTime;
+
+			if(m_gameTimeDisplay != null)
+			{
+				m_gameTimeDisplay.text = Mathf.RoundToInt(m_gameTime).ToString();
+			}
         }
 
         if(m_bhanuEnemiesLeft.Length == 0 && m_totalEnemiesKilled >= m_enemyKillTarget)
