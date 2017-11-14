@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
 
 	[SerializeField] Image m_adsMenuImage , m_adsMenuNoButtonImage , m_adsMenuYesButtonImage;
 
-	[SerializeField] GameObject m_adsMenuNoButtonObj , m_adsMenuObj , m_adsMenuTextObj , m_adsMenuYesButtonObj , m_pauseMenuObj , m_quitMenuObj;
+	[SerializeField] GameObject m_adsMenuObj , m_pauseMenuObj , m_quitMenuObj;
 
 	[SerializeField] Outline m_adsMenuTextOutline;
 
@@ -28,17 +28,19 @@ public class LevelManager : MonoBehaviour
     public float m_gameTime;
     public int m_currentSceneIndex;
     public int m_enemyKillTarget , m_totalEnemiesKilled = 0;
-	public LevelManager m_levelManager;
     public static Text m_notEnoughStarsText;
 
     void Start()
     {
 		Advertisement.Initialize("1607507" , false);
 
-		m_adsMenuNoButtonColour = m_adsMenuNoButtonImage.color;
-		m_adsMenuTextColour = m_adsMenuText.color;
-		m_adsMenuTextOutlineColour = m_adsMenuTextOutline.effectColor;
-		m_adsMenuYesButtonColour = m_adsMenuYesButtonImage.color;
+		if(m_adsMenuNoButtonImage != null)
+		{
+			m_adsMenuNoButtonColour = m_adsMenuNoButtonImage.color;
+			m_adsMenuTextColour = m_adsMenuText.color;
+			m_adsMenuTextOutlineColour = m_adsMenuTextOutline.effectColor;
+			m_adsMenuYesButtonColour = m_adsMenuYesButtonImage.color;	
+		}
 
         m_currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
@@ -85,6 +87,23 @@ public class LevelManager : MonoBehaviour
 
 					m_adsMenuTextOutlineColour.a += 0.01f;
 					m_adsMenuTextOutline.effectColor = m_adsMenuTextOutlineColour;
+				}
+
+				if(m_adsMenuTextColour.a >= 1)
+				{
+					if(m_adsMenuNoButtonColour.a < 1 && m_adsMenuYesButtonColour.a < 1)
+					{
+						m_adsMenuNoButtonColour.a += 0.05f;
+						m_adsMenuNoButtonImage.color = m_adsMenuNoButtonColour;
+
+						m_adsMenuYesButtonColour.a += 0.05f;
+						m_adsMenuYesButtonImage.color = m_adsMenuYesButtonColour;
+					}
+
+					if(m_adsMenuNoButtonColour.a >= 1)
+					{
+						Time.timeScale = 0;
+					}
 				}
 			}
 		}
