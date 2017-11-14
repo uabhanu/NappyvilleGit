@@ -141,6 +141,6 @@ public class Lizard : MonoBehaviour
     void Walk()
     {
         m_walkSpeed = m_currentWalkSpeed;        
-        m_lizardBody2D.velocity = new Vector2(-m_walkSpeed , m_lizardBody2D.velocity.y);
+		m_lizardBody2D.velocity = new Vector2(-m_walkSpeed , m_lizardBody2D.velocity.y);
     }
 }
