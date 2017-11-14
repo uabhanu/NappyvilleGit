@@ -137,7 +137,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 183356647}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -203, y: 393, z: 0}
+  m_LocalPosition: {x: -420, y: 392.91678, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 373882410}
@@ -145,7 +145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 597, y: -57}
+  m_AnchoredPosition: {x: 380, y: -57}
   m_SizeDelta: {x: 1412, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &183356649
@@ -180,7 +180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Plants Vs Zombies Clone
+  m_Text: Glitch Garden
 --- !u!222 &183356650
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -226,7 +226,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 221445311}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 700, y: -350, z: 0}
+  m_LocalPosition: {x: 700, y: -349.91678, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 373882410}
@@ -404,8 +404,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 373882406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 496, y: 279, z: 0}
-  m_LocalScale: {x: 0.62, y: 0.62, z: 0.62}
+  m_LocalPosition: {x: 601, y: 338, z: 0}
+  m_LocalScale: {x: 0.75125, y: 0.75125, z: 0.75125}
   m_Children:
   - {fileID: 674492593}
   - {fileID: 221445312}
@@ -680,6 +680,7 @@ MonoBehaviour:
   m_currentSceneIndex: 0
   m_enemyKillTarget: 0
   m_totalEnemiesKilled: 0
+  m_levelManager: {fileID: 0}
 --- !u!1 &1011852072
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +784,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1011852074}
   m_OnClick:
     m_PersistentCalls:
@@ -826,7 +827,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1150928514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 700, y: 350, z: 0}
+  m_LocalPosition: {x: 700, y: 349.91678, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 373882410}

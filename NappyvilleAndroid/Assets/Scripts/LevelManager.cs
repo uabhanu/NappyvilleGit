@@ -1,20 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+	bool m_adsMenuVisible;
+
     [SerializeField] BhanuEnemy[] m_bhanuEnemiesLeft;
 
 	[SerializeField] BoxCollider2D m_gameCollider2D;
 
+	[SerializeField] Color m_adsMenuNoButtonColour , m_adsMenuTextColour, m_adsMenuTextOutlineColour , m_adsMenuYesButtonColour;
+
 	[SerializeField] float m_loadTime;
 
-	[SerializeField] GameObject m_pauseMenuObj , m_quitMenuObj;
+	[SerializeField] Image m_adsMenuImage , m_adsMenuNoButtonImage , m_adsMenuYesButtonImage;
 
-    [SerializeField] Text m_gameTimeDisplay;
+	[SerializeField] GameObject m_adsMenuNoButtonObj , m_adsMenuObj , m_adsMenuTextObj , m_adsMenuYesButtonObj , m_pauseMenuObj , m_quitMenuObj;
+
+	[SerializeField] Outline m_adsMenuTextOutline;
+
+    [SerializeField] Text m_adsMenuText , m_gameTimeDisplay;
 
     public float m_gameTime;
     public int m_currentSceneIndex;
@@ -24,6 +33,13 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+		Advertisement.Initialize("1607507" , false);
+
+		m_adsMenuNoButtonColour = m_adsMenuNoButtonImage.color;
+		m_adsMenuTextColour = m_adsMenuText.color;
+		m_adsMenuTextOutlineColour = m_adsMenuTextOutline.effectColor;
+		m_adsMenuYesButtonColour = m_adsMenuYesButtonImage.color;
+
         m_currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         if(m_currentSceneIndex > 1 && m_currentSceneIndex < 7)
@@ -53,6 +69,26 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
+		if(m_adsMenuVisible)
+		{
+			if(m_adsMenuImage.fillAmount < 1)
+			{
+				m_adsMenuImage.fillAmount += 0.01f;
+			}
+
+			if(m_adsMenuImage.fillAmount >= 1)
+			{
+				if(m_adsMenuTextColour.a < 1 && m_adsMenuTextOutlineColour.a < 1)
+				{
+					m_adsMenuTextColour.a += 0.01f;
+					m_adsMenuText.color = m_adsMenuTextColour;
+
+					m_adsMenuTextOutlineColour.a += 0.01f;
+					m_adsMenuTextOutline.effectColor = m_adsMenuTextOutlineColour;
+				}
+			}
+		}
+
         m_bhanuEnemiesLeft = FindObjectsOfType<BhanuEnemy>();
 
         if(m_currentSceneIndex > 1 && m_currentSceneIndex < 7)
@@ -70,11 +106,15 @@ public class LevelManager : MonoBehaviour
 			Invoke("LoadNextLevel" , m_loadTime);
         }
     }
-
-	IEnumerator DisableRoutine()
+		
+	public void AdsNo()
 	{
-		yield return new WaitForSeconds(0.5f);
-		Disable(m_notEnoughStarsText);
+		SceneManager.LoadScene("07Lose");
+	}
+
+	public void AdsYes()
+	{
+		ShowRewardedVideo();
 	}
 
     public static void Disable(Text text)
@@ -86,6 +126,27 @@ public class LevelManager : MonoBehaviour
     {
         text.enabled = true;
     }
+
+	void HandleShowResult (ShowResult result)
+	{
+		if(result == ShowResult.Finished) 
+		{
+			Debug.Log("Video completed - Offer a reward to the player");
+			SceneManager.LoadScene(m_currentSceneIndex);
+		}
+
+		else if(result == ShowResult.Skipped) 
+		{
+			Debug.LogWarning("Video was skipped - Do NOT reward the player");
+			SceneManager.LoadScene("07Lose");
+		}
+
+		else if(result == ShowResult.Failed) 
+		{
+			Debug.LogError("Video failed to show");
+			SceneManager.LoadScene("07Lose");
+		}
+	}
 
     public void LoadNextLevel()
     {
@@ -163,5 +224,20 @@ public class LevelManager : MonoBehaviour
 		m_gameCollider2D.enabled = true;
 		m_pauseMenuObj.SetActive(false);
 		Time.timeScale = 1;
+	}
+
+	void ShowRewardedVideo()
+	{
+		ShowOptions options = new ShowOptions();
+		options.resultCallback = HandleShowResult;
+
+		Advertisement.Show("rewardedVideo" , options);
+	}
+
+	public void UnityAds()
+	{
+		m_adsMenuObj.SetActive(true);
+		m_adsMenuVisible = true;
+		m_pauseMenuObj.SetActive(false);
 	}
 }
