@@ -34,6 +34,8 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+		Time.timeScale = 1;
+
 		Advertisement.Initialize("1607507" , false);
 
 		if(m_adsMenuNoButtonImage != null)
@@ -226,9 +228,12 @@ public class LevelManager : MonoBehaviour
 
 	void LevelComplete()
 	{
-		m_levelCompleteObj.SetActive(true);
-		m_levelCompleteVisible = true;
-		m_pauseButtonObj.SetActive(false);
+		if(m_currentSceneIndex >= 2)
+		{
+			m_levelCompleteObj.SetActive(true);
+			m_levelCompleteVisible = true;
+			m_pauseButtonObj.SetActive(false);		
+		}
 	}
 
     public void LoadNextLevel()

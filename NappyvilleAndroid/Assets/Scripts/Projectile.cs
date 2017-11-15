@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+	PlayerButton m_playerButton;
+	Vector2 m_positionOnScreen;
+
 	[SerializeField] AudioClip m_projectileSound;
 
 	[Range(0.0f , 100.0f)] [SerializeField] float m_flySpeed;
@@ -13,8 +16,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] GameObject m_currentTarget;
 
     [Range(0 , 1000)] [SerializeField] int m_attack;
-
-    Vector2 m_positionOnScreen;
 
 	void Update()
     {
@@ -44,6 +45,14 @@ public class Projectile : MonoBehaviour
             Debug.LogError("Sir Bhanu, there is no Defender target anymore to cause damage to");
         }
     }
+
+	void OnMouseDown()
+	{
+		LevelManager.m_notEnoughStarsText.enabled = false;
+
+		m_playerButton = FindObjectOfType<PlayerButton>();
+		m_playerButton.ResetSelection();
+	}
 
     void OnTriggerEnter2D(Collider2D tri2D)
     {
