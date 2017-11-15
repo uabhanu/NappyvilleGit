@@ -7,23 +7,25 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-	bool m_adsMenuVisible;
+	bool m_adsMenuVisible , m_levelCompleteVisible;
 
     [SerializeField] BhanuEnemy[] m_bhanuEnemiesLeft;
 
 	[SerializeField] BoxCollider2D m_gameCollider2D;
 
-	[SerializeField] Color m_adsMenuNoButtonColour , m_adsMenuTextColour, m_adsMenuTextOutlineColour , m_adsMenuYesButtonColour;
+	[SerializeField] Color m_adsMenuNoButtonColour , m_adsMenuTextColour, m_adsMenuTextOutlineColour , m_adsMenuYesButtonColour , m_continueButtonColour;
+
+	[SerializeField] Color m_levelCompleteTextColour , m_levelCompleteTextOutlineColour;
 
 	[SerializeField] float m_loadTime;
 
-	[SerializeField] Image m_adsMenuImage , m_adsMenuNoButtonImage , m_adsMenuYesButtonImage;
+	[SerializeField] Image m_adsMenuImage , m_adsMenuNoButtonImage , m_adsMenuYesButtonImage , m_continueButtonImage , m_levelCompleteImage;
 
-	[SerializeField] GameObject m_adsMenuObj , m_pauseMenuObj , m_quitMenuObj;
+	[SerializeField] GameObject m_adsMenuObj , m_levelCompleteObj , m_pauseButtonObj , m_pauseMenuObj , m_quitMenuObj;
 
-	[SerializeField] Outline m_adsMenuTextOutline;
+	[SerializeField] Outline m_adsMenuTextOutline , m_levelCompleteTextOutline;
 
-    [SerializeField] Text m_adsMenuText , m_gameTimeDisplay;
+    [SerializeField] Text m_adsMenuText , m_gameTimeDisplay , m_levelCompleteText;
 
     public float m_gameTime;
     public int m_currentSceneIndex;
@@ -40,6 +42,13 @@ public class LevelManager : MonoBehaviour
 			m_adsMenuTextColour = m_adsMenuText.color;
 			m_adsMenuTextOutlineColour = m_adsMenuTextOutline.effectColor;
 			m_adsMenuYesButtonColour = m_adsMenuYesButtonImage.color;	
+		}
+
+		if(m_continueButtonImage != null)
+		{
+			m_continueButtonColour = m_continueButtonImage.color;
+			m_levelCompleteTextColour = m_levelCompleteText.color;
+			m_levelCompleteTextOutlineColour = m_levelCompleteTextOutline.effectColor;
 		}
 
         m_currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -108,6 +117,40 @@ public class LevelManager : MonoBehaviour
 			}
 		}
 
+		if(m_levelCompleteVisible)
+		{
+			if(m_levelCompleteImage.fillAmount < 1)
+			{
+				m_levelCompleteImage.fillAmount += 0.01f;
+			}
+
+			if(m_levelCompleteImage.fillAmount >= 1)
+			{
+				if(m_levelCompleteTextColour.a < 1 && m_levelCompleteTextOutlineColour.a < 1)
+				{
+					m_levelCompleteTextColour.a += 0.01f;
+					m_levelCompleteText.color = m_levelCompleteTextColour;
+
+					m_levelCompleteTextOutlineColour.a += 0.01f;
+					m_levelCompleteTextOutline.effectColor = m_levelCompleteTextOutlineColour;
+				}
+
+				if(m_levelCompleteTextColour.a >= 1)
+				{
+					if(m_continueButtonColour.a < 1)
+					{
+						m_continueButtonColour.a += 0.05f;
+						m_continueButtonImage.color = m_continueButtonColour;
+					}
+
+					if(m_continueButtonColour.a >= 1)
+					{
+						Time.timeScale = 0;
+					}
+				}
+			}
+		}
+
         m_bhanuEnemiesLeft = FindObjectsOfType<BhanuEnemy>();
 
         if(m_currentSceneIndex > 1 && m_currentSceneIndex < 7)
@@ -122,7 +165,7 @@ public class LevelManager : MonoBehaviour
 
         if(m_bhanuEnemiesLeft.Length == 0 && m_totalEnemiesKilled >= m_enemyKillTarget)
         {
-			Invoke("LoadNextLevel" , m_loadTime);
+			LevelComplete();
         }
     }
 		
@@ -134,6 +177,19 @@ public class LevelManager : MonoBehaviour
 	public void AdsYes()
 	{
 		ShowRewardedVideo();
+	}
+
+	public void Continue()
+	{
+		if(m_currentSceneIndex < 6)
+		{
+			SceneManager.LoadScene(m_currentSceneIndex + 1);
+		}
+
+		else if(m_currentSceneIndex == 6)
+		{
+			SceneManager.LoadScene(m_currentSceneIndex + 2);
+		}
 	}
 
     public static void Disable(Text text)
@@ -166,6 +222,13 @@ public class LevelManager : MonoBehaviour
 			Debug.LogError("Video failed to show");
 			SceneManager.LoadScene("07Lose");
 		}
+	}
+
+	void LevelComplete()
+	{
+		m_levelCompleteObj.SetActive(true);
+		m_levelCompleteVisible = true;
+		m_pauseButtonObj.SetActive(false);
 	}
 
     public void LoadNextLevel()
@@ -258,6 +321,6 @@ public class LevelManager : MonoBehaviour
 	{
 		m_adsMenuObj.SetActive(true);
 		m_adsMenuVisible = true;
-		m_pauseMenuObj.SetActive(false);
+		m_pauseButtonObj.SetActive(false);
 	}
 }
