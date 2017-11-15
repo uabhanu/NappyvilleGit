@@ -324,8 +324,11 @@ public class LevelManager : MonoBehaviour
 
 	public void UnityAds()
 	{
-		m_adsMenuObj.SetActive(true);
-		m_adsMenuVisible = true;
-		m_pauseButtonObj.SetActive(false);
+		if(m_adsMenuObj != null)
+		{
+			m_adsMenuObj.SetActive(true);
+			m_adsMenuVisible = true;
+			m_pauseButtonObj.SetActive(false);	
+		}
 	}
 }

@@ -82,3 +82,6 @@ C:\Users\Parul\Desktop\NappyvilleGit\NappyvilleAndroid\obj\Debug\Assembly-CSharp
 C:\Users\Parul\Desktop\NappyvilleGit\NappyvilleAndroid\obj\Debug\Assembly-CSharp.pdb
 C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\UnityEngine.Advertisements.dll
 C:\Users\Parul\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\UnityEngine.Advertisements.dll
+C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\Facebook.Unity.dll
+C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\Facebook.Unity.Gameroom.dll
+C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\FacebookNamedPipeClient.dll
