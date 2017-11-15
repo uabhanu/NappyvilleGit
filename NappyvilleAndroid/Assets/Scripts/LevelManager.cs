@@ -152,6 +152,7 @@ public class LevelManager : MonoBehaviour
 		{
 			Debug.Log("Video completed - Offer a reward to the player");
 			SceneManager.LoadScene(m_currentSceneIndex);
+			Time.timeScale = 1;
 		}
 
 		else if(result == ShowResult.Skipped) 
