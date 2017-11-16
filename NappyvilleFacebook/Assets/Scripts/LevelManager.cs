@@ -1,31 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Advertisements;
+//using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-	bool m_adsMenuVisible , m_levelCompleteVisible;
+	bool m_levelCompleteVisible , m_loseLevelVisible;
 
     [SerializeField] BhanuEnemy[] m_bhanuEnemiesLeft;
 
 	[SerializeField] BoxCollider2D m_gameCollider2D;
 
-	[SerializeField] Color m_adsMenuNoButtonColour , m_adsMenuTextColour, m_adsMenuTextOutlineColour , m_adsMenuYesButtonColour , m_continueButtonColour;
-
-	[SerializeField] Color m_levelCompleteTextColour , m_levelCompleteTextOutlineColour;
+	[SerializeField] Color m_continueButtonColour , m_levelCompleteTextColour , m_levelCompleteTextOutlineColour , m_loseLevelTextColour , m_loseLevelTextOutlineColour , m_tryAgainButtonColour;
 
 	[SerializeField] float m_loadTime;
 
-	[SerializeField] Image m_adsMenuImage , m_adsMenuNoButtonImage , m_adsMenuYesButtonImage , m_continueButtonImage , m_levelCompleteImage;
+	[SerializeField] Image m_loseLevelImage , m_continueButtonImage , m_levelCompleteImage , m_tryAgainButtonImage;
 
-	[SerializeField] GameObject m_adsMenuObj , m_levelCompleteObj , m_pauseButtonObj , m_pauseMenuObj , m_quitMenuObj;
+	[SerializeField] GameObject m_loseLevelObj , m_levelCompleteObj , m_pauseButtonObj , m_pauseMenuObj , m_quitMenuObj;
 
-	[SerializeField] Outline m_adsMenuTextOutline , m_levelCompleteTextOutline;
+	[SerializeField] Outline m_loseLevelTextOutline , m_levelCompleteTextOutline;
 
-    [SerializeField] Text m_adsMenuText , m_gameTimeDisplay , m_levelCompleteText;
+    [SerializeField] Text m_loseLevelText , m_gameTimeDisplay , m_levelCompleteText;
 
     public float m_gameTime;
     public int m_currentSceneIndex;
@@ -36,21 +34,20 @@ public class LevelManager : MonoBehaviour
     {
 		Time.timeScale = 1;
 
-		Advertisement.Initialize("1607507" , false);
-
-		if(m_adsMenuNoButtonImage != null)
-		{
-			m_adsMenuNoButtonColour = m_adsMenuNoButtonImage.color;
-			m_adsMenuTextColour = m_adsMenuText.color;
-			m_adsMenuTextOutlineColour = m_adsMenuTextOutline.effectColor;
-			m_adsMenuYesButtonColour = m_adsMenuYesButtonImage.color;	
-		}
+		//Advertisement.Initialize("1607507" , false);
 
 		if(m_continueButtonImage != null)
 		{
 			m_continueButtonColour = m_continueButtonImage.color;
 			m_levelCompleteTextColour = m_levelCompleteText.color;
 			m_levelCompleteTextOutlineColour = m_levelCompleteTextOutline.effectColor;
+		}
+
+		if(m_tryAgainButtonImage != null)
+		{
+			m_tryAgainButtonColour = m_tryAgainButtonImage.color;
+			m_loseLevelTextColour = m_loseLevelText.color;
+			m_loseLevelTextOutlineColour = m_loseLevelTextOutline.effectColor;
 		}
 
         m_currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -82,36 +79,33 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-		if(m_adsMenuVisible)
+		if(m_loseLevelVisible)
 		{
-			if(m_adsMenuImage.fillAmount < 1)
+			if(m_loseLevelImage.fillAmount < 1)
 			{
-				m_adsMenuImage.fillAmount += 0.01f;
+				m_loseLevelImage.fillAmount += 0.01f;
 			}
 
-			if(m_adsMenuImage.fillAmount >= 1)
+			if(m_loseLevelImage.fillAmount >= 1)
 			{
-				if(m_adsMenuTextColour.a < 1 && m_adsMenuTextOutlineColour.a < 1)
+				if(m_loseLevelTextColour.a < 1 && m_loseLevelTextOutlineColour.a < 1)
 				{
-					m_adsMenuTextColour.a += 0.01f;
-					m_adsMenuText.color = m_adsMenuTextColour;
+					m_loseLevelTextColour.a += 0.01f;
+					m_loseLevelText.color = m_loseLevelTextColour;
 
-					m_adsMenuTextOutlineColour.a += 0.01f;
-					m_adsMenuTextOutline.effectColor = m_adsMenuTextOutlineColour;
+					m_loseLevelTextOutlineColour.a += 0.01f;
+					m_loseLevelTextOutline.effectColor = m_loseLevelTextOutlineColour;
 				}
 
-				if(m_adsMenuTextColour.a >= 1)
+				if(m_loseLevelTextColour.a >= 1)
 				{
-					if(m_adsMenuNoButtonColour.a < 1 && m_adsMenuYesButtonColour.a < 1)
+					if(m_tryAgainButtonColour.a < 1)
 					{
-						m_adsMenuNoButtonColour.a += 0.05f;
-						m_adsMenuNoButtonImage.color = m_adsMenuNoButtonColour;
-
-						m_adsMenuYesButtonColour.a += 0.05f;
-						m_adsMenuYesButtonImage.color = m_adsMenuYesButtonColour;
+						m_tryAgainButtonColour.a += 0.05f;
+						m_tryAgainButtonImage.color = m_tryAgainButtonColour;
 					}
 
-					if(m_adsMenuNoButtonColour.a >= 1)
+					if(m_tryAgainButtonColour.a >= 1)
 					{
 						Time.timeScale = 0;
 					}
@@ -171,15 +165,15 @@ public class LevelManager : MonoBehaviour
         }
     }
 		
-	public void AdsNo()
-	{
-		SceneManager.LoadScene("07Lose");
-	}
-
-	public void AdsYes()
-	{
-		ShowRewardedVideo();
-	}
+//	public void AdsNo()
+//	{
+//		SceneManager.LoadScene("07Lose");
+//	}
+//
+//	public void AdsYes()
+//	{
+//		ShowRewardedVideo();
+//	}
 
 	public void Continue()
 	{
@@ -204,27 +198,27 @@ public class LevelManager : MonoBehaviour
         text.enabled = true;
     }
 
-	void HandleShowResult (ShowResult result)
-	{
-		if(result == ShowResult.Finished) 
-		{
-			Debug.Log("Video completed - Offer a reward to the player");
-			SceneManager.LoadScene(m_currentSceneIndex);
-			Time.timeScale = 1;
-		}
-
-		else if(result == ShowResult.Skipped) 
-		{
-			Debug.LogWarning("Video was skipped - Do NOT reward the player");
-			SceneManager.LoadScene("07Lose");
-		}
-
-		else if(result == ShowResult.Failed) 
-		{
-			Debug.LogError("Video failed to show");
-			SceneManager.LoadScene("07Lose");
-		}
-	}
+//	void HandleShowResult (ShowResult result)
+//	{
+//		if(result == ShowResult.Finished) 
+//		{
+//			Debug.Log("Video completed - Offer a reward to the player");
+//			SceneManager.LoadScene(m_currentSceneIndex);
+//			Time.timeScale = 1;
+//		}
+//
+//		else if(result == ShowResult.Skipped) 
+//		{
+//			Debug.LogWarning("Video was skipped - Do NOT reward the player");
+//			SceneManager.LoadScene("07Lose");
+//		}
+//
+//		else if(result == ShowResult.Failed) 
+//		{
+//			Debug.LogError("Video failed to show");
+//			SceneManager.LoadScene("07Lose");
+//		}
+//	}
 
 	void LevelComplete()
 	{
@@ -258,6 +252,13 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(name);
     }
+
+	public void LoseLevel()
+	{
+		m_loseLevelObj.SetActive(true);
+		m_loseLevelVisible = true;
+		m_pauseButtonObj.SetActive(false);
+	}
 
 	public void Next() //Only for Testing
 	{
@@ -314,18 +315,16 @@ public class LevelManager : MonoBehaviour
 		Time.timeScale = 1;
 	}
 
-	void ShowRewardedVideo()
-	{
-		ShowOptions options = new ShowOptions();
-		options.resultCallback = HandleShowResult;
+//	void ShowRewardedVideo()
+//	{
+//		ShowOptions options = new ShowOptions();
+//		options.resultCallback = HandleShowResult;
+//
+//		Advertisement.Show("rewardedVideo" , options);
+//	}
 
-		Advertisement.Show("rewardedVideo" , options);
-	}
-
-	public void UnityAds()
+	public void TryAgain()
 	{
-		m_adsMenuObj.SetActive(true);
-		m_adsMenuVisible = true;
-		m_pauseButtonObj.SetActive(false);
+		SceneManager.LoadScene(2);
 	}
 }
