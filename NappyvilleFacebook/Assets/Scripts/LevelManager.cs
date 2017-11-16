@@ -222,7 +222,8 @@ public class LevelManager : MonoBehaviour
 
 	public void FBLogOut()
 	{
-		
+		Debug.Log("Facebook Logout");
+		FB.LogOut(); //Not Working
 	}
 
 	void FBOnHideUnity(bool isGameShown)
