@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using Facebook.Unity;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
 
 	[SerializeField] Image m_loseLevelImage , m_continueButtonImage , m_levelCompleteImage , m_tryAgainButtonImage;
 
-	[SerializeField] GameObject m_loseLevelObj , m_levelCompleteObj , m_pauseButtonObj , m_pauseMenuObj , m_quitMenuObj;
+	[SerializeField] GameObject m_fbLoggedInObj , m_fbLoggedOutObj , m_loseLevelObj , m_levelCompleteObj , m_pauseButtonObj , m_pauseMenuObj , m_quitMenuObj;
 
 	[SerializeField] Outline m_loseLevelTextOutline , m_levelCompleteTextOutline;
 
@@ -32,9 +32,9 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-		Time.timeScale = 1;
+		FB.Init(SetInit , OnHideUnity);
 
-		//Advertisement.Initialize("1607507" , false);
+		Time.timeScale = 1;
 
 		if(m_continueButtonImage != null)
 		{
@@ -164,17 +164,30 @@ public class LevelManager : MonoBehaviour
 			LevelComplete();
         }
     }
-		
-//	public void AdsNo()
-//	{
-//		SceneManager.LoadScene("07Lose");
-//	}
-//
-//	public void AdsYes()
-//	{
-//		ShowRewardedVideo();
-//	}
 
+	void AuthCallBack(IResult result)
+	{
+		if(result.Error != null) 
+		{
+			Debug.LogError("Sir Bhanu, there is an issue : " + result.Error);	
+		} 
+		else 
+		{
+			if(FB.IsLoggedIn) 
+			{
+				//Debug.Log("Player Logged in"); //If you get 400 error, it means the user token of https://developers.facebook.com/tools/accesstoken/?app_id=142429536402184 you noted down is incorrect which is easy to resolve so not to worry
+				m_fbLoggedInObj.SetActive(true);
+				m_fbLoggedOutObj.SetActive(false);
+			} 
+			else 
+			{
+				//Debug.LogError("Sir Bhanu, Player hasn't logged in on Facebook");	
+				m_fbLoggedInObj.SetActive(false);
+				m_fbLoggedOutObj.SetActive(true);
+			}
+		}
+	}
+		
 	public void Continue()
 	{
 		if(m_currentSceneIndex < 6)
@@ -198,28 +211,18 @@ public class LevelManager : MonoBehaviour
         text.enabled = true;
     }
 
-//	void HandleShowResult (ShowResult result)
-//	{
-//		if(result == ShowResult.Finished) 
-//		{
-//			Debug.Log("Video completed - Offer a reward to the player");
-//			SceneManager.LoadScene(m_currentSceneIndex);
-//			Time.timeScale = 1;
-//		}
-//
-//		else if(result == ShowResult.Skipped) 
-//		{
-//			Debug.LogWarning("Video was skipped - Do NOT reward the player");
-//			SceneManager.LoadScene("07Lose");
-//		}
-//
-//		else if(result == ShowResult.Failed) 
-//		{
-//			Debug.LogError("Video failed to show");
-//			SceneManager.LoadScene("07Lose");
-//		}
-//	}
+	public void FBLogin()
+	{
+		List<string> permissions = new List<string>();
+		permissions.Add("public_profile");
+		FB.LogInWithReadPermissions(permissions , AuthCallBack);
+	}
 
+	public void FBLogOut()
+	{
+		
+	}
+		
 	void LevelComplete()
 	{
 		if(m_currentSceneIndex >= 2)
@@ -263,6 +266,18 @@ public class LevelManager : MonoBehaviour
 	public void Next() //Only for Testing
 	{
 		SceneManager.LoadScene(m_currentSceneIndex + 1);
+	}
+
+	void OnHideUnity(bool isGameShown)
+	{
+		if(!isGameShown) 
+		{
+			Time.timeScale = 0;
+		} 
+		else 
+		{
+			Time.timeScale = 1;	
+		}
 	}
 
 	public void Pause()
@@ -315,14 +330,22 @@ public class LevelManager : MonoBehaviour
 		Time.timeScale = 1;
 	}
 
-//	void ShowRewardedVideo()
-//	{
-//		ShowOptions options = new ShowOptions();
-//		options.resultCallback = HandleShowResult;
-//
-//		Advertisement.Show("rewardedVideo" , options);
-//	}
-
+	void SetInit()
+	{
+		if(FB.IsLoggedIn) 
+		{
+			//Debug.Log("Player Logged in"); //If you get 400 error, it means the user token of https://developers.facebook.com/tools/accesstoken/?app_id=142429536402184 you noted down is incorrect which is easy to resolve so not to worry
+			m_fbLoggedInObj.SetActive(true);
+			m_fbLoggedOutObj.SetActive(false);
+		} 
+		else 
+		{
+			//Debug.LogError("Sir Bhanu, Player hasn't logged in on Facebook");	
+			m_fbLoggedInObj.SetActive(false);
+			m_fbLoggedOutObj.SetActive(true);
+		}
+	}
+		
 	public void TryAgain()
 	{
 		SceneManager.LoadScene(2);
