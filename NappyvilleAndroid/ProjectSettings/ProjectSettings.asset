@@ -609,7 +609,7 @@ PlayerSettings:
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
     UNet: 1
-  facebookSdkVersion: 7.10.1
+  facebookSdkVersion: plugin
   apiCompatibilityLevel: 2
   cloudProjectId: ad49ccb6-f06a-43a2-bb66-7e01f1bd442a
   projectName: GlitchGarden
