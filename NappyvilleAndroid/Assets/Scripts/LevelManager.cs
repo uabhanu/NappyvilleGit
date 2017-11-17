@@ -288,7 +288,7 @@ public class LevelManager : MonoBehaviour
 		if(result.Error == null)
 		{
 			//Debug.Log(result.ResultDictionary["first_name"]);
-			m_fbUsername.text =  "Hello " + result.ResultDictionary["first_name"];
+			m_fbUsername.text =  "Hi " + result.ResultDictionary["first_name"];
 		}
 	}
 
