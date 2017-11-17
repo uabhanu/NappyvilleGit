@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Facebook.Unity;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
@@ -19,13 +20,13 @@ public class LevelManager : MonoBehaviour
 
 	[SerializeField] float m_loadTime;
 
-	[SerializeField] Image m_adsMenuImage , m_adsMenuNoButtonImage , m_adsMenuYesButtonImage , m_continueButtonImage , m_levelCompleteImage;
+	[SerializeField] Image m_adsMenuImage , m_adsMenuNoButtonImage , m_adsMenuYesButtonImage , m_continueButtonImage , m_fbProfilePicImage , m_levelCompleteImage;
 
-	[SerializeField] GameObject m_adsMenuObj , m_levelCompleteObj , m_pauseButtonObj , m_pauseMenuObj , m_quitMenuObj;
+	[SerializeField] GameObject m_adsMenuObj , m_fbLoggedInObj , m_fbLoggedOutObj , m_levelCompleteObj , m_pauseButtonObj , m_pauseMenuObj , m_quitMenuObj;
 
 	[SerializeField] Outline m_adsMenuTextOutline , m_levelCompleteTextOutline;
 
-    [SerializeField] Text m_adsMenuText , m_gameTimeDisplay , m_levelCompleteText;
+	[SerializeField] Text m_adsMenuText , m_fbUsername , m_gameTimeDisplay , m_levelCompleteText;
 
     public float m_gameTime;
     public int m_currentSceneIndex;
@@ -34,6 +35,8 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+		FB.Init(FBSetInit , FBOnHideUnity);
+
 		Time.timeScale = 1;
 
 		Advertisement.Initialize("1607507" , false);
@@ -203,6 +206,91 @@ public class LevelManager : MonoBehaviour
     {
         text.enabled = true;
     }
+
+	void FBAuthCallBack(IResult result)
+	{
+		if(result.Error != null) 
+		{
+			Debug.LogError("Sir Bhanu, there is an issue : " + result.Error);	
+		} 
+		else 
+		{
+			if(FB.IsLoggedIn) 
+			{
+				//Debug.Log("Player Logged in"); //If you get 400 error, it means the user token of https://developers.facebook.com/tools/accesstoken/?app_id=142429536402184 you noted down is incorrect which is easy to resolve so not to worry
+				m_fbLoggedInObj.SetActive(true);
+				m_fbLoggedOutObj.SetActive(false);
+				FB.API("/me?fields=first_name" , HttpMethod.GET , FBUsernameDisplay);
+				FB.API("/me/picture?type=square&height=480&width=480" , HttpMethod.GET , FBProfilePicDisplay);
+			} 
+			else 
+			{
+				//Debug.LogError("Sir Bhanu, Player hasn't logged in on Facebook");	
+				m_fbLoggedInObj.SetActive(false);
+				m_fbLoggedOutObj.SetActive(true);
+			}
+		}
+	}
+
+	public void FBLogin()
+	{
+		List<string> permissions = new List<string>();
+		permissions.Add("public_profile");
+		FB.LogInWithReadPermissions(permissions , FBAuthCallBack);
+	}
+
+	public void FBLogOut()
+	{
+		Debug.Log("Facebook Logout");
+		FB.LogOut(); //Not Working
+	}
+
+	void FBOnHideUnity(bool isGameShown)
+	{
+		if(!isGameShown) 
+		{
+			Time.timeScale = 0;
+		} 
+		else 
+		{
+			Time.timeScale = 1;	
+		}
+	}
+
+	void FBProfilePicDisplay(IGraphResult gResult)
+	{
+		if(gResult.Texture != null)
+		{
+			m_fbProfilePicImage.sprite = Sprite.Create(gResult.Texture , new Rect(0 , 0 , 480 , 480) , new Vector2());
+		}
+	}
+
+	void FBSetInit()
+	{
+		if(FB.IsLoggedIn) 
+		{
+			//Debug.Log("Player Logged in"); //If you get 400 error, it means the user token of https://developers.facebook.com/tools/accesstoken/?app_id=142429536402184 you noted down is incorrect which is easy to resolve so not to worry
+			m_fbLoggedInObj.SetActive(true);
+			m_fbLoggedOutObj.SetActive(false);
+			FB.API("/me?fields=first_name" , HttpMethod.GET , FBUsernameDisplay);
+			FB.API("/me/picture?type=square&height=480&width=480" , HttpMethod.GET , FBProfilePicDisplay);
+		} 
+		else 
+		{
+			//Debug.LogError("Sir Bhanu, Player hasn't logged in on Facebook");	
+			m_fbLoggedInObj.SetActive(false);
+			m_fbLoggedOutObj.SetActive(true);
+		}
+	}
+
+	void FBUsernameDisplay(IResult result)
+	{
+		if(result.Error == null)
+		{
+			//Debug.Log(result.ResultDictionary["first_name"]);
+			m_fbUsername.text =  "Hello " + result.ResultDictionary["first_name"];
+		}
+	}
 
 	void HandleShowResult (ShowResult result)
 	{
