@@ -285,10 +285,6 @@ public class LevelManager : MonoBehaviour
 			m_levelCompleteVisible = true;
 			m_pauseButtonObj.SetActive (false);		
 		} 
-		else 
-		{
-			Debug.LogError("Sir Bhanu, Level Complete UI Doesn't Exist, Please check Inspector if it's assigned");	
-		}
 	}
 
     public void LoadNextLevel()
@@ -321,10 +317,6 @@ public class LevelManager : MonoBehaviour
 			m_loseLevelObj.SetActive(true);
 			m_loseLevelVisible = true;
 			m_pauseButtonObj.SetActive(false);	
-		}
-		else 
-		{
-			Debug.LogError("Sir Bhanu, Lose Level UI Doesn't Exist, Please check Inspector if it's assigned");	
 		}
 	}
 
