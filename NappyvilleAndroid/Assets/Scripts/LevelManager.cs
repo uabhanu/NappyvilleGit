@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] BhanuEnemy[] m_bhanuEnemiesLeft;
 
+	[SerializeField] bool m_loggedIn;
+
 	[SerializeField] BoxCollider2D m_gameCollider2D;
 
 	[SerializeField] Color m_adsMenuNoButtonColour , m_adsMenuTextColour, m_adsMenuTextOutlineColour , m_adsMenuYesButtonColour , m_continueButtonColour;
@@ -20,13 +22,13 @@ public class LevelManager : MonoBehaviour
 
 	[SerializeField] float m_loadTime;
 
-	[SerializeField] Image m_adsMenuImage , m_adsMenuNoButtonImage , m_adsMenuYesButtonImage , m_continueButtonImage , m_fbProfilePicImage , m_levelCompleteImage;
+	[SerializeField] Image m_adsMenuImage , m_adsMenuNoButtonImage , m_adsMenuYesButtonImage , m_continueButtonImage , m_fbProfilePicImage , m_levelCompleteImage , m_logInButtonImage;
 
-	[SerializeField] GameObject m_adsMenuObj , m_fbLoggedInObj , m_fbLoggedOutObj , m_levelCompleteObj , m_pauseButtonObj , m_pauseMenuObj , m_quitMenuObj;
+	[SerializeField] GameObject m_adsMenuObj , m_levelCompleteObj , m_pauseButtonObj , m_pauseMenuObj , m_quitMenuObj;
 
 	[SerializeField] Outline m_adsMenuTextOutline , m_levelCompleteTextOutline;
 
-	[SerializeField] Text m_adsMenuText , m_fbUsername , m_gameTimeDisplay , m_levelCompleteText;
+	[SerializeField] Text m_adsMenuText , m_fbUsername , m_gameTimeDisplay , m_levelCompleteText , m_noInternetText;
 
     public float m_gameTime;
     public int m_currentSceneIndex;
@@ -35,10 +37,14 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+		m_currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
 		if(m_currentSceneIndex == 1)
 		{
 			FB.Init(FBSetInit , FBOnHideUnity);	
 		}
+
+		m_loggedIn = false;
 
 		Time.timeScale = 1;
 
@@ -58,8 +64,6 @@ public class LevelManager : MonoBehaviour
 			m_levelCompleteTextColour = m_levelCompleteText.color;
 			m_levelCompleteTextOutlineColour = m_levelCompleteTextOutline.effectColor;
 		}
-
-        m_currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         if(m_currentSceneIndex > 1 && m_currentSceneIndex < 7)
         {
@@ -88,6 +92,13 @@ public class LevelManager : MonoBehaviour
         {
             return;
         }
+			
+		if(m_currentSceneIndex == 1 && !m_loggedIn)
+		{
+			m_logInButtonImage.enabled = true;
+			m_fbProfilePicImage.enabled = false;
+			m_fbUsername.enabled = false;
+		}
 
 		if(m_adsMenuVisible)
 		{
@@ -216,22 +227,22 @@ public class LevelManager : MonoBehaviour
 		if(result.Error != null) 
 		{
 			Debug.LogError("Sir Bhanu, there is an issue : " + result.Error);	
+			m_loggedIn = false;
+			m_noInternetText.enabled = true;
 		} 
 		else 
 		{
 			if(FB.IsLoggedIn) 
 			{
 				//Debug.Log("Player Logged in"); //If you get 400 error, it means the user token of https://developers.facebook.com/tools/accesstoken/?app_id=142429536402184 you noted down is incorrect which is easy to resolve so not to worry
-				m_fbLoggedInObj.SetActive(true);
-				m_fbLoggedOutObj.SetActive(false);
 				FB.API("/me?fields=first_name" , HttpMethod.GET , FBUsernameDisplay);
 				FB.API("/me/picture?type=square&height=480&width=480" , HttpMethod.GET , FBProfilePicDisplay);
+				m_loggedIn = true;
 			} 
 			else 
 			{
-				//Debug.LogError("Sir Bhanu, Player hasn't logged in on Facebook");	
-				m_fbLoggedInObj.SetActive(false);
-				m_fbLoggedOutObj.SetActive(true);
+				//Debug.LogError("Sir Bhanu, Player hasn't logged in on Facebook");
+				m_loggedIn = false;
 			}
 		}
 	}
@@ -266,6 +277,7 @@ public class LevelManager : MonoBehaviour
 		if(gResult.Texture != null)
 		{
 			m_fbProfilePicImage.sprite = Sprite.Create(gResult.Texture , new Rect(0 , 0 , 480 , 480) , new Vector2());
+			m_fbProfilePicImage.enabled = true;
 		}
 	}
 
@@ -274,16 +286,14 @@ public class LevelManager : MonoBehaviour
 		if(FB.IsLoggedIn) 
 		{
 			//Debug.Log("Player Logged in"); //If you get 400 error, it means the user token of https://developers.facebook.com/tools/accesstoken/?app_id=142429536402184 you noted down is incorrect which is easy to resolve so not to worry
-			m_fbLoggedInObj.SetActive(true);
-			m_fbLoggedOutObj.SetActive(false);
 			FB.API("/me?fields=first_name" , HttpMethod.GET , FBUsernameDisplay);
 			FB.API("/me/picture?type=square&height=480&width=480" , HttpMethod.GET , FBProfilePicDisplay);
+			m_loggedIn = true;
 		} 
 		else 
 		{
-			//Debug.LogError("Sir Bhanu, Player hasn't logged in on Facebook");	
-			m_fbLoggedInObj.SetActive(false);
-			m_fbLoggedOutObj.SetActive(true);
+			//Debug.LogError("Sir Bhanu, Player hasn't logged in on Facebook");
+			m_loggedIn = false;
 		}
 	}
 
@@ -292,7 +302,9 @@ public class LevelManager : MonoBehaviour
 		if(result.Error == null)
 		{
 			//Debug.Log(result.ResultDictionary["first_name"]);
+			m_logInButtonImage.enabled = false;
 			m_fbUsername.text =  "Hi " + result.ResultDictionary["first_name"];
+			m_fbUsername.enabled = true;
 		}
 	}
 
