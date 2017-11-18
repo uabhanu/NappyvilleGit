@@ -28,11 +28,14 @@ public class LevelManager : MonoBehaviour
     public float m_gameTime;
     public int m_currentSceneIndex;
     public int m_enemyKillTarget , m_totalEnemiesKilled = 0;
-    public static Text m_notEnoughStarsText;
+	public static Text m_notEnoughStarsText, m_playerSelectText;
 
     void Start()
     {
-		FB.Init(FBSetInit , FBOnHideUnity);
+		if(m_currentSceneIndex == 1)
+		{
+			FB.Init(FBSetInit , FBOnHideUnity);	
+		}
 
 		Time.timeScale = 1;
 
@@ -55,10 +58,11 @@ public class LevelManager : MonoBehaviour
         if(m_currentSceneIndex > 1 && m_currentSceneIndex < 7)
         {
 			m_notEnoughStarsText = GameObject.Find("NotEnoughStars").GetComponent<Text>();
+			m_playerSelectText = GameObject.Find("PlayerSelect").GetComponent<Text>();
             
 			if(m_gameTimeDisplay != null) 
 			{
-				m_gameTimeDisplay = GameObject.Find ("GameTimeDisplay").GetComponent<Text> ();
+				m_gameTimeDisplay = GameObject.Find("GameTimeDisplay").GetComponent<Text>();
 			} 
 			else 
 			{
@@ -275,11 +279,15 @@ public class LevelManager : MonoBehaviour
 		
 	void LevelComplete()
 	{
-		if(m_currentSceneIndex >= 2)
+		if(m_currentSceneIndex >= 2) 
 		{
-			m_levelCompleteObj.SetActive(true);
+			m_levelCompleteObj.SetActive (true);
 			m_levelCompleteVisible = true;
-			m_pauseButtonObj.SetActive(false);		
+			m_pauseButtonObj.SetActive (false);		
+		} 
+		else 
+		{
+			Debug.LogError("Sir Bhanu, Level Complete UI Doesn't Exist, Please check Inspector if it's assigned");	
 		}
 	}
 
@@ -308,9 +316,16 @@ public class LevelManager : MonoBehaviour
 
 	public void LoseLevel()
 	{
-		m_loseLevelObj.SetActive(true);
-		m_loseLevelVisible = true;
-		m_pauseButtonObj.SetActive(false);
+		if(m_loseLevelObj != null)
+		{
+			m_loseLevelObj.SetActive(true);
+			m_loseLevelVisible = true;
+			m_pauseButtonObj.SetActive(false);	
+		}
+		else 
+		{
+			Debug.LogError("Sir Bhanu, Lose Level UI Doesn't Exist, Please check Inspector if it's assigned");	
+		}
 	}
 
 	public void Next() //Only for Testing

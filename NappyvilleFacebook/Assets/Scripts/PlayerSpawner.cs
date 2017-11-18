@@ -51,6 +51,7 @@ public class PlayerSpawner : MonoBehaviour
         else
         {
             Debug.LogError("Sir Bhanu, You haven't selected any player yet");
+			LevelManager.Enable(LevelManager.m_playerSelectText);
         }
 	}
 

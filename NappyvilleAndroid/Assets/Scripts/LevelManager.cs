@@ -31,11 +31,14 @@ public class LevelManager : MonoBehaviour
     public float m_gameTime;
     public int m_currentSceneIndex;
     public int m_enemyKillTarget , m_totalEnemiesKilled = 0;
-    public static Text m_notEnoughStarsText;
+    public static Text m_notEnoughStarsText , m_selectPlayerText;
 
     void Start()
     {
-		FB.Init(FBSetInit , FBOnHideUnity);
+		if(m_currentSceneIndex == 1)
+		{
+			FB.Init(FBSetInit , FBOnHideUnity);	
+		}
 
 		Time.timeScale = 1;
 
@@ -61,10 +64,11 @@ public class LevelManager : MonoBehaviour
         if(m_currentSceneIndex > 1 && m_currentSceneIndex < 7)
         {
 			m_notEnoughStarsText = GameObject.Find("NotEnoughStars").GetComponent<Text>();
+			m_selectPlayerText = GameObject.Find("SelectPlayer").GetComponent<Text>();
             
 			if(m_gameTimeDisplay != null) 
 			{
-				m_gameTimeDisplay = GameObject.Find ("GameTimeDisplay").GetComponent<Text> ();
+				m_gameTimeDisplay = GameObject.Find("GameTimeDisplay").GetComponent<Text>();
 			} 
 			else 
 			{
@@ -322,6 +326,10 @@ public class LevelManager : MonoBehaviour
 			m_levelCompleteVisible = true;
 			m_pauseButtonObj.SetActive(false);		
 		}
+		else 
+		{
+			Debug.LogError("Sir Bhanu, Level Complete UI Doesn't Exist, Please check Inspector if it's assigned");
+		}
 	}
 
     public void LoadNextLevel()
@@ -412,11 +420,15 @@ public class LevelManager : MonoBehaviour
 
 	public void UnityAds()
 	{
-		if(m_adsMenuObj != null)
+		if(m_adsMenuObj != null) 
 		{
-			m_adsMenuObj.SetActive(true);
+			m_adsMenuObj.SetActive (true);
 			m_adsMenuVisible = true;
-			m_pauseButtonObj.SetActive(false);	
+			m_pauseButtonObj.SetActive (false);	
+		} 
+		else 
+		{
+			Debug.LogError("Sir Bhanu, Ads Menu Doesn't Exist, Please check Inspector if it's assigned");
 		}
 	}
 }
