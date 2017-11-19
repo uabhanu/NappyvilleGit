@@ -40,10 +40,16 @@ C:\Users\Parul\Desktop\NappyvilleGit\NappyvilleAndroid\obj\Debug\Assembly-CSharp
 C:\Users\Parul\Desktop\NappyvilleGit\NappyvilleAndroid\obj\Debug\Assembly-CSharp.dll
 C:\Users\Parul\Desktop\NappyvilleGit\NappyvilleAndroid\obj\Debug\Assembly-CSharp.pdb
 C:\Users\Parul\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\UnityEngine.Advertisements.dll
+C:\Users\Parul\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\Facebook.Unity.dll
+C:\Users\Parul\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\Facebook.Unity.Gameroom.dll
+C:\Users\Parul\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\FacebookNamedPipeClient.dll
 C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\Assembly-CSharp.dll
 C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\Facebook.Unity.dll
+C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\Facebook.Unity.Gameroom.dll
 C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\Facebook.Unity.Settings.dll
+C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\FacebookNamedPipeClient.dll
 C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\nunit.framework.dll
 C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\UnityEditor.dll
 C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\UnityEngine.Advertisements.dll
@@ -82,9 +88,3 @@ C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\UnityEngin
 C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\UnityEngine.SpatialTracking.xml
 C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\obj\Debug\Assembly-CSharp.dll
 C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\obj\Debug\Assembly-CSharp.pdb
-C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\Facebook.Unity.dll
-C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\Facebook.Unity.Gameroom.dll
-C:\Users\Bhanu\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\FacebookNamedPipeClient.dll
-C:\Users\Parul\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\Facebook.Unity.dll
-C:\Users\Parul\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\Facebook.Unity.Gameroom.dll
-C:\Users\Parul\Desktop\NappyvilleGit\NappyvilleAndroid\Temp\bin\Debug\FacebookNamedPipeClient.dll

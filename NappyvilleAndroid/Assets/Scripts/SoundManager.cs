@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MusicManager : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
-    AudioSource m_audioSource;
     int m_level;
 
-    [SerializeField] AudioClip[] m_soundsArray;
+    public AudioClip[] m_soundsArray;
+	public static AudioSource m_audioSource;
+	public static bool m_mute;
 
     void Awake()
     {

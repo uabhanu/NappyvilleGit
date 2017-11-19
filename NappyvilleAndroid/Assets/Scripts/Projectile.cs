@@ -5,9 +5,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
 	PlayerButton m_playerButton;
+	SoundManager m_soundManager;
 	Vector2 m_positionOnScreen;
-
-	[SerializeField] AudioClip m_projectileSound;
 
 	[Range(0.0f , 100.0f)] [SerializeField] float m_flySpeed;
 
@@ -16,6 +15,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] GameObject m_currentTarget;
 
     [Range(0 , 1000)] [SerializeField] int m_attack;
+
+	[SerializeField] int m_projectileID;
 
 	void Update()
     {
@@ -36,7 +37,12 @@ public class Projectile : MonoBehaviour
     {
         if(m_currentTarget != null)
         {
-			AudioSource.PlayClipAtPoint(m_projectileSound , transform.position , m_volume);
+			if(!SoundManager.m_mute)
+			{
+				m_soundManager = FindObjectOfType<SoundManager>();
+				AudioSource.PlayClipAtPoint(m_soundManager.m_soundsArray[m_projectileID] , transform.position , m_volume);	
+			}
+
 			m_currentTarget.gameObject.GetComponent<BhanuEnemy>().m_hitpoints -= m_attack;
             Destroy(gameObject);
         }

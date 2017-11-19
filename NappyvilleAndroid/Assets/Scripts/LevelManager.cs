@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
 
 	[SerializeField] float m_loadTime;
 
-	[SerializeField] Image m_adsMenuImage , m_adsMenuNoButtonImage , m_adsMenuYesButtonImage , m_continueButtonImage , m_fbProfilePicImage , m_levelCompleteImage , m_logInButtonImage;
+	[SerializeField] Image m_adsMenuImage , m_adsMenuNoButtonImage , m_adsMenuYesButtonImage , m_continueButtonImage , m_fbProfilePicImage , m_levelCompleteImage , m_logInButtonImage , m_muteOffButtonImage , m_muteOnButtonImage;
 
 	[SerializeField] GameObject m_adsMenuObj , m_levelCompleteObj , m_pauseButtonObj , m_pauseMenuObj , m_quitMenuObj;
 
@@ -362,6 +362,28 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(name);
     }
+
+	public void MuteOff()
+	{
+		if(SoundManager.m_audioSource)
+		{
+			SoundManager.m_audioSource.Play();
+			SoundManager.m_mute = false;
+			m_muteOffButtonImage.enabled = false;
+			m_muteOnButtonImage.enabled = true;	
+		}
+	}
+
+	public void MuteOn()
+	{
+		if(SoundManager.m_audioSource)
+		{
+			SoundManager.m_audioSource.Pause();
+			SoundManager.m_mute = true;
+			m_muteOffButtonImage.enabled = true;
+			m_muteOnButtonImage.enabled = false;	
+		}
+	}
 
 	public void Next() //Only for Testing
 	{
