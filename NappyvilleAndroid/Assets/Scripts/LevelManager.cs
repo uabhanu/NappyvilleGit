@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-	bool m_adsMenuVisible , m_levelCompleteVisible;
+	bool m_adsMenuVisible , m_levelCompleteVisible , m_loseMenuVisible;
 
     [SerializeField] BhanuEnemy[] m_bhanuEnemiesLeft;
 
@@ -16,19 +16,21 @@ public class LevelManager : MonoBehaviour
 
 	[SerializeField] BoxCollider2D m_gameCollider2D;
 
-	[SerializeField] Color m_adsMenuNoButtonColour , m_adsMenuTextColour, m_adsMenuTextOutlineColour , m_adsMenuYesButtonColour , m_continueButtonColour;
+	[SerializeField] Color m_adsMenuNoButtonColour , m_adsMenuTextColour, m_adsMenuTextOutlineColour , m_adsMenuYesButtonColour , m_continueButtonColour , m_fbLikeButtonColour , m_fbShareButtonColour;
 
-	[SerializeField] Color m_levelCompleteTextColour , m_levelCompleteTextOutlineColour;
+	[SerializeField] Color m_levelCompleteTextColour , m_levelCompleteTextOutlineColour , m_loseMenuNoButtonColour , m_loseMenuYesButtonColour , m_loseMenuTextColour , m_loseMenuTextOutlineColour;
 
 	[SerializeField] float m_loadTime;
 
-	[SerializeField] Image m_adsMenuImage , m_adsMenuNoButtonImage , m_adsMenuYesButtonImage , m_continueButtonImage , m_fbProfilePicImage , m_levelCompleteImage , m_logInButtonImage , m_muteOffButtonImage , m_muteOnButtonImage;
+	[SerializeField] Image m_adsMenuImage , m_adsMenuNoButtonImage , m_adsMenuYesButtonImage , m_continueButtonImage , m_fbLikeButtonImage , m_fbProfilePicImage , m_fbShareButtonImage , m_levelCompleteImage , m_logInButtonImage; 
 
-	[SerializeField] GameObject m_adsMenuObj , m_levelCompleteObj , m_pauseButtonObj , m_pauseMenuObj , m_quitMenuObj;
+	[SerializeField] Image m_loseMenuImage , m_loseMenuNoButtonImage , m_loseMenuYesButtonImage , m_muteOffButtonImage , m_muteOnButtonImage;
 
-	[SerializeField] Outline m_adsMenuTextOutline , m_levelCompleteTextOutline;
+	[SerializeField] GameObject m_adsMenuObj , m_levelCompleteObj , m_loseMenuObj , m_pauseButtonObj , m_pauseMenuObj , m_quitMenuObj;
 
-	[SerializeField] Text m_adsMenuText , m_fbUsername , m_gameTimeDisplay , m_levelCompleteText , m_noInternetText;
+	[SerializeField] Outline m_adsMenuTextOutline , m_levelCompleteTextOutline , m_loseMenuTextOutline;
+
+	[SerializeField] Text m_adsMenuText , m_fbUsername , m_gameTimeDisplay , m_levelCompleteText , m_loseMenuText , m_noInternetText;
 
     public float m_gameTime;
     public int m_currentSceneIndex;
@@ -61,8 +63,18 @@ public class LevelManager : MonoBehaviour
 		if(m_continueButtonImage != null)
 		{
 			m_continueButtonColour = m_continueButtonImage.color;
+			m_fbLikeButtonColour = m_fbLikeButtonImage.color;
+			m_fbShareButtonColour = m_fbShareButtonImage.color;
 			m_levelCompleteTextColour = m_levelCompleteText.color;
 			m_levelCompleteTextOutlineColour = m_levelCompleteTextOutline.effectColor;
+		}
+
+		if(m_loseMenuNoButtonImage != null)
+		{
+			m_loseMenuNoButtonColour = m_loseMenuNoButtonImage.color;
+			m_loseMenuTextColour = m_loseMenuText.color;
+			m_loseMenuTextOutlineColour = m_loseMenuTextOutline.effectColor;
+			m_loseMenuYesButtonColour = m_loseMenuYesButtonImage.color;
 		}
 
         if(m_currentSceneIndex > 1 && m_currentSceneIndex < 7)
@@ -163,7 +175,59 @@ public class LevelManager : MonoBehaviour
 						m_continueButtonImage.color = m_continueButtonColour;
 					}
 
+					if(m_fbLikeButtonColour.a < 1)
+					{
+						m_fbLikeButtonColour.a += 0.05f;
+						m_fbLikeButtonImage.color = m_fbLikeButtonColour;
+					}
+
+					if(m_fbShareButtonColour.a < 1)
+					{
+						m_fbShareButtonColour.a += 0.05f;
+						m_fbShareButtonImage.color = m_fbShareButtonColour;
+					}
+
 					if(m_continueButtonColour.a >= 1)
+					{
+						Time.timeScale = 0;
+					}
+				}
+			}
+		}
+
+		if(m_loseMenuVisible)
+		{
+			if(m_loseMenuImage.fillAmount < 1)
+			{
+				m_loseMenuImage.fillAmount += 0.01f;
+			}
+
+			if(m_loseMenuImage.fillAmount >= 1)
+			{
+				if(m_loseMenuTextColour.a < 1 && m_loseMenuTextOutlineColour.a < 1)
+				{
+					m_loseMenuTextColour.a += 0.01f;
+					m_loseMenuText.color = m_loseMenuTextColour;
+
+					m_loseMenuTextOutlineColour.a += 0.01f;
+					m_loseMenuTextOutline.effectColor = m_loseMenuTextOutlineColour;
+				}
+
+				if(m_loseMenuTextColour.a >= 1)
+				{
+					if(m_loseMenuNoButtonColour.a < 1)
+					{
+						m_loseMenuNoButtonColour.a += 0.05f;
+						m_loseMenuNoButtonImage.color = m_loseMenuNoButtonColour;
+					}
+
+					if(m_loseMenuYesButtonColour.a < 1)
+					{
+						m_loseMenuYesButtonColour.a += 0.05f;
+						m_loseMenuYesButtonImage.color = m_loseMenuYesButtonColour;
+					}
+
+					if(m_loseMenuNoButtonColour.a >= 1)
 					{
 						Time.timeScale = 0;
 					}
@@ -247,6 +311,11 @@ public class LevelManager : MonoBehaviour
 		}
 	}
 
+	public void FBLike()
+	{
+		
+	}
+
 	public void FBLogin()
 	{
 		List<string> permissions = new List<string>();
@@ -297,6 +366,11 @@ public class LevelManager : MonoBehaviour
 		}
 	}
 
+	public void FBShare()
+	{
+		
+	}
+
 	void FBUsernameDisplay(IResult result)
 	{
 		if(result.Error == null)
@@ -332,11 +406,13 @@ public class LevelManager : MonoBehaviour
 
 	void LevelComplete()
 	{
-		if(m_currentSceneIndex >= 2)
+		if(m_levelCompleteObj != null)
 		{
 			m_levelCompleteObj.SetActive(true);
 			m_levelCompleteVisible = true;
-			m_pauseButtonObj.SetActive(false);		
+			m_muteOffButtonImage.enabled = false;
+			m_muteOnButtonImage.enabled = false;
+			m_pauseButtonObj.SetActive(false);			
 		}
 	}
 
@@ -362,6 +438,26 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(name);
     }
+
+	public void Lose()
+	{
+		if(m_loseMenuObj != null) 
+		{
+			m_loseMenuObj.SetActive(true);
+			m_loseMenuVisible = true;
+			m_pauseButtonObj.SetActive(false);	
+		}
+	}
+
+	public void LoseNo()
+	{
+		SceneManager.LoadScene("07Lose");
+	}
+
+	public void LoseYes()
+	{
+		SceneManager.LoadScene(m_currentSceneIndex);
+	}
 
 	public void MuteOff()
 	{
@@ -411,6 +507,7 @@ public class LevelManager : MonoBehaviour
 		} 
 		else 
 		{
+			Debug.Log("QuitButton Pressed");
 			Application.Quit();
 		}
 	}
@@ -423,8 +520,7 @@ public class LevelManager : MonoBehaviour
 
 	public void QuitYes()
 	{
-		Debug.Log("QuitButton Pressed");
-		Application.Quit();
+		SceneManager.LoadScene("01Start");
 	}
 
 	public void Restart()
@@ -452,9 +548,9 @@ public class LevelManager : MonoBehaviour
 	{
 		if(m_adsMenuObj != null) 
 		{
-			m_adsMenuObj.SetActive (true);
+			m_adsMenuObj.SetActive(true);
 			m_adsMenuVisible = true;
-			m_pauseButtonObj.SetActive (false);	
+			m_pauseButtonObj.SetActive(false);	
 		} 
 	}
 }

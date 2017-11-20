@@ -167,7 +167,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d222d1e7f6e01bc4190163fcdee45d1c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c9c4ebc0226c584089c6f2b648f2270, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -258,7 +258,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 183356647}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -420, y: 392.9069, z: 0}
+  m_LocalPosition: {x: -420, y: 392.9592, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 373882410}
@@ -347,7 +347,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 221445311}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 700, y: -349.9069, z: 0}
+  m_LocalPosition: {x: 700, y: -349.9592, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 373882410}
@@ -525,8 +525,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 373882406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 537, y: 302, z: 0}
-  m_LocalScale: {x: 0.67125, y: 0.67125, z: 0.67125}
+  m_LocalPosition: {x: 612.5, y: 344.5, z: 0}
+  m_LocalScale: {x: 0.765625, y: 0.765625, z: 0.765625}
   m_Children:
   - {fileID: 674492593}
   - {fileID: 221445312}
@@ -868,6 +868,8 @@ MonoBehaviour:
   m_adsMenuTextOutlineColour: {r: 0, g: 0, b: 0, a: 0}
   m_adsMenuYesButtonColour: {r: 0, g: 0, b: 0, a: 0}
   m_continueButtonColour: {r: 0, g: 0, b: 0, a: 0}
+  m_fbLikeButtonColour: {r: 0, g: 0, b: 0, a: 0}
+  m_fbShareButtonColour: {r: 0, g: 0, b: 0, a: 0}
   m_levelCompleteTextColour: {r: 0, g: 0, b: 0, a: 0}
   m_levelCompleteTextOutlineColour: {r: 0, g: 0, b: 0, a: 0}
   m_loadTime: 0
@@ -875,9 +877,13 @@ MonoBehaviour:
   m_adsMenuNoButtonImage: {fileID: 0}
   m_adsMenuYesButtonImage: {fileID: 0}
   m_continueButtonImage: {fileID: 0}
+  m_fbLikeButtonImage: {fileID: 0}
   m_fbProfilePicImage: {fileID: 397715119}
+  m_fbShareButtonImage: {fileID: 0}
   m_levelCompleteImage: {fileID: 0}
   m_logInButtonImage: {fileID: 153535447}
+  m_muteOffButtonImage: {fileID: 0}
+  m_muteOnButtonImage: {fileID: 0}
   m_adsMenuObj: {fileID: 0}
   m_levelCompleteObj: {fileID: 0}
   m_pauseButtonObj: {fileID: 0}
@@ -919,7 +925,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1150928514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 700, y: 349.9069, z: 0}
+  m_LocalPosition: {x: 700, y: 349.9592, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 373882410}

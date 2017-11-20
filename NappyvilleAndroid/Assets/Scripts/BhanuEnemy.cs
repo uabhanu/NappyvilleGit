@@ -32,7 +32,14 @@ public class BhanuEnemy : MonoBehaviour
 
         if(transform.position.x < 0.4f)
         {
-			m_levelManager.UnityAds();
+			if(m_levelManager.m_currentSceneIndex == 2) 
+			{
+				m_levelManager.Lose ();
+			} 
+			else 
+			{
+				m_levelManager.UnityAds();	
+			}
         }
 
         StartCoroutine("DieRoutine");

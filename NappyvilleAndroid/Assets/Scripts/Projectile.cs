@@ -39,8 +39,11 @@ public class Projectile : MonoBehaviour
         {
 			if(!SoundManager.m_mute)
 			{
-				m_soundManager = FindObjectOfType<SoundManager>();
-				AudioSource.PlayClipAtPoint(m_soundManager.m_soundsArray[m_projectileID] , transform.position , m_volume);	
+				if(m_soundManager != null)
+				{
+					m_soundManager = FindObjectOfType<SoundManager>();
+					AudioSource.PlayClipAtPoint(m_soundManager.m_soundsArray[m_projectileID] , transform.position , m_volume);	
+				}
 			}
 
 			m_currentTarget.gameObject.GetComponent<BhanuEnemy>().m_hitpoints -= m_attack;
