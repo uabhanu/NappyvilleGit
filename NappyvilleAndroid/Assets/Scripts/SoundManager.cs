@@ -23,6 +23,6 @@ public class SoundManager : MonoBehaviour
         m_audioSource = GetComponent<AudioSource>();
         m_audioSource.clip = currentLevelMusic;
         m_audioSource.loop = true;
-        m_audioSource.Play();
+		m_audioSource.Play();	
 	}
 }

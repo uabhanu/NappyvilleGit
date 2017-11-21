@@ -15,7 +15,7 @@ public class FacebookManager : MonoBehaviour
 
 	[SerializeField] Image m_inviteButtonImage , m_logInButtonImage , m_profilePicImage , m_shareButtonImage;
 
-	[SerializeField] string m_appLinkURL;
+	[SerializeField] string m_appLinkURL = "http://google.co.uk";
 
 	[SerializeField] Text m_noInternetText , m_username;
 
