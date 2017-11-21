@@ -666,7 +666,7 @@ GameObject:
   - component: {fileID: 524231550}
   - component: {fileID: 524231552}
   m_Layer: 5
-  m_Name: FBLikeButton
+  m_Name: InviteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -680,7 +680,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 524231548}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -670, y: -380, z: 0}
+  m_LocalPosition: {x: -630, y: -350, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 252974963}
@@ -688,8 +688,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 130, y: 70}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 170, y: 100}
+  m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &524231550
 CanvasRenderer:
@@ -738,8 +738,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2062929692}
-        m_MethodName: FBLike
+      - m_Target: {fileID: 548270438}
+        m_MethodName: Invite
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -771,7 +771,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a8a434c18f87d694591f3fdb9f53de9e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df6e0cc7fc0ecd641822475382493c27, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -893,6 +893,57 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 803, y: 134.5}
   m_EdgeRadius: 0
+--- !u!1 &548270437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1126301473577164, guid: 9c5f13a8bb1c2ad4c83f51f49a0f1d17,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 548270439}
+  - component: {fileID: 548270438}
+  m_Layer: 0
+  m_Name: FacebookManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &548270438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 548270437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81979b7336ba4d343a87d95b8678dc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_loggedIn: 0
+  m_inviteButtonColour: {r: 0, g: 0, b: 0, a: 0}
+  m_inviteButtonImage: {fileID: 524231552}
+  m_logInButtonImage: {fileID: 0}
+  m_profilePicImage: {fileID: 0}
+  m_shareButtonImage: {fileID: 1396622756}
+  m_noInternetText: {fileID: 0}
+  m_username: {fileID: 0}
+  m_shareButtonColour: {r: 0, g: 0, b: 0, a: 0}
+--- !u!4 &548270439
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4638183102908234, guid: 9c5f13a8bb1c2ad4c83f51f49a0f1d17,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 548270437}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &600706651
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,7 +2315,7 @@ GameObject:
   - component: {fileID: 1396622754}
   - component: {fileID: 1396622756}
   m_Layer: 5
-  m_Name: FBShareButton
+  m_Name: ShareButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2278,15 +2329,15 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1396622752}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 670, y: -380, z: 0}
-  m_LocalScale: {x: 1.0000066, y: 1.0000066, z: 0}
+  m_LocalPosition: {x: 680, y: -350, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 252974963}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -130, y: 70}
+  m_AnchoredPosition: {x: -120, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1396622754
@@ -2336,8 +2387,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2062929692}
-        m_MethodName: FBLike
+      - m_Target: {fileID: 548270438}
+        m_MethodName: Share
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4300,31 +4351,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bhanuEnemiesLeft: []
-  m_loggedIn: 0
   m_gameCollider2D: {fileID: 537830045}
   m_adsMenuNoButtonColour: {r: 0, g: 0, b: 0, a: 0}
   m_adsMenuTextColour: {r: 0, g: 0, b: 0, a: 0}
   m_adsMenuTextOutlineColour: {r: 0, g: 0, b: 0, a: 0}
   m_adsMenuYesButtonColour: {r: 0, g: 0, b: 0, a: 0}
-  m_continueButtonColour: {r: 0, g: 0, b: 0, a: 0}
-  m_fbLikeButtonColour: {r: 0, g: 0, b: 0, a: 0}
-  m_fbShareButtonColour: {r: 0, g: 0, b: 0, a: 0}
   m_levelCompleteTextColour: {r: 0, g: 0, b: 0, a: 0}
   m_levelCompleteTextOutlineColour: {r: 0, g: 0, b: 0, a: 0}
   m_loseMenuNoButtonColour: {r: 0, g: 0, b: 0, a: 0}
   m_loseMenuYesButtonColour: {r: 0, g: 0, b: 0, a: 0}
   m_loseMenuTextColour: {r: 0, g: 0, b: 0, a: 0}
   m_loseMenuTextOutlineColour: {r: 0, g: 0, b: 0, a: 0}
+  m_facebookManager: {fileID: 0}
   m_loadTime: 1
   m_adsMenuImage: {fileID: 0}
   m_adsMenuNoButtonImage: {fileID: 0}
   m_adsMenuYesButtonImage: {fileID: 0}
   m_continueButtonImage: {fileID: 76876222}
-  m_fbLikeButtonImage: {fileID: 524231552}
-  m_fbProfilePicImage: {fileID: 0}
-  m_fbShareButtonImage: {fileID: 1396622756}
   m_levelCompleteImage: {fileID: 252974965}
-  m_logInButtonImage: {fileID: 0}
   m_loseMenuImage: {fileID: 332457800}
   m_loseMenuNoButtonImage: {fileID: 1108918386}
   m_loseMenuYesButtonImage: {fileID: 1923923080}
@@ -4340,11 +4384,9 @@ MonoBehaviour:
   m_levelCompleteTextOutline: {fileID: 87046035}
   m_loseMenuTextOutline: {fileID: 1208475482}
   m_adsMenuText: {fileID: 0}
-  m_fbUsername: {fileID: 0}
   m_gameTimeDisplay: {fileID: 0}
   m_levelCompleteText: {fileID: 87046032}
   m_loseMenuText: {fileID: 1208475481}
-  m_noInternetText: {fileID: 0}
   m_gameTime: 0
   m_currentSceneIndex: 0
   m_enemyKillTarget: 5

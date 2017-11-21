@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 153535448}
   - component: {fileID: 153535447}
   m_Layer: 5
-  m_Name: FBLogInButton
+  m_Name: LogInButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,8 +220,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 885247103}
-        m_MethodName: FBLogin
+      - m_Target: {fileID: 781740722}
+        m_MethodName: Login
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -848,6 +848,49 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 674492592}
+--- !u!1 &781740721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1126301473577164, guid: 9c5f13a8bb1c2ad4c83f51f49a0f1d17,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 781740723}
+  - component: {fileID: 781740722}
+  m_Layer: 0
+  m_Name: FacebookManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &781740722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 781740721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81979b7336ba4d343a87d95b8678dc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_loggedIn: 0
+--- !u!4 &781740723
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4638183102908234, guid: 9c5f13a8bb1c2ad4c83f51f49a0f1d17,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 781740721}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &885247103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -872,6 +915,10 @@ MonoBehaviour:
   m_fbShareButtonColour: {r: 0, g: 0, b: 0, a: 0}
   m_levelCompleteTextColour: {r: 0, g: 0, b: 0, a: 0}
   m_levelCompleteTextOutlineColour: {r: 0, g: 0, b: 0, a: 0}
+  m_loseMenuNoButtonColour: {r: 0, g: 0, b: 0, a: 0}
+  m_loseMenuYesButtonColour: {r: 0, g: 0, b: 0, a: 0}
+  m_loseMenuTextColour: {r: 0, g: 0, b: 0, a: 0}
+  m_loseMenuTextOutlineColour: {r: 0, g: 0, b: 0, a: 0}
   m_loadTime: 0
   m_adsMenuImage: {fileID: 0}
   m_adsMenuNoButtonImage: {fileID: 0}
@@ -882,19 +929,25 @@ MonoBehaviour:
   m_fbShareButtonImage: {fileID: 0}
   m_levelCompleteImage: {fileID: 0}
   m_logInButtonImage: {fileID: 153535447}
+  m_loseMenuImage: {fileID: 0}
+  m_loseMenuNoButtonImage: {fileID: 0}
+  m_loseMenuYesButtonImage: {fileID: 0}
   m_muteOffButtonImage: {fileID: 0}
   m_muteOnButtonImage: {fileID: 0}
   m_adsMenuObj: {fileID: 0}
   m_levelCompleteObj: {fileID: 0}
+  m_loseMenuObj: {fileID: 0}
   m_pauseButtonObj: {fileID: 0}
   m_pauseMenuObj: {fileID: 0}
   m_quitMenuObj: {fileID: 0}
   m_adsMenuTextOutline: {fileID: 0}
   m_levelCompleteTextOutline: {fileID: 0}
+  m_loseMenuTextOutline: {fileID: 0}
   m_adsMenuText: {fileID: 0}
   m_fbUsername: {fileID: 1281931217}
   m_gameTimeDisplay: {fileID: 0}
   m_levelCompleteText: {fileID: 0}
+  m_loseMenuText: {fileID: 0}
   m_noInternetText: {fileID: 1783228319}
   m_gameTime: 0
   m_currentSceneIndex: 0

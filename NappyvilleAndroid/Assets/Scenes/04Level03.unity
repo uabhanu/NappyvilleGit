@@ -2365,6 +2365,57 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1008052580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1126301473577164, guid: 9c5f13a8bb1c2ad4c83f51f49a0f1d17,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1008052582}
+  - component: {fileID: 1008052581}
+  m_Layer: 0
+  m_Name: FacebookManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1008052581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1008052580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81979b7336ba4d343a87d95b8678dc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_loggedIn: 0
+  m_inviteButtonColour: {r: 0, g: 0, b: 0, a: 0}
+  m_inviteButtonImage: {fileID: 2115426280}
+  m_logInButtonImage: {fileID: 0}
+  m_profilePicImage: {fileID: 0}
+  m_shareButtonImage: {fileID: 1542720922}
+  m_noInternetText: {fileID: 0}
+  m_username: {fileID: 0}
+  m_shareButtonColour: {r: 0, g: 0, b: 0, a: 0}
+--- !u!4 &1008052582
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4638183102908234, guid: 9c5f13a8bb1c2ad4c83f51f49a0f1d17,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1008052580}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1045199031
 GameObject:
   m_ObjectHideFlags: 0
@@ -2615,132 +2666,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1206058661}
---- !u!1 &1211054356
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1257013144624760, guid: 6ef472b6510946f408dd7f9b5fd3d549,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1211054360}
-  - component: {fileID: 1211054359}
-  - component: {fileID: 1211054358}
-  - component: {fileID: 1211054357}
-  m_Layer: 5
-  m_Name: FBShareButton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1211054357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114873880764676018, guid: 6ef472b6510946f408dd7f9b5fd3d549,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1211054356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 33c98e92780414240be84f102024692b, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1211054358
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 222008285722489564, guid: 6ef472b6510946f408dd7f9b5fd3d549,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1211054356}
---- !u!114 &1211054359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114733660602641458, guid: 6ef472b6510946f408dd7f9b5fd3d549,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1211054356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.50980395, b: 0, a: 1}
-    m_PressedColor: {r: 1, g: 0, b: 0, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1211054357}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1286319350}
-        m_MethodName: FBShare
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 01Start
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!224 &1211054360
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 224196644468043530, guid: 6ef472b6510946f408dd7f9b5fd3d549,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1211054356}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 670, y: -380, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
-  m_Children: []
-  m_Father: {fileID: 1715433470}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -130, y: 70}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1248743102
 GameObject:
   m_ObjectHideFlags: 0
@@ -2913,41 +2838,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bhanuEnemiesLeft: []
-  m_loggedIn: 0
   m_gameCollider2D: {fileID: 1453316083}
   m_adsMenuNoButtonColour: {r: 0, g: 0, b: 0, a: 0}
   m_adsMenuTextColour: {r: 0, g: 0, b: 0, a: 0}
   m_adsMenuTextOutlineColour: {r: 0, g: 0, b: 0, a: 0}
   m_adsMenuYesButtonColour: {r: 0, g: 0, b: 0, a: 0}
-  m_continueButtonColour: {r: 0, g: 0, b: 0, a: 0}
-  m_fbLikeButtonColour: {r: 0, g: 0, b: 0, a: 0}
-  m_fbShareButtonColour: {r: 0, g: 0, b: 0, a: 0}
   m_levelCompleteTextColour: {r: 0, g: 0, b: 0, a: 0}
   m_levelCompleteTextOutlineColour: {r: 0, g: 0, b: 0, a: 0}
+  m_loseMenuNoButtonColour: {r: 0, g: 0, b: 0, a: 0}
+  m_loseMenuYesButtonColour: {r: 0, g: 0, b: 0, a: 0}
+  m_loseMenuTextColour: {r: 0, g: 0, b: 0, a: 0}
+  m_loseMenuTextOutlineColour: {r: 0, g: 0, b: 0, a: 0}
+  m_facebookManager: {fileID: 0}
   m_loadTime: 1
   m_adsMenuImage: {fileID: 758346165}
   m_adsMenuNoButtonImage: {fileID: 1637037906}
   m_adsMenuYesButtonImage: {fileID: 943829872}
   m_continueButtonImage: {fileID: 47376145}
-  m_fbLikeButtonImage: {fileID: 2073747011}
-  m_fbProfilePicImage: {fileID: 0}
-  m_fbShareButtonImage: {fileID: 1211054357}
   m_levelCompleteImage: {fileID: 1715433471}
-  m_logInButtonImage: {fileID: 0}
+  m_loseMenuImage: {fileID: 0}
+  m_loseMenuNoButtonImage: {fileID: 0}
+  m_loseMenuYesButtonImage: {fileID: 0}
   m_muteOffButtonImage: {fileID: 547932552}
   m_muteOnButtonImage: {fileID: 1045199033}
   m_adsMenuObj: {fileID: 758346163}
   m_levelCompleteObj: {fileID: 1715433469}
+  m_loseMenuObj: {fileID: 0}
   m_pauseButtonObj: {fileID: 1260887649}
   m_pauseMenuObj: {fileID: 675548340}
   m_quitMenuObj: {fileID: 1909020818}
   m_adsMenuTextOutline: {fileID: 874557933}
   m_levelCompleteTextOutline: {fileID: 1295709519}
+  m_loseMenuTextOutline: {fileID: 0}
   m_adsMenuText: {fileID: 874557932}
-  m_fbUsername: {fileID: 0}
   m_gameTimeDisplay: {fileID: 0}
   m_levelCompleteText: {fileID: 1295709518}
-  m_noInternetText: {fileID: 0}
+  m_loseMenuText: {fileID: 0}
   m_gameTime: 0
   m_currentSceneIndex: 0
   m_enemyKillTarget: 50
@@ -3514,6 +3440,132 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 803, y: 668}
   m_EdgeRadius: 0
+--- !u!1 &1542720920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1257013144624760, guid: 6ef472b6510946f408dd7f9b5fd3d549,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1542720921}
+  - component: {fileID: 1542720924}
+  - component: {fileID: 1542720923}
+  - component: {fileID: 1542720922}
+  m_Layer: 5
+  m_Name: ShareButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1542720921
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224196644468043530, guid: 6ef472b6510946f408dd7f9b5fd3d549,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1542720920}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 680, y: -350, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1715433470}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -120, y: 100}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1542720922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114873880764676018, guid: 6ef472b6510946f408dd7f9b5fd3d549,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1542720920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 33c98e92780414240be84f102024692b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1542720923
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 222008285722489564, guid: 6ef472b6510946f408dd7f9b5fd3d549,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1542720920}
+--- !u!114 &1542720924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114733660602641458, guid: 6ef472b6510946f408dd7f9b5fd3d549,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1542720920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.50980395, b: 0, a: 1}
+    m_PressedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1542720922}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1008052581}
+        m_MethodName: Share
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 01Start
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1637037904
 GameObject:
   m_ObjectHideFlags: 0
@@ -3669,8 +3721,8 @@ RectTransform:
   m_Children:
   - {fileID: 47376144}
   - {fileID: 1295709517}
-  - {fileID: 2073747014}
-  - {fileID: 1211054360}
+  - {fileID: 1542720921}
+  - {fileID: 2115426277}
   m_Father: {fileID: 1411222953}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4379,7 +4431,7 @@ MonoBehaviour:
   m_enemyObj: {fileID: 0}
   m_enemyPrefabs:
   - {fileID: 1833037229582668, guid: 2df68a8c4b1fa274e8ffd0e2c6f95fb1, type: 2}
---- !u!1 &2073747010
+--- !u!1 &2115426276
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 1257013144624760, guid: 6ef472b6510946f408dd7f9b5fd3d549,
@@ -4387,59 +4439,50 @@ GameObject:
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 2073747014}
-  - component: {fileID: 2073747013}
-  - component: {fileID: 2073747012}
-  - component: {fileID: 2073747011}
+  - component: {fileID: 2115426277}
+  - component: {fileID: 2115426279}
+  - component: {fileID: 2115426278}
+  - component: {fileID: 2115426280}
   m_Layer: 5
-  m_Name: FBLikeButton
+  m_Name: InviteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2073747011
-MonoBehaviour:
+--- !u!224 &2115426277
+RectTransform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114873880764676018, guid: 6ef472b6510946f408dd7f9b5fd3d549,
+  m_PrefabParentObject: {fileID: 224196644468043530, guid: 6ef472b6510946f408dd7f9b5fd3d549,
     type: 2}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2073747010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a8a434c18f87d694591f3fdb9f53de9e, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &2073747012
+  m_GameObject: {fileID: 2115426276}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -630, y: -350, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1715433470}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 170, y: 100}
+  m_SizeDelta: {x: 200, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2115426278
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 222008285722489564, guid: 6ef472b6510946f408dd7f9b5fd3d549,
     type: 2}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2073747010}
---- !u!114 &2073747013
+  m_GameObject: {fileID: 2115426276}
+--- !u!114 &2115426279
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 114733660602641458, guid: 6ef472b6510946f408dd7f9b5fd3d549,
     type: 2}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2073747010}
+  m_GameObject: {fileID: 2115426276}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -4469,12 +4512,12 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 2073747011}
+  m_TargetGraphic: {fileID: 2115426280}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1286319350}
-        m_MethodName: FBLike
+      - m_Target: {fileID: 1008052581}
+        m_MethodName: Invite
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4486,25 +4529,34 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!224 &2073747014
-RectTransform:
+--- !u!114 &2115426280
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 224196644468043530, guid: 6ef472b6510946f408dd7f9b5fd3d549,
+  m_PrefabParentObject: {fileID: 114873880764676018, guid: 6ef472b6510946f408dd7f9b5fd3d549,
     type: 2}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2073747010}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -670, y: -380, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
-  m_Children: []
-  m_Father: {fileID: 1715433470}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 130, y: 70}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_GameObject: {fileID: 2115426276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: df6e0cc7fc0ecd641822475382493c27, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!1001 &2121283196
 Prefab:
   m_ObjectHideFlags: 0

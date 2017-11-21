@@ -8,21 +8,19 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-	bool m_adsMenuVisible , m_levelCompleteVisible , m_loseMenuVisible;
-
     [SerializeField] BhanuEnemy[] m_bhanuEnemiesLeft;
-
-	[SerializeField] bool m_loggedIn;
 
 	[SerializeField] BoxCollider2D m_gameCollider2D;
 
-	[SerializeField] Color m_adsMenuNoButtonColour , m_adsMenuTextColour, m_adsMenuTextOutlineColour , m_adsMenuYesButtonColour , m_continueButtonColour , m_fbLikeButtonColour , m_fbShareButtonColour;
+	[SerializeField] Color m_adsMenuNoButtonColour , m_adsMenuTextColour, m_adsMenuTextOutlineColour , m_adsMenuYesButtonColour;
 
 	[SerializeField] Color m_levelCompleteTextColour , m_levelCompleteTextOutlineColour , m_loseMenuNoButtonColour , m_loseMenuYesButtonColour , m_loseMenuTextColour , m_loseMenuTextOutlineColour;
 
+	[SerializeField] FacebookManager m_facebookManager;
+
 	[SerializeField] float m_loadTime;
 
-	[SerializeField] Image m_adsMenuImage , m_adsMenuNoButtonImage , m_adsMenuYesButtonImage , m_continueButtonImage , m_fbLikeButtonImage , m_fbProfilePicImage , m_fbShareButtonImage , m_levelCompleteImage , m_logInButtonImage; 
+	[SerializeField] Image m_adsMenuImage , m_adsMenuNoButtonImage , m_adsMenuYesButtonImage , m_continueButtonImage , m_levelCompleteImage; 
 
 	[SerializeField] Image m_loseMenuImage , m_loseMenuNoButtonImage , m_loseMenuYesButtonImage , m_muteOffButtonImage , m_muteOnButtonImage;
 
@@ -30,23 +28,24 @@ public class LevelManager : MonoBehaviour
 
 	[SerializeField] Outline m_adsMenuTextOutline , m_levelCompleteTextOutline , m_loseMenuTextOutline;
 
-	[SerializeField] Text m_adsMenuText , m_fbUsername , m_gameTimeDisplay , m_levelCompleteText , m_loseMenuText , m_noInternetText;
+	[SerializeField] Text m_adsMenuText , m_gameTimeDisplay , m_levelCompleteText , m_loseMenuText;
 
-    public float m_gameTime;
+	public static bool m_adsMenuVisible , m_levelCompleteVisible , m_loseMenuVisible;
+	public static Color m_continueButtonColour;
+	public float m_gameTime;
     public int m_currentSceneIndex;
     public int m_enemyKillTarget , m_totalEnemiesKilled = 0;
     public static Text m_notEnoughStarsText , m_selectPlayerText;
 
     void Start()
     {
+		m_adsMenuVisible = false;
+		m_levelCompleteVisible = false;
+		m_loseMenuVisible = false;
+
 		m_currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-		if(m_currentSceneIndex == 1)
-		{
-			FB.Init(FBSetInit , FBOnHideUnity);	
-		}
-
-		m_loggedIn = false;
+		m_facebookManager = FindObjectOfType<FacebookManager>();
 
 		Time.timeScale = 1;
 
@@ -63,8 +62,6 @@ public class LevelManager : MonoBehaviour
 		if(m_continueButtonImage != null)
 		{
 			m_continueButtonColour = m_continueButtonImage.color;
-			m_fbLikeButtonColour = m_fbLikeButtonImage.color;
-			m_fbShareButtonColour = m_fbShareButtonImage.color;
 			m_levelCompleteTextColour = m_levelCompleteText.color;
 			m_levelCompleteTextOutlineColour = m_levelCompleteTextOutline.effectColor;
 		}
@@ -105,13 +102,6 @@ public class LevelManager : MonoBehaviour
             return;
         }
 			
-		if(m_currentSceneIndex == 1 && !m_loggedIn)
-		{
-			m_logInButtonImage.enabled = true;
-			m_fbProfilePicImage.enabled = false;
-			m_fbUsername.enabled = false;
-		}
-
 		if(m_adsMenuVisible)
 		{
 			if(m_adsMenuImage.fillAmount < 1)
@@ -175,19 +165,7 @@ public class LevelManager : MonoBehaviour
 						m_continueButtonImage.color = m_continueButtonColour;
 					}
 
-					if(m_fbLikeButtonColour.a < 1)
-					{
-						m_fbLikeButtonColour.a += 0.05f;
-						m_fbLikeButtonImage.color = m_fbLikeButtonColour;
-					}
-
-					if(m_fbShareButtonColour.a < 1)
-					{
-						m_fbShareButtonColour.a += 0.05f;
-						m_fbShareButtonImage.color = m_fbShareButtonColour;
-					}
-
-					if(m_continueButtonColour.a >= 1)
+					if(m_continueButtonColour.a >= 1 && m_facebookManager.m_shareButtonColour.a >= 1)
 					{
 						Time.timeScale = 0;
 					}
@@ -285,102 +263,6 @@ public class LevelManager : MonoBehaviour
     {
         text.enabled = true;
     }
-
-	void FBAuthCallBack(IResult result)
-	{
-		if(result.Error != null) 
-		{
-			Debug.LogError("Sir Bhanu, there is an issue : " + result.Error);	
-			m_loggedIn = false;
-			m_noInternetText.enabled = true;
-		} 
-		else 
-		{
-			if(FB.IsLoggedIn) 
-			{
-				//Debug.Log("Player Logged in"); //If you get 400 error, it means the user token of https://developers.facebook.com/tools/accesstoken/?app_id=142429536402184 you noted down is incorrect which is easy to resolve so not to worry
-				FB.API("/me?fields=first_name" , HttpMethod.GET , FBUsernameDisplay);
-				FB.API("/me/picture?type=square&height=480&width=480" , HttpMethod.GET , FBProfilePicDisplay);
-				m_loggedIn = true;
-			} 
-			else 
-			{
-				//Debug.LogError("Sir Bhanu, Player hasn't logged in on Facebook");
-				m_loggedIn = false;
-			}
-		}
-	}
-
-	public void FBLike()
-	{
-		
-	}
-
-	public void FBLogin()
-	{
-		List<string> permissions = new List<string>();
-		permissions.Add("public_profile");
-		FB.LogInWithReadPermissions(permissions , FBAuthCallBack);
-	}
-
-	public void FBLogOut()
-	{
-		Debug.Log("Facebook Logout");
-		FB.LogOut(); //Not Working
-	}
-
-	void FBOnHideUnity(bool isGameShown)
-	{
-		if(!isGameShown) 
-		{
-			Time.timeScale = 0;
-		} 
-		else 
-		{
-			Time.timeScale = 1;	
-		}
-	}
-
-	void FBProfilePicDisplay(IGraphResult gResult)
-	{
-		if(gResult.Texture != null)
-		{
-			m_fbProfilePicImage.sprite = Sprite.Create(gResult.Texture , new Rect(0 , 0 , 480 , 480) , new Vector2());
-			m_fbProfilePicImage.enabled = true;
-		}
-	}
-
-	void FBSetInit()
-	{
-		if(FB.IsLoggedIn) 
-		{
-			//Debug.Log("Player Logged in"); //If you get 400 error, it means the user token of https://developers.facebook.com/tools/accesstoken/?app_id=142429536402184 you noted down is incorrect which is easy to resolve so not to worry
-			FB.API("/me?fields=first_name" , HttpMethod.GET , FBUsernameDisplay);
-			FB.API("/me/picture?type=square&height=480&width=480" , HttpMethod.GET , FBProfilePicDisplay);
-			m_loggedIn = true;
-		} 
-		else 
-		{
-			//Debug.LogError("Sir Bhanu, Player hasn't logged in on Facebook");
-			m_loggedIn = false;
-		}
-	}
-
-	public void FBShare()
-	{
-		
-	}
-
-	void FBUsernameDisplay(IResult result)
-	{
-		if(result.Error == null)
-		{
-			//Debug.Log(result.ResultDictionary["first_name"]);
-			m_logInButtonImage.enabled = false;
-			m_fbUsername.text =  "Hi " + result.ResultDictionary["first_name"];
-			m_fbUsername.enabled = true;
-		}
-	}
 
 	void HandleShowResult (ShowResult result)
 	{
