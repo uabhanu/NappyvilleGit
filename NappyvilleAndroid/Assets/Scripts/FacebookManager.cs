@@ -15,6 +15,8 @@ public class FacebookManager : MonoBehaviour
 
 	[SerializeField] Image m_inviteButtonImage , m_logInButtonImage , m_profilePicImage , m_shareButtonImage;
 
+	[SerializeField] string m_appLinkURL;
+
 	[SerializeField] Text m_noInternetText , m_username;
 
 	public Color m_shareButtonColour;
@@ -23,14 +25,13 @@ public class FacebookManager : MonoBehaviour
 	{
 		m_currentLevel = SceneManager.GetActiveScene().buildIndex;
 
-		FB.Init(SetInit , OnHideUnity);
-
-		if(m_currentLevel == 1)
+		if(!FB.IsInitialized) 
 		{
-			m_logInButtonImage = GameObject.Find("LogInButton").GetComponent<Image>();
-			m_profilePicImage = GameObject.Find("ProfilePic").GetComponent<Image>();
-			m_noInternetText = GameObject.Find("NoInternet").GetComponent<Text>();
-			m_username = GameObject.Find("Username").GetComponent<Text>();
+			FB.Init(SetInit, OnHideUnity);	
+		} 
+		else 
+		{
+			LoggedIn();
 		}
 
 		if(m_currentLevel > 1)
@@ -47,11 +48,21 @@ public class FacebookManager : MonoBehaviour
 			return;
 		}
 
-		if(m_currentLevel == 1 && !m_loggedIn)
+		if(m_currentLevel == 1)
 		{
-			m_logInButtonImage.enabled = true;
-			m_profilePicImage.enabled = false;
-			m_username.enabled = false;
+			if(!m_loggedIn)
+			{
+				m_logInButtonImage.enabled = true;
+				m_profilePicImage.enabled = false;
+				m_username.enabled = false;	
+			}
+
+			if(m_loggedIn)
+			{
+				m_logInButtonImage.enabled = false;
+				m_profilePicImage.enabled = true;
+				m_username.enabled = true;	
+			}
 		}
 
 		if(LevelManager.m_levelCompleteVisible && LevelManager.m_continueButtonColour.a >= 1)
@@ -67,6 +78,14 @@ public class FacebookManager : MonoBehaviour
 				m_shareButtonColour.a += 0.05f;
 				m_shareButtonImage.color = m_shareButtonColour;
 			}
+		}
+	}
+
+	void AppLink(IAppLinkResult applinkResult)
+	{
+		if(!string.IsNullOrEmpty(applinkResult.Url))
+		{
+			m_appLinkURL = applinkResult.Url; 
 		}
 	}
 
@@ -97,7 +116,42 @@ public class FacebookManager : MonoBehaviour
 
 	public void Invite()
 	{
-		
+		FB.Mobile.AppInvite
+		(
+			new System.Uri(m_appLinkURL),
+			new System.Uri("http://google.co.uk"), //Correct URL may be just like the one in Share() below
+			callback: InviteRewardUser
+		);
+	}
+
+	void InviteRewardUser(IResult inviteResult)
+	{
+		if(inviteResult.Cancelled || !string.IsNullOrEmpty (inviteResult.Error)) 
+		{
+			Debug.LogError("Sir Bhanu, there is an " + inviteResult.Error);
+		} 
+
+		else if(!string.IsNullOrEmpty(inviteResult.RawResult)) 
+		{
+			Debug.Log(inviteResult.RawResult);
+		} 
+
+		else 
+		{
+			Debug.Log("Share Succeeded");
+			//You can Reward/Thank Player here
+		}
+	}
+
+	void LoggedIn()
+	{
+		if(m_currentLevel == 1)
+		{
+			m_loggedIn = true;
+			m_logInButtonImage.enabled = false;
+			FB.API("/me?fields=first_name" , HttpMethod.GET , UsernameDisplay);
+			FB.API("/me/picture?type=square&height=480&width=480" , HttpMethod.GET , ProfilePicDisplay);	
+		}
 	}
 
 	public void Login()
@@ -122,24 +176,6 @@ public class FacebookManager : MonoBehaviour
 		else 
 		{
 			Time.timeScale = 1;	
-		}
-	}
-
-	void OnShare(IShareResult shareResult)
-	{
-		if(shareResult.Cancelled || !string.IsNullOrEmpty (shareResult.Error)) 
-		{
-			Debug.LogError ("Sir Bhanu, there is an " + shareResult.Error);
-		} 
-
-		else if(!string.IsNullOrEmpty (shareResult.PostId)) 
-		{
-			Debug.Log (shareResult.PostId);
-		} 
-
-		else 
-		{
-			Debug.Log("Share Succeeded");	
 		}
 	}
 
@@ -173,10 +209,29 @@ public class FacebookManager : MonoBehaviour
 		FB.ShareLink
 		(
 			contentTitle: "Fourth Lion Studios Message",
-			contentURL: new System.Uri("http://google.co.uk"),
+			contentURL: new System.Uri("http://google.co.uk"), //Correct URL will be Play Store one when this game is reinstated
 			contentDescription: "We really hope you love the game",
-			callback: OnShare
+			callback: ShareRewardUser
 		);
+	}
+
+	void ShareRewardUser(IShareResult shareResult)
+	{
+		if(shareResult.Cancelled || !string.IsNullOrEmpty (shareResult.Error)) 
+		{
+			Debug.LogError("Sir Bhanu, there is an " + shareResult.Error);
+		} 
+
+		else if(!string.IsNullOrEmpty(shareResult.PostId)) 
+		{
+			Debug.Log(shareResult.PostId);
+		} 
+
+		else 
+		{
+			Debug.Log("Share Succeeded");	
+			//You can Reward/Thank Player here
+		}
 	}
 
 	void UsernameDisplay(IResult result)
@@ -184,7 +239,6 @@ public class FacebookManager : MonoBehaviour
 		if(result.Error == null)
 		{
 			//Debug.Log(result.ResultDictionary["first_name"]);
-			m_logInButtonImage.enabled = false;
 			m_username.text =  "Hi " + result.ResultDictionary["first_name"];
 			m_username.enabled = true;
 		}

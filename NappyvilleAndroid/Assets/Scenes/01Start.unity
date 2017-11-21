@@ -877,6 +877,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_loggedIn: 0
+  m_inviteButtonColour: {r: 0, g: 0, b: 0, a: 0}
+  m_inviteButtonImage: {fileID: 0}
+  m_logInButtonImage: {fileID: 153535447}
+  m_profilePicImage: {fileID: 397715119}
+  m_shareButtonImage: {fileID: 0}
+  m_noInternetText: {fileID: 1783228319}
+  m_username: {fileID: 1281931217}
+  m_shareButtonColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &781740723
 Transform:
   m_ObjectHideFlags: 0
@@ -904,31 +912,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bhanuEnemiesLeft: []
-  m_loggedIn: 0
   m_gameCollider2D: {fileID: 0}
   m_adsMenuNoButtonColour: {r: 0, g: 0, b: 0, a: 0}
   m_adsMenuTextColour: {r: 0, g: 0, b: 0, a: 0}
   m_adsMenuTextOutlineColour: {r: 0, g: 0, b: 0, a: 0}
   m_adsMenuYesButtonColour: {r: 0, g: 0, b: 0, a: 0}
-  m_continueButtonColour: {r: 0, g: 0, b: 0, a: 0}
-  m_fbLikeButtonColour: {r: 0, g: 0, b: 0, a: 0}
-  m_fbShareButtonColour: {r: 0, g: 0, b: 0, a: 0}
   m_levelCompleteTextColour: {r: 0, g: 0, b: 0, a: 0}
   m_levelCompleteTextOutlineColour: {r: 0, g: 0, b: 0, a: 0}
   m_loseMenuNoButtonColour: {r: 0, g: 0, b: 0, a: 0}
   m_loseMenuYesButtonColour: {r: 0, g: 0, b: 0, a: 0}
   m_loseMenuTextColour: {r: 0, g: 0, b: 0, a: 0}
   m_loseMenuTextOutlineColour: {r: 0, g: 0, b: 0, a: 0}
+  m_facebookManager: {fileID: 0}
   m_loadTime: 0
   m_adsMenuImage: {fileID: 0}
   m_adsMenuNoButtonImage: {fileID: 0}
   m_adsMenuYesButtonImage: {fileID: 0}
   m_continueButtonImage: {fileID: 0}
-  m_fbLikeButtonImage: {fileID: 0}
-  m_fbProfilePicImage: {fileID: 397715119}
-  m_fbShareButtonImage: {fileID: 0}
   m_levelCompleteImage: {fileID: 0}
-  m_logInButtonImage: {fileID: 153535447}
   m_loseMenuImage: {fileID: 0}
   m_loseMenuNoButtonImage: {fileID: 0}
   m_loseMenuYesButtonImage: {fileID: 0}
@@ -944,11 +945,9 @@ MonoBehaviour:
   m_levelCompleteTextOutline: {fileID: 0}
   m_loseMenuTextOutline: {fileID: 0}
   m_adsMenuText: {fileID: 0}
-  m_fbUsername: {fileID: 1281931217}
   m_gameTimeDisplay: {fileID: 0}
   m_levelCompleteText: {fileID: 0}
   m_loseMenuText: {fileID: 0}
-  m_noInternetText: {fileID: 1783228319}
   m_gameTime: 0
   m_currentSceneIndex: 0
   m_enemyKillTarget: 0
