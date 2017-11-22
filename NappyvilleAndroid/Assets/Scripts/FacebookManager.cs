@@ -11,9 +11,9 @@ public class FacebookManager : MonoBehaviour
 
 	[SerializeField] bool m_loggedIn;
 
-	[SerializeField] Color m_inviteButtonColour;
+	[SerializeField] Color m_inviteButtonColour; //Do this for Nappyville Game
 
-	[SerializeField] Image m_inviteButtonImage , m_logInButtonImage , m_profilePicImage , m_shareButtonImage;
+	[SerializeField] Image /*m_inviteButtonImage ,*/ m_logInButtonImage , m_profilePicImage , m_shareButtonImage;
 
 	[SerializeField] string m_appLinkURL = "http://google.co.uk";
 
@@ -36,7 +36,7 @@ public class FacebookManager : MonoBehaviour
 
 		if(m_currentLevel > 1)
 		{
-			m_inviteButtonColour = m_inviteButtonImage.color;
+			//m_inviteButtonColour = m_inviteButtonImage.color;
 			m_shareButtonColour = m_shareButtonImage.color;	
 		}
 	}
@@ -70,7 +70,7 @@ public class FacebookManager : MonoBehaviour
 			if(m_inviteButtonColour.a < 1)
 			{
 				m_inviteButtonColour.a += 0.05f;
-				m_inviteButtonImage.color = m_inviteButtonColour;
+				//m_inviteButtonImage.color = m_inviteButtonColour;
 			}
 
 			if(m_inviteButtonColour.a >= 1 && m_shareButtonColour.a < 1)

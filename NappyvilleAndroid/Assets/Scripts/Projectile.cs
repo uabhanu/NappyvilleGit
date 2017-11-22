@@ -39,10 +39,14 @@ public class Projectile : MonoBehaviour
         {
 			if(!SoundManager.m_mute)
 			{
-				if(m_soundManager != null)
+				if(m_soundManager == null)
 				{
 					m_soundManager = FindObjectOfType<SoundManager>();
-					AudioSource.PlayClipAtPoint(m_soundManager.m_soundsArray[m_projectileID] , transform.position , m_volume);	
+
+					if(m_soundManager != null)
+					{
+						AudioSource.PlayClipAtPoint(m_soundManager.m_soundsArray[m_projectileID] , transform.position , m_volume);		
+					}
 				}
 			}
 
