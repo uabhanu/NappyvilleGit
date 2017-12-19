@@ -49,7 +49,7 @@ public class LevelManager : MonoBehaviour
 
 		Time.timeScale = 1;
 
-		Advertisement.Initialize("1607507" , false);
+		Advertisement.Initialize("1616605" , false);
 
 		if(m_adsMenuNoButtonImage != null)
 		{
